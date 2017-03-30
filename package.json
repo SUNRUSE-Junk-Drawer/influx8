@@ -1,0 +1,18 @@
+{
+  "name": "sunruse-influx",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc -p .",
+    "build-watch": "tsc -w -p .",
+    "build-test-watch": "concurrently \"npm run-script test-watch\" \"npm run-script build-watch\"",
+    "test-watch": "chokidar \"spec/**/*.js\" \"dist/index.js\" -c \"npm test\" --initial",
+    "test": "jasmine JASMINE_CONFIG_PATH=spec/jasmine.json"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "concurrently": "^3.4.0",
+    "jasmine": "^2.5.3",
+    "rewire": "^2.5.2",
+    "typescript": "^2.2.2"
+  }
+}
