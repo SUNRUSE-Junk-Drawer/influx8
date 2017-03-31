@@ -1,8 +1,8 @@
-describe("ParseKeyword", function () {
+describe("ParseKeyword", () => {
     const ParseKeyword = require("rewire")("../dist/index.js").__get__("ParseKeyword")
 
     function AcceptsOperator(input) {
-        it("accepts operator \"" + input + "\"", function () {
+        it("accepts operator \"" + input + "\"", () => {
             expect(ParseKeyword({
                 StartIndex: 32,
                 Text: input
@@ -15,7 +15,7 @@ describe("ParseKeyword", function () {
     }
 
     function Rejects(input) {
-        it("rejects \"" + input + "\"", function () {
+        it("rejects \"" + input + "\"", () => {
             expect(ParseKeyword({
                 StartIndex: 32,
                 Text: input
