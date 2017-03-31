@@ -1,6 +1,8 @@
 /// <reference path="ParseToken.ts" />
+/// <reference path="UntypedUnary.ts" />
+/// <reference path="UntypedBinary.ts" />
 
-type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis"
+type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator"
 
 type SymbolToken = {
     Type: SymbolTokenType
@@ -18,6 +20,8 @@ const Symbols: { [symbol: string]: SymbolTokenType } = {
     "(": "OpeningParenthesis",
     ")": "ClosingParenthesis"
 }
+for (const operator in UntypedUnarySymbols) for (const symbol of UntypedUnarySymbols[operator as UntypedUnary]) Symbols[symbol] = "Operator"
+for (const operator in UntypedBinarySymbols) for (const symbol of UntypedBinarySymbols[operator as UntypedBinary]) Symbols[symbol] = "Operator"
 
 function ParseSymbol(token: UntypedToken): Token[] | undefined {
     let longestSymbol: string | undefined = undefined
