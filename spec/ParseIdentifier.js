@@ -1,8 +1,8 @@
-describe("ParseIdentifier", function () {
+describe("ParseIdentifier", () => {
     const ParseIdentifier = require("rewire")("../dist/index.js").__get__("ParseIdentifier")
 
     function Accepts(input) {
-        it("accepts \"" + input + "\"", function () {
+        it("accepts \"" + input + "\"", () => {
             expect(ParseIdentifier({
                 StartIndex: 32,
                 Text: input
@@ -15,7 +15,7 @@ describe("ParseIdentifier", function () {
     }
 
     function Rejects(input) {
-        it("rejects \"" + input + "\"", function () {
+        it("rejects \"" + input + "\"", () => {
             expect(ParseIdentifier({
                 StartIndex: 32,
                 Text: input
