@@ -3,11 +3,12 @@
 /// <reference path="ParseInteger.ts" />
 /// <reference path="ParseSymbol.ts" />
 /// <reference path="ParseIdentifier.ts" />
+/// <reference path="ParseKeyword.ts" />
 
 type Token = BooleanToken | IntegerToken | IdentifierToken | SymbolToken | UnknownToken
 
 function ParseToken(token: UntypedToken): Token[] {
-    const primitive = ParseBoolean(token) || ParseInteger(token) || ParseIdentifier(token)
+    const primitive = ParseBoolean(token) || ParseInteger(token) || ParseKeyword(token) || ParseIdentifier(token)
     if (primitive) return [primitive]
     return ParseSymbol(token) || [{
         Type: "Unknown",
