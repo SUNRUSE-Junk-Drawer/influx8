@@ -41,6 +41,9 @@ describe("ParseToken", () => {
     Namespace.__set__("ParseSymbol", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
+            case "Matches Boolean And Symbol": return "Matched Boolean Under Identifier"
+            case "Matches Identifier And Symbol": return "Matched Symbol Under Identifier"
+            case "Matches Keyword And Symbol": return "Matched Symbol Under Keyword"
             case "Matches Symbol": return "Matched Symbol"
         }
     })
