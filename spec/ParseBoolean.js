@@ -1,8 +1,8 @@
-describe("ParseBoolean", function () {
+describe("ParseBoolean", () => {
     const ParseBoolean = require("rewire")("../dist/index.js").__get__("ParseBoolean")
 
     function Test(description, input, output) {
-        it(description, function () {
+        it(description, () => {
             expect(ParseBoolean({
                 StartIndex: 32,
                 Text: input
