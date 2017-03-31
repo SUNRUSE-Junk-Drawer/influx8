@@ -1,8 +1,8 @@
-describe("SplitByWhiteSpace", function () {
+describe("SplitByWhiteSpace", () => {
     const SplitByWhiteSpace = require("rewire")("../dist/index.js").__get__("SplitByWhiteSpace")
 
     function Test(description, input, output) {
-        it(description, function () {
+        it(description, () => {
             expect(SplitByWhiteSpace(input)).toEqual(output)
         })
     }
