@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc -p .",
     "build-watch": "tsc -w -p .",
-    "build-test-watch": "concurrently \"npm run-script test-watch\" \"npm run-script build-watch\"",
+    "build-test-watch": "concurrently \"npm run-script test-watch\" \"npm run-script build-watch\" --raw",
     "test-watch": "chokidar \"spec/**/*.js\" \"dist/index.js\" -c \"npm test\" --initial",
     "test": "jasmine JASMINE_CONFIG_PATH=spec/jasmine.json"
   },
