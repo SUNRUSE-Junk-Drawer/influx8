@@ -1,8 +1,8 @@
-describe("ParseInteger", function () {
+describe("ParseInteger", () => {
     const ParseInteger = require("rewire")("../dist/index.js").__get__("ParseInteger")
 
     function Test(description, input, output) {
-        it(description, function () {
+        it(description, () => {
             expect(ParseInteger({
                 StartIndex: 32,
                 Text: input
