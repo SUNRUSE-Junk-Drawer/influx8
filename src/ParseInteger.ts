@@ -7,11 +7,10 @@ type IntegerToken = {
 }
 
 function ParseInteger(token: UntypedToken): IntegerToken | undefined {
-    if (!/^[+-]?\d+$/.test(token.Text)) return
-    const value = parseInt(token.Text)
+    if (!/^\d+$/.test(token.Text)) return
     return {
         Type: "Integer",
         StartIndex: token.StartIndex,
-        Value: value == -0 ? 0 : value
+        Value: parseInt(token.Text)
     }
 }

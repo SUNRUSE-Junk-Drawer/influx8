@@ -45,36 +45,12 @@ describe("ParseInteger", function () {
     Test("unsigned nondigit before digits", "g640", undefined)
     Test("unsigned nondigit after digits", "640g", undefined)
 
-    Test("positive zero", "+0", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 0
-    })
-    Test("positive zeroes", "+0000", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 0
-    })
-    Test("positive single digit", "+4", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 4
-    })
-    Test("positive digits", "+764", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 764
-    })
-    Test("positive digits with preceding zeroes", "+00582", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 00582
-    })
-    Test("positive digits with trailing zeroes", "+7854400", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 7854400
-    })
+    Test("positive zero", "+0", undefined)
+    Test("positive zeroes", "+0000", undefined)
+    Test("positive single digit", "+4", undefined)
+    Test("positive digits", "+764", undefined)
+    Test("positive digits with preceding zeroes", "+00582", undefined)
+    Test("positive digits with trailing zeroes", "+7854400", undefined)
     Test("positive nondigit", "+g", undefined)
     Test("positive nondigit between digits", "+77g640", undefined)
     Test("positive nondigit before digits", "+g640", undefined)
@@ -82,36 +58,12 @@ describe("ParseInteger", function () {
     Test("positive nondigit before sign", "g+640", undefined)
     Test("positive digit before sign", "7+640", undefined)
 
-    Test("negative zero", "-0", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 0
-    })
-    Test("negative zeroes", "-0000", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: 0
-    })
-    Test("negative single digit", "-4", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: -4
-    })
-    Test("negative digits", "-764", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: -764
-    })
-    Test("negative digits with preceding zeroes", "-00582", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: -00582
-    })
-    Test("negative digits with trailing zeroes", "-7854400", {
-        Type: "Integer",
-        StartIndex: 32,
-        Value: -7854400
-    })
+    Test("negative zero", "-0", undefined)
+    Test("negative zeroes", "-0000", undefined)
+    Test("negative single digit", "-4", undefined)
+    Test("negative digits", "-764", undefined)
+    Test("negative digits with preceding zeroes", "-00582", undefined)
+    Test("negative digits with trailing zeroes", "-7854400", undefined)
     Test("negative nondigit", "-g", undefined)
     Test("negative nondigit between digits", "-77g640", undefined)
     Test("negative nondigit before digits", "-g640", undefined)
