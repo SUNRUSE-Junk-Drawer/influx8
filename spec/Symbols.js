@@ -7,6 +7,17 @@ describe("Symbols", () => {
         })
     }
 
+    function DoesNotMap(symbol) {
+        it("does not map \"" + symbol + "\"", function () {
+            expect(Symbols[symbol]).toBeUndefined()
+        })
+    }
+
     Maps("(", "OpeningParenthesis")
     Maps(")", "ClosingParenthesis")
+    Maps("-", "Operator")
+    Maps("+", "Operator")
+    Maps("!", "Operator")
+    DoesNotMap("and")
+    DoesNotMap("not")
 })
