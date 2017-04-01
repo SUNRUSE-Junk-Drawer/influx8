@@ -15,9 +15,9 @@ describe("ParseOperatorExpressionLevel", () => {
             })
         })
 
-        function Test(description, input, output, parseExpression) {
+        function Test(description, input, output, tryParseExpression) {
             it(description, () => {
-                Namespace.__set__("ParseExpression", parseExpression || fail)
+                Namespace.__set__("TryParseExpression", tryParseExpression || fail)
                 expect(ParseOperatorExpressionLevel(input, {
                     Type: "Unary",
                     Operators: ["Unused First Operator", "Matched Operator", "Another Matched Operator", "Unused Last Operator"]
@@ -608,9 +608,9 @@ describe("ParseOperatorExpressionLevel", () => {
             })
         })
 
-        function Test(description, input, output, parseExpression) {
+        function Test(description, input, output, tryParseExpression) {
             it(description, () => {
-                Namespace.__set__("ParseExpression", parseExpression || fail)
+                Namespace.__set__("TryParseExpression", tryParseExpression || fail)
                 expect(ParseOperatorExpressionLevel(input, {
                     Type: "Binary",
                     Operators: ["Unused First Operator", "Matched Operator", "Another Matched Operator", "Unused Last Operator"]

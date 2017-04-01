@@ -1,6 +1,6 @@
-describe("ParseExpression", () => {
+describe("TryParseExpression", () => {
     const Namespace = require("rewire")("../dist/index.js")
-    const ParseExpression = Namespace.__get__("ParseExpression")
+    const TryParseExpression = Namespace.__get__("TryParseExpression")
 
     Namespace.__set__("ParseConstantExpression", (tokens) => {
         switch (tokens) {
@@ -16,7 +16,7 @@ describe("ParseExpression", () => {
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(ParseExpression(input)).toEqual(output)
+            expect(TryParseExpression(input)).toEqual(output)
         })
     }
 

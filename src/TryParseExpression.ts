@@ -9,6 +9,6 @@ type UnknownExpression = {
 
 type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | UntypedBinaryExpression | UntypedUnaryExpression
 
-function ParseExpression(tokens: ParenthesizedToken[]): RawExpression | undefined {
-    return ParseConstantExpression(tokens) || ParseOperatorExpression(tokens)
+function TryParseExpression(tokens: ParenthesizedToken[]): RawExpression | undefined {
+    return ParseConstantExpression(tokens) || ParseOperatorExpression(tokens) || undefined
 }
