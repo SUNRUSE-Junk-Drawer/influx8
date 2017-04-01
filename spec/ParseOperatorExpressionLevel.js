@@ -20,7 +20,7 @@ describe("ParseOperatorExpressionLevel", () => {
                 Namespace.__set__("ParseExpression", parseExpression || fail)
                 expect(ParseOperatorExpressionLevel(input, {
                     Type: "Unary",
-                    Operators: ["Unused First Operator", "Matched Operator", "Unused Last Operator"]
+                    Operators: ["Unused First Operator", "Matched Operator", "Another Matched Operator", "Unused Last Operator"]
                 })).toEqual(output)
             })
         }
