@@ -28,3 +28,7 @@ const UntypedBinaryKeywords: { [keyword: string]: UntypedBinary } = {
     equals: "Equal",
     isnt: "NotEqual"
 }
+
+const UntypedBinaryKeywordsAndSymbols: { [keywordOrSymbol: string]: UntypedBinary } = {}
+for (const symbol in UntypedBinarySymbols) UntypedBinaryKeywordsAndSymbols[symbol] = UntypedBinarySymbols[symbol]
+for (const keyword in UntypedBinaryKeywords) UntypedBinaryKeywordsAndSymbols[keyword] = UntypedBinaryKeywords[keyword]
