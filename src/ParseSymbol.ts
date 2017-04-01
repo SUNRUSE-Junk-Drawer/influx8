@@ -20,8 +20,8 @@ const Symbols: { [symbol: string]: SymbolTokenType } = {
     "(": "OpeningParenthesis",
     ")": "ClosingParenthesis"
 }
-for (const operator in UntypedUnarySymbols) for (const symbol of UntypedUnarySymbols[operator as UntypedUnary]) Symbols[symbol] = "Operator"
-for (const operator in UntypedBinarySymbols) for (const symbol of UntypedBinarySymbols[operator as UntypedBinary]) Symbols[symbol] = "Operator"
+for (const symbol in UntypedUnarySymbols) Symbols[symbol] = "Operator"
+for (const symbol in UntypedBinarySymbols) Symbols[symbol] = "Operator"
 
 function ParseSymbol(token: UntypedToken): Token[] | undefined {
     let longestSymbol: string | undefined = undefined
