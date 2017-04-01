@@ -14,6 +14,12 @@ describe("TryParseExpression", () => {
         }
     })
 
+    Namespace.__set__("ParseParenthesesExpression", (tokens) => {
+        switch (tokens) {
+            case "Matches Parentheses": return "Matched Parentheses"
+        }
+    })
+
     function Test(description, input, output) {
         it(description, () => {
             expect(TryParseExpression(input)).toEqual(output)
@@ -23,4 +29,5 @@ describe("TryParseExpression", () => {
     Test("no match", "Matches Nothing", undefined)
     Test("constant", "Matches Constant", "Matched Constant")
     Test("operator", "Matches Operator", "Matched Operator")
+    Test("parentheses", "Matches Parentheses", "Matched Parentheses")
 })
