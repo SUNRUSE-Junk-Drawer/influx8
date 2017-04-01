@@ -57,20 +57,20 @@ function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
         }
     }
 
-    while (stack.length) {
-        // If there were unclosed parentheses, replace them with UnclosedParenthesis tokens and move their contents into the parent parentheses/the root scope.
-        const last = stack.pop()
-        if (!last) throw "This should not be possible, but is required to satisfy the typechecker"
+    // If there were unclosed parentheses, replace them with UnclosedParenthesis tokens and move their contents into the parent parentheses/the root scope.
+    let unclosedParenthesis = stack.pop()
+    while (unclosedParenthesis) {
         const parent = stack.length ? stack[stack.length - 1].Contents : output
-        let index = parent.indexOf(last)
+        let index = parent.indexOf(unclosedParenthesis)
         parent.splice(index, 1, {
             Type: "UnclosedParenthesis",
-            StartIndex: last.StartIndex
+            StartIndex: unclosedParenthesis.StartIndex
         })
-        for (const token of last.Contents) {
+        for (const token of unclosedParenthesis.Contents) {
             index++ // Every time we splice an item in, we need to increment the index otherwise we splice in reverse order.
             parent.splice(index, 0, token)
         }
+        unclosedParenthesis = stack.pop()
     }
 
     return output
