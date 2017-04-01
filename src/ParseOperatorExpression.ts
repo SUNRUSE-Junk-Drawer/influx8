@@ -29,6 +29,22 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
             Operator: operator,
             Operand: operand
         }
+    } else for (let i = 1; i < tokens.length - 1; i++) {
+        const token = tokens[i]
+        if (token.Type != "Operator") continue
+        if (!Object.prototype.hasOwnProperty.call(UntypedBinaryKeywordsAndSymbols, token.Symbol)) continue
+        const operator = UntypedBinaryKeywordsAndSymbols[token.Symbol]
+        if (level.Operators.indexOf(operator) == -1) continue
+        const left = ParseExpression(tokens.slice(0, i))
+        if (!left) continue
+        const right = ParseExpression(tokens.slice(i + 1))
+        if (!right) continue
+        return {
+            Type: "UntypedBinary",
+            Operator: operator,
+            Left: left,
+            Right: right
+        }
     }
     return undefined
 }
