@@ -1,13 +1,11 @@
-type UntypedUnary = "Not" | "Negate" | "Fold"
+type UntypedUnary = "Not" | "Negate"
 
 const UntypedUnarySymbols: {[operator in UntypedUnary]: string[]} = {
     Not: ["!"],
     Negate: ["-"],
-    Fold: []
 }
 
 const UntypedUnaryKeywords: {[operator in UntypedUnary]: string[]} = {
     Not: ["not"],
-    Negate: [],
-    Fold: ["fold"],
+    Negate: []
 }
