@@ -1,6 +1,7 @@
 /// <reference path="Parenthesize.ts" />
 /// <reference path="ParseConstantExpression.ts" />
 /// <reference path="ParseOperatorExpression.ts" />
+/// <reference path="ParseParenthesesExpression.ts" />
 
 type UnknownExpression = {
     Type: "Unknown"
@@ -10,5 +11,5 @@ type UnknownExpression = {
 type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | UntypedBinaryExpression | UntypedUnaryExpression
 
 function TryParseExpression(tokens: ParenthesizedToken[]): RawExpression | undefined {
-    return ParseConstantExpression(tokens) || ParseOperatorExpression(tokens) || undefined
+    return ParseConstantExpression(tokens) || ParseParenthesesExpression(tokens) || ParseOperatorExpression(tokens) || undefined
 }
