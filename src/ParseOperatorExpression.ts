@@ -1,5 +1,5 @@
 /// <reference path="Precedence.ts" />
-/// <reference path="ParseExpression.ts" />
+/// <reference path="TryParseExpression.ts" />
 
 type UntypedUnaryExpression = {
     Type: "UntypedUnary",
@@ -22,7 +22,7 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
         if (!Object.prototype.hasOwnProperty.call(UntypedUnaryKeywordsAndSymbols, firstToken.Symbol)) return undefined
         const operator = UntypedUnaryKeywordsAndSymbols[firstToken.Symbol]
         if (level.Operators.indexOf(operator) == -1) return undefined
-        const operand = ParseExpression(tokens.slice(1))
+        const operand = TryParseExpression(tokens.slice(1))
         if (!operand) return undefined
         return {
             Type: "UntypedUnary",
@@ -35,9 +35,9 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
         if (!Object.prototype.hasOwnProperty.call(UntypedBinaryKeywordsAndSymbols, token.Symbol)) continue
         const operator = UntypedBinaryKeywordsAndSymbols[token.Symbol]
         if (level.Operators.indexOf(operator) == -1) continue
-        const left = ParseExpression(tokens.slice(0, i))
+        const left = TryParseExpression(tokens.slice(0, i))
         if (!left) continue
-        const right = ParseExpression(tokens.slice(i + 1))
+        const right = TryParseExpression(tokens.slice(i + 1))
         if (!right) continue
         return {
             Type: "UntypedBinary",
