@@ -2,3 +2,4 @@
 /// <reference path="ParseToken.ts" />
 /// <reference path="Parenthesize.ts" />
 /// <reference path="ParseExpression.ts" />
+/// <reference path="Precedence.ts" />
