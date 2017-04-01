@@ -4,13 +4,7 @@
 /// <reference path="UntypedUnary.ts" />
 
 function ParseKeyword(token: UntypedToken): SymbolToken | undefined {
-    for (const operator in UntypedUnaryKeywords) for (const keyword of UntypedUnaryKeywords[operator as UntypedUnary]) if (keyword == token.Text) return {
-        Type: "Operator",
-        StartIndex: token.StartIndex,
-        Symbol: token.Text
-    }
-
-    for (const operator in UntypedBinaryKeywords) for (const keyword of UntypedBinaryKeywords[operator as UntypedBinary]) if (keyword == token.Text) return {
+    if (Object.prototype.hasOwnProperty.call(UntypedUnaryKeywords, token.Text) || Object.prototype.hasOwnProperty.call(UntypedBinaryKeywords, token.Text)) return {
         Type: "Operator",
         StartIndex: token.StartIndex,
         Symbol: token.Text

@@ -27,6 +27,7 @@ describe("ParseKeyword", () => {
     Rejects("+")
     Rejects("!")
     Rejects("-")
+    Rejects("constructor")
     AcceptsOperator("and")
     AcceptsOperator("not")
 })

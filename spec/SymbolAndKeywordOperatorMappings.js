@@ -7,7 +7,7 @@ describe("SymbolAndKeywordOperatorMappings", () => {
 
     function Maps(source, token, to) {
         it("maps \"" + token + "\" to \"" + to + "\"", () => {
-            expect(source[to].indexOf(token)).not.toEqual(-1)
+            expect(source[token]).toEqual(to)
         })
     }
 
