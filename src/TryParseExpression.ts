@@ -5,6 +5,8 @@
 
 type UnknownExpression = {
     Type: "Unknown"
+    StartIndex: number
+    EndIndex: number
     Tokens: ParenthesizedToken[]
 }
 
