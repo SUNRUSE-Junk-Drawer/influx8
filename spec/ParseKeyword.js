@@ -1,33 +1,25 @@
 describe("ParseKeyword", () => {
-    const ParseKeyword = require("rewire")("../dist/index.js").__get__("ParseKeyword")
+    const Namespace = require("rewire")("../dist/index.js")
+    const ParseKeyword = Namespace.__get__("ParseKeyword")
 
-    function AcceptsOperator(input) {
-        it("accepts operator \"" + input + "\"", () => {
+    Namespace.__set__("Keywords", {
+        "Valid Keyword": "Valid Keyword Type"
+    })
+
+    function Test(description, input, output) {
+        it(description, () => {
             expect(ParseKeyword({
                 StartIndex: 32,
                 Text: input
-            })).toEqual({
-                Type: "Operator",
-                StartIndex: 32,
-                Symbol: input
-            })
+            })).toEqual(output)
         })
     }
 
-    function Rejects(input) {
-        it("rejects \"" + input + "\"", () => {
-            expect(ParseKeyword({
-                StartIndex: 32,
-                Text: input
-            })).toBeUndefined()
-        })
-    }
-
-    Rejects("abc")
-    Rejects("+")
-    Rejects("!")
-    Rejects("-")
-    Rejects("constructor")
-    AcceptsOperator("and")
-    AcceptsOperator("not")
+    Test("invalid keyword", "Invalid Keyword", undefined)
+    Test("invalid keyword from object prototype", "constructor", undefined)
+    Test("valid keyword", "Valid Keyword", {
+        Type: "Valid Keyword Type",
+        StartIndex: 32,
+        Symbol: "Valid Keyword"
+    })
 })
