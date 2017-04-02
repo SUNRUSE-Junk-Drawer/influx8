@@ -60,6 +60,7 @@ describe("ParseToken", () => {
     Test("no match", "Matches Nothing", [{
         Type: "Unknown",
         StartIndex: 32,
+        EndIndex: 46,
         Text: "Matches Nothing"
     }])
 

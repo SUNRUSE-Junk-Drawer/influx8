@@ -11,6 +11,7 @@ function ParseKeyword(token: UntypedToken): SymbolToken | undefined {
     if (Object.prototype.hasOwnProperty.call(Keywords, token.Text)) return {
         Type: Keywords[token.Text],
         StartIndex: token.StartIndex,
+        EndIndex: token.StartIndex + token.Text.length - 1,
         Symbol: token.Text
     }
 

@@ -26,18 +26,21 @@ describe("ParseSymbol", () => {
     Test("lone short symbol", ">$%", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }], fail)
 
     Test("lone long symbol", ">$%!?", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }], fail)
 
     Test("short symbol at start", ">$%matchesnothing", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }, "Misc A", "Misc B"], {
             "matchesnothing": {
@@ -49,6 +52,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at start", ">$%!?matchesnothing", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }, "Misc A", "Misc B"], {
             "matchesnothing": {
@@ -60,6 +64,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at end", "matchesnothing>$%", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 46,
+        EndIndex: 48,
         Symbol: ">$%"
     }], {
             "matchesnothing": {
@@ -71,6 +76,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at end", "matchesnothing>$%!?", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 46,
+        EndIndex: 50,
         Symbol: ">$%!?"
     }], {
             "matchesnothing": {
@@ -82,6 +88,7 @@ describe("ParseSymbol", () => {
     Test("short symbol in middle", "matches>$%nothing", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 39,
+        EndIndex: 41,
         Symbol: ">$%"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -97,6 +104,7 @@ describe("ParseSymbol", () => {
     Test("long symbol in middle", "matches>$%!?nothing", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 39,
+        EndIndex: 43,
         Symbol: ">$%!?"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -112,6 +120,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at start and short symbol at middle", ">$%matches>$%nothing", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }, "Misc A", "Misc B"], {
             "matches>$%nothing": {
@@ -123,6 +132,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at start and long symbol at middle", ">$%matches>$%!?nothing", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }, "Misc A", "Misc B"], {
             "matches>$%!?nothing": {
@@ -134,6 +144,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at start and short symbol at middle", ">$%!?matches>$%nothing", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }, "Misc A", "Misc B"], {
             "matches>$%nothing": {
@@ -145,6 +156,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at start and long symbol at middle", ">$%!?matches>$%!?nothing", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }, "Misc A", "Misc B"], {
             "matches>$%!?nothing": {
@@ -156,6 +168,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at middle and short symbol at end", "matches>$%nothing>$%", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 39,
+        EndIndex: 41,
         Symbol: ">$%"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -171,6 +184,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at middle and short symbol at end", "matches>$%!?nothing>$%", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 39,
+        EndIndex: 43,
         Symbol: ">$%!?"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -186,6 +200,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at middle and long symbol at end", "matches>$%nothing>$%!?", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 39,
+        EndIndex: 41,
         Symbol: ">$%"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -201,6 +216,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at middle and long symbol at end", "matches>$%!?nothing>$%!?", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 39,
+        EndIndex: 43,
         Symbol: ">$%!?"
     }, "Misc C", "Misc D", "Misc E"], {
             "matches": {
@@ -216,6 +232,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at start and short symbol at end", ">$%matchesnothing>$%", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }, "Misc A", "Misc B"], {
             "matchesnothing>$%": {
@@ -227,6 +244,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at start and short symbol at end", ">$%!?matchesnothing>$%", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }, "Misc A", "Misc B"], {
             "matchesnothing>$%": {
@@ -238,6 +256,7 @@ describe("ParseSymbol", () => {
     Test("short symbol at start and long symbol at end", ">$%matchesnothing>$%!?", [{
         Type: "Short Symbol",
         StartIndex: 32,
+        EndIndex: 34,
         Symbol: ">$%"
     }, "Misc A", "Misc B"], {
             "matchesnothing>$%!?": {
@@ -249,6 +268,7 @@ describe("ParseSymbol", () => {
     Test("long symbol at start and long symbol at end", ">$%!?matchesnothing>$%!?", [{
         Type: "Long Symbol",
         StartIndex: 32,
+        EndIndex: 36,
         Symbol: ">$%!?"
     }, "Misc A", "Misc B"], {
             "matchesnothing>$%!?": {
@@ -260,6 +280,7 @@ describe("ParseSymbol", () => {
     Test("short symbol in middle and short symbol in middle", "matc>$%hesnoth>$%ing", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 36,
+        EndIndex: 38,
         Symbol: ">$%"
     }, "Misc C", "Misc D", "Misc E"], {
             "matc": {
@@ -275,6 +296,7 @@ describe("ParseSymbol", () => {
     Test("long symbol in middle and short symbol in middle", "matc>$%!?hesnoth>$%ing", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 36,
+        EndIndex: 40,
         Symbol: ">$%!?"
     }, "Misc C", "Misc D", "Misc E"], {
             "matc": {
@@ -290,6 +312,7 @@ describe("ParseSymbol", () => {
     Test("short symbol in middle and long symbol in middle", "matc>$%hesnoth>$%!?ing", ["Misc A", "Misc B", {
         Type: "Short Symbol",
         StartIndex: 36,
+        EndIndex: 38,
         Symbol: ">$%"
     }, "Misc C", "Misc D", "Misc E"], {
             "matc": {
@@ -305,6 +328,7 @@ describe("ParseSymbol", () => {
     Test("long symbol in middle and long symbol in middle", "matc>$%!?hesnoth>$%!?ing", ["Misc A", "Misc B", {
         Type: "Long Symbol",
         StartIndex: 36,
+        EndIndex: 40,
         Symbol: ">$%!?"
     }, "Misc C", "Misc D", "Misc E"], {
             "matc": {

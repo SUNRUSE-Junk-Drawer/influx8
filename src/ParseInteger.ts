@@ -3,6 +3,7 @@
 type IntegerToken = {
     Type: "Integer"
     StartIndex: number
+    EndIndex: number
     Value: number
 }
 
@@ -11,6 +12,7 @@ function ParseInteger(token: UntypedToken): IntegerToken | undefined {
     return {
         Type: "Integer",
         StartIndex: token.StartIndex,
+        EndIndex: token.StartIndex + token.Text.length - 1,
         Value: parseInt(token.Text)
     }
 }

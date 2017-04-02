@@ -20,6 +20,7 @@ describe("ParseKeyword", () => {
     Test("valid keyword", "Valid Keyword", {
         Type: "Valid Keyword Type",
         StartIndex: 32,
+        EndIndex: 44,
         Symbol: "Valid Keyword"
     })
 })

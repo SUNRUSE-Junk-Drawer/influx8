@@ -7,12 +7,14 @@ type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator"
 type SymbolToken = {
     Type: SymbolTokenType
     StartIndex: number
+    EndIndex: number
     Symbol: string
 }
 
 type UnknownToken = {
     Type: "Unknown"
     StartIndex: number
+    EndIndex: number
     Text: string
 }
 
@@ -43,6 +45,7 @@ function ParseSymbol(token: UntypedToken): Token[] | undefined {
     results.push({
         Type: Symbols[longestSymbol],
         StartIndex: token.StartIndex + longestSymbolIndex,
+        EndIndex: token.StartIndex + longestSymbolIndex + longestSymbol.length - 1,
         Symbol: longestSymbol
     })
     if (longestSymbolIndex + longestSymbol.length < token.Text.length) for (const result of ParseToken({
