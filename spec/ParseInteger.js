@@ -13,31 +13,37 @@ describe("ParseInteger", () => {
     Test("unsigned zero", "0", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 32,
         Value: 0
     })
     Test("unsigned zeroes", "0000", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 35,
         Value: 0
     })
     Test("unsigned single digit", "4", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 32,
         Value: 4
     })
     Test("unsigned digits", "764", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 34,
         Value: 764
     })
     Test("unsigned digits with preceding zeroes", "00582", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 36,
         Value: 00582
     })
     Test("unsigned digits with trailing zeroes", "7854400", {
         Type: "Integer",
         StartIndex: 32,
+        EndIndex: 38,
         Value: 7854400
     })
     Test("unsigned nondigit", "g", undefined)

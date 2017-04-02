@@ -11,9 +11,11 @@ type ParenthesizedToken =
     IntegerToken | BooleanToken | SymbolToken | IdentifierToken | UnknownToken | ParenthesesToken | {
         Type: "UnopenedParenthesis"
         StartIndex: number
+        EndIndex: number
     } | {
         Type: "UnclosedParenthesis"
         StartIndex: number
+        EndIndex: number
     }
 
 function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
@@ -27,8 +29,8 @@ function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
                     Type: "Parentheses",
                     StartIndex: token.StartIndex,
                     // If the parentheses are closed, this is updated to the StartIndex of the closing parenthesis.
-                    // Otherwise, this token will be replaced with an UnclosedParenthesis and this property is not returned.
-                    EndIndex: 0,
+                    // Otherwise, this token will be replaced with an UnclosedParenthesis and this property is returned there.
+                    EndIndex: token.EndIndex,
                     Contents: []
                 }
 
@@ -45,7 +47,8 @@ function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
                     stack.length--
                 } else output.push({
                     Type: "UnopenedParenthesis",
-                    StartIndex: token.StartIndex
+                    StartIndex: token.StartIndex,
+                    EndIndex: token.EndIndex
                 })
             } break
             default: {
@@ -64,7 +67,8 @@ function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
         let index = parent.indexOf(unclosedParenthesis)
         parent.splice(index, 1, {
             Type: "UnclosedParenthesis",
-            StartIndex: unclosedParenthesis.StartIndex
+            StartIndex: unclosedParenthesis.StartIndex,
+            EndIndex: unclosedParenthesis.EndIndex
         })
         for (const token of unclosedParenthesis.Contents) {
             index++ // Every time we splice an item in, we need to increment the index otherwise we splice in reverse order.

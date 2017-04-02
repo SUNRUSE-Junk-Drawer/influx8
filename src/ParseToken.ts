@@ -13,6 +13,7 @@ function ParseToken(token: UntypedToken): Token[] {
     return ParseSymbol(token) || [{
         Type: "Unknown",
         StartIndex: token.StartIndex,
+        EndIndex: token.StartIndex + token.Text.length - 1,
         Text: token.Text
     }]
 }

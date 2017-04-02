@@ -13,12 +13,14 @@ describe("ParseBoolean", () => {
     Test("returns true for true", "true", {
         Type: "Boolean",
         StartIndex: 32,
+        EndIndex: 35,
         Value: true
     })
 
     Test("returns false for false", "false", {
         Type: "Boolean",
         StartIndex: 32,
+        EndIndex: 36,
         Value: false
     })
 
