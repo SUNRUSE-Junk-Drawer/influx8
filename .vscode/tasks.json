@@ -6,7 +6,7 @@
     "isShellCommand": true,
     "args": [
         "run-script",
-        "build-test-watch"
+        "install-build-test-watch"
     ],
     "showOutput": "always",
     "isBackground": true,
