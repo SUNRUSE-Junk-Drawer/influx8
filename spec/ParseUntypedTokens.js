@@ -1,9 +1,9 @@
-describe("SplitByWhiteSpace", () => {
-    const SplitByWhiteSpace = require("rewire")("../dist/index.js").__get__("SplitByWhiteSpace")
+describe("ParseUntypedTokens", () => {
+    const ParseUntypedTokens = require("rewire")("../dist/index.js").__get__("ParseUntypedTokens")
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(SplitByWhiteSpace(input)).toEqual(output)
+            expect(ParseUntypedTokens(input)).toEqual(output)
         })
     }
 
