@@ -40,7 +40,7 @@ type UnknownToken = {
     Text: string
 }
 
-type Token = BooleanToken | IntegerToken | IdentifierToken | SymbolToken | UnknownToken
+type UnparenthesizedToken = BooleanToken | IntegerToken | IdentifierToken | SymbolToken | UnknownToken
 
 type ParenthesesToken = {
     Type: "Parentheses"
@@ -61,4 +61,4 @@ type UnclosedParenthesisToken = {
     EndIndex: number
 }
 
-type ParenthesizedToken = Token | ParenthesesToken | UnopenedParenthesisToken | UnclosedParenthesisToken
+type ParenthesizedToken = UnparenthesizedToken | ParenthesesToken | UnopenedParenthesisToken | UnclosedParenthesisToken

@@ -1,6 +1,6 @@
 /// <reference path="Token.ts" />
 
-function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
+function Parenthesize(tokens: UnparenthesizedToken[]): ParenthesizedToken[] {
     const output: ParenthesizedToken[] = []
     const stack: ParenthesesToken[] = []
 

@@ -9,7 +9,7 @@ const Symbols: { [symbol: string]: SymbolTokenType } = {
 for (const symbol in UntypedUnarySymbols) Symbols[symbol] = "Operator"
 for (const symbol in UntypedBinarySymbols) Symbols[symbol] = "Operator"
 
-function ParseSymbol(token: UntypedToken): Token[] | undefined {
+function ParseSymbol(token: UntypedToken): UnparenthesizedToken[] | undefined {
     let longestSymbol: string | undefined = undefined
     let longestSymbolIndex = token.Text.length
     for (const symbol in Symbols) {
@@ -21,7 +21,7 @@ function ParseSymbol(token: UntypedToken): Token[] | undefined {
         longestSymbolIndex = index
     }
     if (!longestSymbol) return undefined
-    const results: Token[] = []
+    const results: UnparenthesizedToken[] = []
     if (longestSymbolIndex > 0) for (const result of ParseToken({
         StartIndex: token.StartIndex,
         Text: token.Text.substring(0, longestSymbolIndex)

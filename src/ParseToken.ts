@@ -5,7 +5,7 @@
 /// <reference path="ParseIdentifier.ts" />
 /// <reference path="ParseKeyword.ts" />
 
-function ParseToken(token: UntypedToken): Token[] {
+function ParseToken(token: UntypedToken): UnparenthesizedToken[] {
     const primitive = ParseBoolean(token) || ParseInteger(token) || ParseKeyword(token) || ParseIdentifier(token)
     if (primitive) return [primitive]
     return ParseSymbol(token) || [{
