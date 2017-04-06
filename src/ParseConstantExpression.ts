@@ -1,16 +1,5 @@
-/// <reference path="Parenthesize.ts" />
-
-type BooleanExpression = {
-    Type: "Boolean"
-    StartIndex: number
-    Value: boolean
-}
-
-type IntegerExpression = {
-    Type: "Integer"
-    StartIndex: number
-    Value: number
-}
+/// <reference path="Token.ts" />
+/// <reference path="Expression.ts" />
 
 function ParseConstantExpression(tokens: ParenthesizedToken[]): BooleanExpression | IntegerExpression | undefined {
     if (tokens.length != 1) return undefined
