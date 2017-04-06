@@ -1,5 +1,5 @@
 /// <reference path="Expression.ts" />
-/// <reference path="Parenthesize.ts" />
+/// <reference path="ParenthesizeTokens.ts" />
 /// <reference path="ParseConstantExpression.ts" />
 /// <reference path="ParseOperatorExpression.ts" />
 /// <reference path="ParseParenthesesExpression.ts" />

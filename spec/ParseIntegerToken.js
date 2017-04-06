@@ -1,9 +1,9 @@
-describe("ParseInteger", () => {
-    const ParseInteger = require("rewire")("../dist/index.js").__get__("ParseInteger")
+describe("ParseIntegerToken", () => {
+    const ParseIntegerToken = require("rewire")("../dist/index.js").__get__("ParseIntegerToken")
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(ParseInteger({
+            expect(ParseIntegerToken({
                 StartIndex: 32,
                 Text: input
             })).toEqual(output)

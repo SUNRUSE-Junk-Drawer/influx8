@@ -1,9 +1,9 @@
-describe("ParseIdentifier", () => {
-    const ParseIdentifier = require("rewire")("../dist/index.js").__get__("ParseIdentifier")
+describe("ParseIdentifierToken", () => {
+    const ParseIdentifierToken = require("rewire")("../dist/index.js").__get__("ParseIdentifierToken")
 
     function Accepts(input, endIndex) {
         it("accepts \"" + input + "\"", () => {
-            expect(ParseIdentifier({
+            expect(ParseIdentifierToken({
                 StartIndex: 32,
                 Text: input
             })).toEqual({
@@ -17,7 +17,7 @@ describe("ParseIdentifier", () => {
 
     function Rejects(input) {
         it("rejects \"" + input + "\"", () => {
-            expect(ParseIdentifier({
+            expect(ParseIdentifierToken({
                 StartIndex: 32,
                 Text: input
             })).toBeUndefined()

@@ -1,6 +1,6 @@
 /// <reference path="Token.ts" />
 
-function ParseBoolean(token: UntypedToken): BooleanToken | undefined {
+function ParseBooleanToken(token: UntypedToken): BooleanToken | undefined {
     switch (token.Text) {
         case "false": return {
             Type: "Boolean",

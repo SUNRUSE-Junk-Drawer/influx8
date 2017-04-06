@@ -1,6 +1,6 @@
-describe("ParseKeyword", () => {
+describe("ParseKeywordToken", () => {
     const Namespace = require("rewire")("../dist/index.js")
-    const ParseKeyword = Namespace.__get__("ParseKeyword")
+    const ParseKeywordToken = Namespace.__get__("ParseKeywordToken")
 
     Namespace.__set__("Keywords", {
         "Valid Keyword": "Valid Keyword Type"
@@ -8,7 +8,7 @@ describe("ParseKeyword", () => {
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(ParseKeyword({
+            expect(ParseKeywordToken({
                 StartIndex: 32,
                 Text: input
             })).toEqual(output)

@@ -6,7 +6,7 @@ for (const keyword in UntypedUnaryKeywords) Keywords[keyword] = "Operator"
 for (const keyword in UntypedBinaryKeywords) Keywords[keyword] = "Operator"
 for (const keyword in StatementParsers) Keywords[keyword] = "Statement"
 
-function ParseKeyword(token: UntypedToken): SymbolToken | undefined {
+function ParseKeywordToken(token: UntypedToken): SymbolToken | undefined {
     if (Object.prototype.hasOwnProperty.call(Keywords, token.Text)) return {
         Type: Keywords[token.Text],
         StartIndex: token.StartIndex,

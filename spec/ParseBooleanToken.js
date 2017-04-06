@@ -1,9 +1,9 @@
-describe("ParseBoolean", () => {
-    const ParseBoolean = require("rewire")("../dist/index.js").__get__("ParseBoolean")
+describe("ParseBooleanToken", () => {
+    const ParseBooleanToken = require("rewire")("../dist/index.js").__get__("ParseBooleanToken")
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(ParseBoolean({
+            expect(ParseBooleanToken({
                 StartIndex: 32,
                 Text: input
             })).toEqual(output)
