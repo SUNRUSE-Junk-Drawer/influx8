@@ -7,40 +7,6 @@ function ParseStatementExpression(tokens: ParenthesizedToken[]): RawExpression |
     return StatementParsers[firstToken.Symbol](tokens)
 }
 
-type LetStatementWithoutIdentifierExpression = {
-    Type: "LetWithoutIdentifier"
-    StartIndex: number
-    EndIndex: number
-    Then: RawExpression
-}
-
-type LetStatementIncorrectIdentifierTypeExpression = {
-    Type: "LetIncorrectIdentifierType"
-    StartIndex: number
-    EndIndex: number
-    ActualType: string
-    Value: RawExpression
-    Then: RawExpression
-}
-
-type LetStatementExpression = {
-    Type: "Let"
-    StartIndex: number
-    EndIndex: number
-    Name: string
-    NameStartIndex: number
-    NameEndIndex: number
-    Value: RawExpression
-    Then: RawExpression
-}
-
-type ReturnStatementExpression = {
-    Type: "Return"
-    StartIndex: number
-    EndIndex: number
-    Value: RawExpression
-}
-
 const StatementParsers: { [keyword: string]: (tokens: ParenthesizedToken[]) => RawExpression } = {
     "let": tokens => {
         const nextStatement = FindNextStatement(tokens)
@@ -87,10 +53,6 @@ type NextStatementFound = {
     NextStatement: RawExpression
 }
 
-type NextStatementNotFound = {
-    Type: "NextStatementNotFound"
-    Tokens: ParenthesizedToken[]
-}
 
 function FindNextStatement(tokens: ParenthesizedToken[]): NextStatementFound | NextStatementNotFound {
     for (let i = 1; i < tokens.length; i++) {

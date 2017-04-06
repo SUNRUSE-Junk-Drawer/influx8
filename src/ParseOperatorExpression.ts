@@ -1,19 +1,6 @@
 /// <reference path="Precedence.ts" />
 /// <reference path="TryParseExpression.ts" />
 
-type UnaryExpression = {
-    Type: "Unary",
-    Operator: UntypedUnary,
-    Operand: RawExpression
-}
-
-type BinaryExpression = {
-    Type: "Binary",
-    Operator: UntypedBinary,
-    Left: RawExpression
-    Right: RawExpression
-}
-
 function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: PrecedenceLevel): UnaryExpression | BinaryExpression | undefined {
     if (level.Type == "Unary") {
         if (tokens.length < 2) return undefined
