@@ -1,22 +1,6 @@
-/// <reference path="ParseToken.ts" />
+/// <reference path="Token.ts" />
 /// <reference path="UntypedUnary.ts" />
 /// <reference path="UntypedBinary.ts" />
-
-type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator" | "Statement"
-
-type SymbolToken = {
-    Type: SymbolTokenType
-    StartIndex: number
-    EndIndex: number
-    Symbol: string
-}
-
-type UnknownToken = {
-    Type: "Unknown"
-    StartIndex: number
-    EndIndex: number
-    Text: string
-}
 
 const Symbols: { [symbol: string]: SymbolTokenType } = {
     "(": "OpeningParenthesis",

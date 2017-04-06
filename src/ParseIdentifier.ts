@@ -1,11 +1,4 @@
-/// <reference path="SplitByWhiteSpace.ts" />
-
-type IdentifierToken = {
-    Type: "Identifier"
-    StartIndex: number
-    EndIndex: number
-    Value: string
-}
+/// <reference path="Token.ts" />
 
 function ParseIdentifier(token: UntypedToken): IdentifierToken | undefined {
     if (!/^[a-z_][a-z_0-9]*$/.test(token.Text)) return undefined

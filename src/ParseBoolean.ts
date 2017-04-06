@@ -1,11 +1,4 @@
-/// <reference path="SplitByWhiteSpace.ts" />
-
-type BooleanToken = {
-    Type: "Boolean"
-    StartIndex: number
-    EndIndex: number
-    Value: boolean
-}
+/// <reference path="Token.ts" />
 
 function ParseBoolean(token: UntypedToken): BooleanToken | undefined {
     switch (token.Text) {

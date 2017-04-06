@@ -1,7 +1,4 @@
-/// <reference path="SplitByWhiteSpace.ts" />
-/// <reference path="ParseSymbol.ts" />
-/// <reference path="UntypedBinary.ts" />
-/// <reference path="UntypedUnary.ts" />
+/// <reference path="Token.ts" />
 /// <reference path="ParseStatementExpression.ts" />
 
 const Keywords: { [token: string]: SymbolTokenType } = {}
