@@ -1,6 +1,6 @@
 /// <reference path="Token.ts" />
 
-function SplitByWhiteSpace(source: string): UntypedToken[] {
+function ParseUntypedTokens(source: string): UntypedToken[] {
     let token: UntypedToken | undefined = undefined
     const tokens: UntypedToken[] = []
 
