@@ -1,9 +1,9 @@
-describe("Parenthesize", () => {
-    const Parenthesize = require("rewire")("../dist/index.js").__get__("Parenthesize")
+describe("ParenthesizeTokens", () => {
+    const ParenthesizeTokens = require("rewire")("../dist/index.js").__get__("ParenthesizeTokens")
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(Parenthesize(input)).toEqual(output)
+            expect(ParenthesizeTokens(input)).toEqual(output)
         })
     }
 

@@ -1,6 +1,6 @@
 /// <reference path="Token.ts" />
 
-function ParseIdentifier(token: UntypedToken): IdentifierToken | undefined {
+function ParseIdentifierToken(token: UntypedToken): IdentifierToken | undefined {
     if (!/^[a-z_][a-z_0-9]*$/.test(token.Text)) return undefined
     return {
         Type: "Identifier",

@@ -1,14 +1,14 @@
 /// <reference path="Token.ts" />
-/// <reference path="ParseBoolean.ts" />
-/// <reference path="ParseInteger.ts" />
-/// <reference path="ParseSymbol.ts" />
-/// <reference path="ParseIdentifier.ts" />
-/// <reference path="ParseKeyword.ts" />
+/// <reference path="ParseBooleanToken.ts" />
+/// <reference path="ParseIntegerToken.ts" />
+/// <reference path="ParseSymbolTokens.ts" />
+/// <reference path="ParseIdentifierToken.ts" />
+/// <reference path="ParseKeywordToken.ts" />
 
-function ParseToken(token: UntypedToken): UnparenthesizedToken[] {
-    const primitive = ParseBoolean(token) || ParseInteger(token) || ParseKeyword(token) || ParseIdentifier(token)
+function ParseTokens(token: UntypedToken): UnparenthesizedToken[] {
+    const primitive = ParseBooleanToken(token) || ParseIntegerToken(token) || ParseKeywordToken(token) || ParseIdentifierToken(token)
     if (primitive) return [primitive]
-    return ParseSymbol(token) || [{
+    return ParseSymbolTokens(token) || [{
         Type: "Unknown",
         StartIndex: token.StartIndex,
         EndIndex: token.StartIndex + token.Text.length - 1,

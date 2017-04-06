@@ -1,6 +1,6 @@
-describe("ParseSymbol", () => {
+describe("ParseSymbolTokens", () => {
     const Namespace = require("rewire")("../dist/index.js")
-    const ParseSymbol = Namespace.__get__("ParseSymbol")
+    const ParseSymbolTokens = Namespace.__get__("ParseSymbolTokens")
     Namespace.__set__("Symbols", {
         ">$%": "Short Symbol",
         ">$%!?": "Long Symbol",
@@ -9,13 +9,13 @@ describe("ParseSymbol", () => {
 
     function Test(description, input, output, tokensToParse) {
         it(description, () => {
-            Namespace.__set__("ParseToken", (token) => {
+            Namespace.__set__("ParseTokens", (token) => {
                 const parsed = tokensToParse[token.Text]
                 if (!parsed) fail("Unexpected token \"" + token.Text + "\"")
                 expect(token.StartIndex).toEqual(parsed.StartIndex)
                 return parsed.Result
             })
-            expect(ParseSymbol({
+            expect(ParseSymbolTokens({
                 StartIndex: 32,
                 Text: input
             })).toEqual(output)

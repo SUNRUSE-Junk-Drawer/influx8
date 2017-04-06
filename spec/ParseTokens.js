@@ -1,8 +1,8 @@
-describe("ParseToken", () => {
+describe("ParseTokens", () => {
     const Namespace = require("rewire")("../dist/index.js")
-    const ParseToken = Namespace.__get__("ParseToken")
+    const ParseTokens = Namespace.__get__("ParseTokens")
 
-    Namespace.__set__("ParseInteger", (token) => {
+    Namespace.__set__("ParseIntegerToken", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
             case "Matches Integer": return "Matched Integer"
@@ -10,7 +10,7 @@ describe("ParseToken", () => {
         }
     })
 
-    Namespace.__set__("ParseBoolean", (token) => {
+    Namespace.__set__("ParseBooleanToken", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
             case "Matches Boolean": return "Matched Boolean"
@@ -19,7 +19,7 @@ describe("ParseToken", () => {
         }
     })
 
-    Namespace.__set__("ParseIdentifier", (token) => {
+    Namespace.__set__("ParseIdentifierToken", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
             case "Matches Identifier": return "Matched Identifier"
@@ -29,7 +29,7 @@ describe("ParseToken", () => {
         }
     })
 
-    Namespace.__set__("ParseKeyword", (token) => {
+    Namespace.__set__("ParseKeywordToken", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
             case "Matches Keyword": return "Matched Keyword"
@@ -38,7 +38,7 @@ describe("ParseToken", () => {
         }
     })
 
-    Namespace.__set__("ParseSymbol", (token) => {
+    Namespace.__set__("ParseSymbolTokens", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
             case "Matches Boolean And Symbol": return "Matched Boolean Under Identifier"
@@ -50,7 +50,7 @@ describe("ParseToken", () => {
 
     function Test(description, input, output) {
         it(description, () => {
-            expect(ParseToken({
+            expect(ParseTokens({
                 StartIndex: 32,
                 Text: input
             })).toEqual(output)

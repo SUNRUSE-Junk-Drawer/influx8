@@ -1,6 +1,6 @@
 /// <reference path="Token.ts" />
 
-function ParseInteger(token: UntypedToken): IntegerToken | undefined {
+function ParseIntegerToken(token: UntypedToken): IntegerToken | undefined {
     if (!/^\d+$/.test(token.Text)) return
     return {
         Type: "Integer",
