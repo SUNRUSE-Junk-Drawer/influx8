@@ -20,4 +20,6 @@ describe("Keywords", () => {
     DoesNotMap("!")
     Maps("and", "Operator")
     Maps("not", "Operator")
+    Maps("let", "Statement")
+    Maps("return", "Statement")
 })

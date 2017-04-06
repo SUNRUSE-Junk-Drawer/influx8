@@ -2,20 +2,35 @@ describe("ParseExpression", () => {
     const Namespace = require("rewire")("../dist/index.js")
     const ParseExpression = Namespace.__get__("ParseExpression")
 
-    function Test(description, parseTo, returns) {
+    Namespace.__set__("TryParseExpression", (tokens) => {
+        switch (tokens) {
+            case "Valid Expression": return "Test Expression"
+            case "Invalid Expression": return undefined
+            case "Valid Statement": return undefined
+            default: fail()
+        }
+    })
+
+    Namespace.__set__("ParseStatementExpression", (tokens) => {
+        switch (tokens) {
+            case "Valid Expression": return undefined
+            case "Invalid Expression": return undefined
+            case "Valid Statement": return "Test Statement"
+            default: fail()
+        }
+    })
+
+    function Test(description, input, output) {
         it(description, () => {
-            Namespace.__set__("TryParseExpression", (tokens) => {
-                expect(tokens).toEqual("Test Input")
-                return parseTo
-            })
-            expect(ParseExpression("Test Input", 4234, 4992)).toEqual(returns)
+            expect(ParseExpression(input, 4234, 4992)).toEqual(output)
         })
     }
 
-    Test("successful", "Test Result", "Test Result")
-    Test("unsuccessful", undefined, {
+    Test("valid expression", "Valid Expression", "Test Expression")
+    Test("statement", "Valid Statement", "Test Statement")
+    Test("invalid expression", "Invalid Expression", {
         Type: "Unknown",
-        Tokens: "Test Input",
+        Tokens: "Invalid Expression",
         StartIndex: 4234,
         EndIndex: 4992
     })

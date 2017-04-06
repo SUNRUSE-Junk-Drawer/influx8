@@ -20,4 +20,6 @@ describe("Symbols", () => {
     Maps("!", "Operator")
     DoesNotMap("and")
     DoesNotMap("not")
+    DoesNotMap("let", "Statement")
+    DoesNotMap("return", "Statement")
 })

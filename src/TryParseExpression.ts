@@ -10,7 +10,7 @@ type UnknownExpression = {
     Tokens: ParenthesizedToken[]
 }
 
-type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | UntypedBinaryExpression | UntypedUnaryExpression
+type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | UntypedBinaryExpression | UntypedUnaryExpression | LetStatementExpression | LetStatementWithoutIdentifierExpression | LetStatementIncorrectIdentifierTypeExpression | ReturnStatementExpression | NextStatementNotFound
 
 function TryParseExpression(tokens: ParenthesizedToken[]): RawExpression | undefined {
     return ParseConstantExpression(tokens) || ParseParenthesesExpression(tokens) || ParseOperatorExpression(tokens) || undefined

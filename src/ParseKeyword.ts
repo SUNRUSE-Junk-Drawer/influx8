@@ -2,10 +2,12 @@
 /// <reference path="ParseSymbol.ts" />
 /// <reference path="UntypedBinary.ts" />
 /// <reference path="UntypedUnary.ts" />
+/// <reference path="ParseStatementExpression.ts" />
 
 const Keywords: { [token: string]: SymbolTokenType } = {}
 for (const keyword in UntypedUnaryKeywords) Keywords[keyword] = "Operator"
 for (const keyword in UntypedBinaryKeywords) Keywords[keyword] = "Operator"
+for (const keyword in StatementParsers) Keywords[keyword] = "Statement"
 
 function ParseKeyword(token: UntypedToken): SymbolToken | undefined {
     if (Object.prototype.hasOwnProperty.call(Keywords, token.Text)) return {
