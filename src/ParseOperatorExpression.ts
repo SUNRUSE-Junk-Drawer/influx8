@@ -1,7 +1,7 @@
 /// <reference path="Precedence.ts" />
 /// <reference path="TryParseExpression.ts" />
 
-function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: PrecedenceLevel): UnaryExpression | BinaryExpression | undefined {
+function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: PrecedenceLevel): UnaryRawExpression | BinaryRawExpression | undefined {
     if (level.Type == "Unary") {
         if (tokens.length < 2) return undefined
         const firstToken = tokens[0]
@@ -36,7 +36,7 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
     return undefined
 }
 
-function ParseOperatorExpression(tokens: ParenthesizedToken[]): UnaryExpression | BinaryExpression | undefined {
+function ParseOperatorExpression(tokens: ParenthesizedToken[]): UnaryRawExpression | BinaryRawExpression | undefined {
     for (const level of Precedence) {
         const expression = ParseOperatorExpressionLevel(tokens, level)
         if (expression) return expression
