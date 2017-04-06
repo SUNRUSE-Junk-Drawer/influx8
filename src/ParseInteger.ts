@@ -1,11 +1,4 @@
-/// <reference path="SplitByWhiteSpace.ts" />
-
-type IntegerToken = {
-    Type: "Integer"
-    StartIndex: number
-    EndIndex: number
-    Value: number
-}
+/// <reference path="Token.ts" />
 
 function ParseInteger(token: UntypedToken): IntegerToken | undefined {
     if (!/^\d+$/.test(token.Text)) return

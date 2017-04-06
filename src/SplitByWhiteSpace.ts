@@ -1,7 +1,4 @@
-type UntypedToken = {
-    StartIndex: number
-    Text: string
-}
+/// <reference path="Token.ts" />
 
 function SplitByWhiteSpace(source: string): UntypedToken[] {
     let token: UntypedToken | undefined = undefined

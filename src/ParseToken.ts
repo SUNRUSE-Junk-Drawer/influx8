@@ -1,11 +1,9 @@
-/// <reference path="SplitByWhiteSpace.ts" />
+/// <reference path="Token.ts" />
 /// <reference path="ParseBoolean.ts" />
 /// <reference path="ParseInteger.ts" />
 /// <reference path="ParseSymbol.ts" />
 /// <reference path="ParseIdentifier.ts" />
 /// <reference path="ParseKeyword.ts" />
-
-type Token = BooleanToken | IntegerToken | IdentifierToken | SymbolToken | UnknownToken
 
 function ParseToken(token: UntypedToken): Token[] {
     const primitive = ParseBoolean(token) || ParseInteger(token) || ParseKeyword(token) || ParseIdentifier(token)

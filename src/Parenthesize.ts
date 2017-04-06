@@ -1,22 +1,4 @@
-/// <reference path="ParseToken.ts" />
-
-type ParenthesesToken = {
-    Type: "Parentheses"
-    StartIndex: number
-    EndIndex: number
-    Contents: ParenthesizedToken[]
-}
-
-type ParenthesizedToken =
-    IntegerToken | BooleanToken | SymbolToken | IdentifierToken | UnknownToken | ParenthesesToken | {
-        Type: "UnopenedParenthesis"
-        StartIndex: number
-        EndIndex: number
-    } | {
-        Type: "UnclosedParenthesis"
-        StartIndex: number
-        EndIndex: number
-    }
+/// <reference path="Token.ts" />
 
 function Parenthesize(tokens: Token[]): ParenthesizedToken[] {
     const output: ParenthesizedToken[] = []
