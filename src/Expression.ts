@@ -10,27 +10,39 @@ type IntegerExpression = {
     Value: number
 }
 
-type UnaryExpression = {
+type UnknownExpression = {
+    Type: "Unknown"
+    StartIndex: number
+    EndIndex: number
+    Tokens: ParenthesizedToken[]
+}
+
+type NextStatementNotFoundExpression = {
+    Type: "NextStatementNotFound"
+    Tokens: ParenthesizedToken[]
+}
+
+type UnaryRawExpression = {
     Type: "Unary",
     Operator: UntypedUnary,
     Operand: RawExpression
 }
 
-type BinaryExpression = {
+type BinaryRawExpression = {
     Type: "Binary",
     Operator: UntypedBinary,
     Left: RawExpression
     Right: RawExpression
 }
 
-type LetStatementWithoutIdentifierExpression = {
+type LetStatementWithoutIdentifierRawExpression = {
     Type: "LetWithoutIdentifier"
     StartIndex: number
     EndIndex: number
     Then: RawExpression
 }
 
-type LetStatementIncorrectIdentifierTypeExpression = {
+type LetStatementIncorrectIdentifierTypeRawExpression = {
     Type: "LetIncorrectIdentifierType"
     StartIndex: number
     EndIndex: number
@@ -39,7 +51,7 @@ type LetStatementIncorrectIdentifierTypeExpression = {
     Then: RawExpression
 }
 
-type LetStatementExpression = {
+type LetStatementRawExpression = {
     Type: "Let"
     StartIndex: number
     EndIndex: number
@@ -50,23 +62,11 @@ type LetStatementExpression = {
     Then: RawExpression
 }
 
-type ReturnStatementExpression = {
+type ReturnStatementRawExpression = {
     Type: "Return"
     StartIndex: number
     EndIndex: number
     Value: RawExpression
 }
 
-type UnknownExpression = {
-    Type: "Unknown"
-    StartIndex: number
-    EndIndex: number
-    Tokens: ParenthesizedToken[]
-}
-
-type NextStatementNotFound = {
-    Type: "NextStatementNotFound"
-    Tokens: ParenthesizedToken[]
-}
-
-type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryExpression | UnaryExpression | LetStatementExpression | LetStatementWithoutIdentifierExpression | LetStatementIncorrectIdentifierTypeExpression | ReturnStatementExpression | NextStatementNotFound
+type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression

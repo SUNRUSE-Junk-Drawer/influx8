@@ -54,7 +54,7 @@ type NextStatementFound = {
 }
 
 
-function FindNextStatement(tokens: ParenthesizedToken[]): NextStatementFound | NextStatementNotFound {
+function FindNextStatement(tokens: ParenthesizedToken[]): NextStatementFound | NextStatementNotFoundExpression {
     for (let i = 1; i < tokens.length; i++) {
         const token = tokens[i]
         if (token.Type != "Statement") continue
