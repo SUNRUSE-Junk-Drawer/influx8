@@ -1,20 +1,20 @@
 /// <reference path="Precedence.ts" />
 /// <reference path="TryParseExpression.ts" />
 
-type UntypedUnaryExpression = {
-    Type: "UntypedUnary",
+type UnaryExpression = {
+    Type: "Unary",
     Operator: UntypedUnary,
     Operand: RawExpression
 }
 
-type UntypedBinaryExpression = {
-    Type: "UntypedBinary",
+type BinaryExpression = {
+    Type: "Binary",
     Operator: UntypedBinary,
     Left: RawExpression
     Right: RawExpression
 }
 
-function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: PrecedenceLevel): UntypedUnaryExpression | UntypedBinaryExpression | undefined {
+function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: PrecedenceLevel): UnaryExpression | BinaryExpression | undefined {
     if (level.Type == "Unary") {
         if (tokens.length < 2) return undefined
         const firstToken = tokens[0]
@@ -25,7 +25,7 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
         const operand = TryParseExpression(tokens.slice(1))
         if (!operand) return undefined
         return {
-            Type: "UntypedUnary",
+            Type: "Unary",
             Operator: operator,
             Operand: operand
         }
@@ -40,7 +40,7 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
         const right = TryParseExpression(tokens.slice(i + 1))
         if (!right) continue
         return {
-            Type: "UntypedBinary",
+            Type: "Binary",
             Operator: operator,
             Left: left,
             Right: right
@@ -49,7 +49,7 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
     return undefined
 }
 
-function ParseOperatorExpression(tokens: ParenthesizedToken[]): UntypedUnaryExpression | UntypedBinaryExpression | undefined {
+function ParseOperatorExpression(tokens: ParenthesizedToken[]): UnaryExpression | BinaryExpression | undefined {
     for (const level of Precedence) {
         const expression = ParseOperatorExpressionLevel(tokens, level)
         if (expression) return expression

@@ -87,7 +87,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3643,
             Symbol: "Anything B"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -172,7 +172,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Anything D"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -388,7 +388,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Anything D"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -425,7 +425,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Anything D"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -462,7 +462,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Symbol From The Correct Precedence Level"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -500,7 +500,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Anything D"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -537,7 +537,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Anything D"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -574,7 +574,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3784,
             Symbol: "Another Symbol From The Correct Precedence Level"
         }], {
-                Type: "UntypedUnary",
+                Type: "Unary",
                 Operator: "Matched Operator",
                 Operand: "Test Operand"
             }, (tokens) => {
@@ -838,7 +838,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3214,
             Symbol: "Value C"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -963,7 +963,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3214,
             Symbol: "Value C"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -998,7 +998,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3214,
             Symbol: "Another Symbol From The Correct Precedence Level"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1045,7 +1045,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3684,
             Symbol: "Value F"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1112,7 +1112,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1187,7 +1187,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1262,7 +1262,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1337,7 +1337,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
@@ -1412,7 +1412,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
                 Right: "Parsed Right B"
@@ -1523,7 +1523,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
                 Right: "Parsed Right B"
@@ -1634,7 +1634,7 @@ describe("ParseOperatorExpressionLevel", () => {
             StartIndex: 3699,
             Symbol: "Value H"
         }], {
-                Type: "UntypedBinary",
+                Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
                 Right: "Parsed Right"
