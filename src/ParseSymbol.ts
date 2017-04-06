@@ -2,7 +2,7 @@
 /// <reference path="UntypedUnary.ts" />
 /// <reference path="UntypedBinary.ts" />
 
-type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator"
+type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator" | "Statement"
 
 type SymbolToken = {
     Type: SymbolTokenType
