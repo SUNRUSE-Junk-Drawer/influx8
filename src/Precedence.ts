@@ -6,36 +6,39 @@ type PrecedenceLevel =
         Type: "Unary"
         Operators: UntypedUnary[]
     } | {
-        Type: "Binary"
+        Type: "BinaryLeftToRight"
+        Operators: UntypedBinary[]
+    } | {
+        Type: "BinaryRightToLeft"
         Operators: UntypedBinary[]
     }
 
 const Precedence: PrecedenceLevel[] = [{
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["And"]
 }, {
     Type: "Unary",
     Operators: ["Not"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Or"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Equal", "NotEqual", "GreaterThan", "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo"]
 }, {
-    Type: "Binary",
+    Type: "BinaryRightToLeft",
     Operators: ["Call"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Subtract"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Add"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Multiply"]
 }, {
-    Type: "Binary",
+    Type: "BinaryLeftToRight",
     Operators: ["Divide"]
 }, {
     Type: "Unary",

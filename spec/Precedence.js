@@ -3,14 +3,14 @@ describe("Precedence", () => {
     const Precedence = Namespace.__get__("Precedence")
 
     describe("includes", () => {
-        function Run(type, source) {
+        function Run(type, source, allowedTypes) {
             describe(type.toLowerCase(), () => {
                 const symbols = Namespace.__get__("Untyped" + type + source)
                 for (const key in symbols) {
                     it("\"" + symbols[key] + "\" once", () => {
                         let count = 0
                         Precedence.forEach(level => {
-                            if (level.Type == type && level.Operators.indexOf(symbols[key]) != -1) count++
+                            if (allowedTypes.indexOf(level.Type) != -1 && level.Operators.indexOf(symbols[key]) != -1) count++
                         })
                         expect(count).toEqual(1)
                     })
@@ -18,10 +18,10 @@ describe("Precedence", () => {
             })
         }
 
-        Run("Unary", "Symbols")
-        Run("Unary", "Keywords")
-        Run("Binary", "Symbols")
-        Run("Binary", "Keywords")
+        Run("Unary", "Symbols", ["Unary"])
+        Run("Unary", "Keywords", ["Unary"])
+        Run("Binary", "Symbols", ["BinaryLeftToRight", "BinaryRightToLeft"])
+        Run("Binary", "Keywords", ["BinaryLeftToRight", "BinaryRightToLeft"])
     })
 
     function LevelOf(operator) {
@@ -49,4 +49,26 @@ describe("Precedence", () => {
     Order("Add", "Multiply")
     Order("Multiply", "Divide")
     Order("Divide", "Negate")
+
+    function Type(operator, type) {
+        it("defines \"" + operator + "\" as \"" + type + "\"", () => {
+            expect(Precedence[LevelOf(operator)].Type).toEqual(type)
+        })
+    }
+
+    Type("And", "BinaryLeftToRight")
+    Type("Not", "Unary")
+    Type("Or", "BinaryLeftToRight")
+    Type("Equal", "BinaryLeftToRight")
+    Type("NotEqual", "BinaryLeftToRight")
+    Type("GreaterThan", "BinaryLeftToRight")
+    Type("GreaterThanOrEqualTo", "BinaryLeftToRight")
+    Type("LessThan", "BinaryLeftToRight")
+    Type("LessThanOrEqualTo", "BinaryLeftToRight")
+    Type("Call", "BinaryRightToLeft")
+    Type("Subtract", "BinaryLeftToRight")
+    Type("Add", "BinaryLeftToRight")
+    Type("Multiply", "BinaryLeftToRight")
+    Type("Divide", "BinaryLeftToRight")
+    Type("Negate", "Unary")
 })

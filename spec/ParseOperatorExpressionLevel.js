@@ -709,7 +709,7 @@ describe("ParseOperatorExpressionLevel", () => {
             })
     })
 
-    describe("binary", () => {
+    describe("binary left to right", () => {
         beforeAll(() => {
             Namespace.__set__("UntypedUnaryKeywordsAndSymbols", {
                 "Unary Symbol From Another Precedence Level": "Binary Operator"
@@ -726,7 +726,7 @@ describe("ParseOperatorExpressionLevel", () => {
             it(description, () => {
                 Namespace.__set__("TryParseExpression", tryParseExpression || fail)
                 expect(ParseOperatorExpressionLevel(input, {
-                    Type: "Binary",
+                    Type: "BinaryLeftToRight",
                     Operators: ["Unused First Operator", "Matched Operator", "Another Matched Operator", "Unused Last Operator"]
                 })).toEqual(output)
             })
@@ -1439,6 +1439,1292 @@ describe("ParseOperatorExpressionLevel", () => {
                         EndIndex: 3244,
                         Symbol: "Another Symbol From The Correct Precedence Level"
                     }, {
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("two operators where the first parses and the second is from another precedence level", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3233,
+                        EndIndex: 3244,
+                        Symbol: "Binary Symbol From Another Precedence Level"
+                    }, {
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("two operators where the first parses and the second is from another precedence level", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3233,
+                        EndIndex: 3244,
+                        Symbol: "Unary Symbol From Another Precedence Level"
+                    }, {
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("the same operator twice where only the second parses due to the left side", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left B",
+                Right: "Parsed Right B"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    if (tokens.length == 2) {
+                        expect(tokens).toEqual([{
+                            Type: "Misc A",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value A"
+                        }, {
+                            Type: "Misc B",
+                            StartIndex: 3256,
+                            EndIndex: 3259,
+                            Symbol: "Value B"
+                        }])
+                        return undefined
+                    } else {
+                        expect(tokens).toEqual([{
+                            Type: "Misc A",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value A"
+                        }, {
+                            Type: "Misc B",
+                            StartIndex: 3256,
+                            EndIndex: 3259,
+                            Symbol: "Value B"
+                        }, {
+                            Type: "Operator",
+                            StartIndex: 3487,
+                            EndIndex: 3520,
+                            Symbol: "Symbol From The Correct Precedence Level"
+                        }, {
+                            Type: "Misc D",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value D"
+                        }])
+                        return "Parsed Left B"
+                    }
+                } else if (tokens[0].Symbol == "Value D") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3233,
+                        EndIndex: 3244,
+                        Symbol: "Symbol From The Correct Precedence Level"
+                    }, {
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right A"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right B"
+                }
+            })
+
+        Test("the same operator twice where only the second parses due to the right side", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left B",
+                Right: "Parsed Right B"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    if (tokens.length == 2) {
+                        expect(tokens).toEqual([{
+                            Type: "Misc A",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value A"
+                        }, {
+                            Type: "Misc B",
+                            StartIndex: 3256,
+                            EndIndex: 3259,
+                            Symbol: "Value B"
+                        }])
+                        return "Parsed Left A"
+                    } else {
+                        expect(tokens).toEqual([{
+                            Type: "Misc A",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value A"
+                        }, {
+                            Type: "Misc B",
+                            StartIndex: 3256,
+                            EndIndex: 3259,
+                            Symbol: "Value B"
+                        }, {
+                            Type: "Operator",
+                            StartIndex: 3487,
+                            EndIndex: 3520,
+                            Symbol: "Symbol From The Correct Precedence Level"
+                        }, {
+                            Type: "Misc D",
+                            StartIndex: 3214,
+                            EndIndex: 3219,
+                            Symbol: "Value D"
+                        }])
+                        return "Parsed Left B"
+                    }
+                } else if (tokens[0].Symbol == "Value D") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3233,
+                        EndIndex: 3244,
+                        Symbol: "Symbol From The Correct Precedence Level"
+                    }, {
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return undefined
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right B"
+                }
+            })
+
+        Test("two operators where the first is from the wrong precedence layer", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3487,
+                        EndIndex: 3520,
+                        Symbol: "Binary Symbol From Another Precedence Level"
+                    }, {
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+    })
+
+    describe("binary right to left", () => {
+        beforeAll(() => {
+            Namespace.__set__("UntypedUnaryKeywordsAndSymbols", {
+                "Unary Symbol From Another Precedence Level": "Binary Operator"
+            })
+
+            Namespace.__set__("UntypedBinaryKeywordsAndSymbols", {
+                "Symbol From The Correct Precedence Level": "Matched Operator",
+                "Another Symbol From The Correct Precedence Level": "Another Matched Operator",
+                "Binary Symbol From Another Precedence Level": "Operator From Wrong Precedence Level"
+            })
+        })
+
+        function Test(description, input, output, tryParseExpression) {
+            it(description, () => {
+                Namespace.__set__("TryParseExpression", tryParseExpression || fail)
+                expect(ParseOperatorExpressionLevel(input, {
+                    Type: "BinaryRightToLeft",
+                    Operators: ["Unused First Operator", "Matched Operator", "Another Matched Operator", "Unused Last Operator"]
+                })).toEqual(output)
+            })
+        }
+
+        Test("nothing", [], undefined)
+        Test("one token which is not an operator", [{
+            Type: "Misc A",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Anything A"
+        }], undefined)
+        Test("one token which is an operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is a unary operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from the correct precedence level", [{
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }], undefined)
+
+        Test("one token which is not an operator then one token which is not an operator", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Anything A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Anything B"
+        }], undefined)
+        Test("one token which is not an operator then one token which is an operator from another precedence level", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Anything A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is not an operator then one token which is a unary operator from another precedence level", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Anything A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is not an operator then one token which is an operator from the correct precedence level", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Anything A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }], undefined)
+
+        Test("one token which is an operator from another precedence level then one token which is not an operator", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Anything B"
+        }], undefined)
+        Test("one token which is an operator from another precedence level then one token which is an operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from another precedence level then one token which is a unary operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from another precedence level then one token which is an operator from the correct precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }], undefined)
+
+        Test("one token which is a unary operator from another precedence level then one token which is not an operator", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Anything B"
+        }], undefined)
+        Test("one token which is a unary operator from another precedence level then one token which is an operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is a unary operator from another precedence level then one token which is a unary operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is a unary operator from another precedence level then one token which is an operator from the correct precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }], undefined)
+
+        Test("one token which is an operator from the correct precedence level then one token which is not an operator", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Anything B"
+        }], undefined)
+        Test("one token which is an operator from the correct precedence level then one token which is an operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from the correct precedence level then one token which is a unary operator from another precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from the correct precedence level then one token which is the same operator from the correct precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }], undefined)
+        Test("one token which is an operator from the correct precedence level then one token which is a different operator from the correct precedence level", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Another Symbol From The Correct Precedence Level"
+        }], undefined)
+
+        Test("one token which is not an operator which parses then an operator from another precedence level then one token which is not an operator which parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Binary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], undefined)
+
+        Test("one token which is not an operator which parses then a unary operator from another precedence level then one token which is not an operator which parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Unary Symbol From Another Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], undefined)
+
+        Test("one token which is not an operator which parses then an operator from the correct precedence level then one token which is not an operator which parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc C",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value C"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("one token which is not an operator which does not parse then an operator from the correct precedence level then one token which is not an operator which parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], undefined, (tokens) => {
+            if (tokens[0].Symbol == "Value A") {
+                expect(tokens).toEqual([{
+                    Type: "Misc A",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value A"
+                }])
+                return undefined
+            } else {
+                expect(tokens).toEqual([{
+                    Type: "Misc C",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value C"
+                }])
+                return "Parsed Right"
+            }
+        })
+
+        Test("one token which is not an operator which parses then an operator from the correct precedence level then one token which is not an operator which does not parse", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], undefined, (tokens) => {
+            if (tokens[0].Symbol == "Value A") {
+                expect(tokens).toEqual([{
+                    Type: "Misc A",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value A"
+                }])
+                return "Parsed Left"
+            } else {
+                expect(tokens).toEqual([{
+                    Type: "Misc C",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value C"
+                }])
+                return undefined
+            }
+        })
+
+        Test("one token which is not an operator which does not parse then an operator from the correct precedence level then one token which is not an operator which does not parse", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], undefined, (tokens) => {
+            if (tokens[0].Symbol == "Value A") {
+                expect(tokens).toEqual([{
+                    Type: "Misc A",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value A"
+                }])
+                return undefined
+            } else {
+                expect(tokens).toEqual([{
+                    Type: "Misc C",
+                    StartIndex: 3214,
+                    EndIndex: 3219,
+                    Symbol: "Value C"
+                }])
+                return undefined
+            }
+        })
+
+        Test("one token which is an operator which parses then an operator from the correct precedence level then one token which is not an operator which parses", [{
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Another Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc C",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value C"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Another Symbol From The Correct Precedence Level") {
+                    expect(tokens).toEqual([{
+                        Type: "Operator",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Another Symbol From The Correct Precedence Level"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc C",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value C"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("one token which is not an operator which parses then an operator from the correct precedence level then one token which is an operator which parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Operator",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Another Symbol From The Correct Precedence Level"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Operator",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Another Symbol From The Correct Precedence Level"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("multiple tokens which are not operators which parse then an operator from the correct precedence level then multiple tokens which are not operators which parse", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Misc E",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value E"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value F"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }, {
+                        Type: "Misc E",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value E"
+                    }, {
+                        Type: "Misc F",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value F"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("the same operator twice where the first parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3487,
+                        EndIndex: 3520,
+                        Symbol: "Symbol From The Correct Precedence Level"
+                    }, {
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
+                        Type: "Misc F",
+                        StartIndex: 3464,
+                        EndIndex: 3471,
+                        Symbol: "Value F"
+                    }, {
+                        Type: "Misc G",
+                        StartIndex: 3684,
+                        EndIndex: 3689,
+                        Symbol: "Value G"
+                    }, {
+                        Type: "Misc H",
+                        StartIndex: 3699,
+                        EndIndex: 3704,
+                        Symbol: "Value H"
+                    }])
+                    return "Parsed Right"
+                }
+            })
+
+        Test("two different operators where the first parses", [{
+            Type: "Misc A",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value A"
+        }, {
+            Type: "Misc B",
+            StartIndex: 3256,
+            EndIndex: 3259,
+            Symbol: "Value B"
+        }, {
+            Type: "Operator",
+            StartIndex: 3487,
+            EndIndex: 3520,
+            Symbol: "Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc D",
+            StartIndex: 3214,
+            EndIndex: 3219,
+            Symbol: "Value D"
+        }, {
+            Type: "Operator",
+            StartIndex: 3233,
+            EndIndex: 3244,
+            Symbol: "Another Symbol From The Correct Precedence Level"
+        }, {
+            Type: "Misc F",
+            StartIndex: 3464,
+            EndIndex: 3471,
+            Symbol: "Value F"
+        }, {
+            Type: "Misc G",
+            StartIndex: 3684,
+            EndIndex: 3689,
+            Symbol: "Value G"
+        }, {
+            Type: "Misc H",
+            StartIndex: 3699,
+            EndIndex: 3704,
+            Symbol: "Value H"
+        }], {
+                Type: "Binary",
+                Operator: "Another Matched Operator",
+                Left: "Parsed Left",
+                Right: "Parsed Right"
+            }, (tokens) => {
+                if (tokens[0].Symbol == "Value A") {
+                    expect(tokens).toEqual([{
+                        Type: "Misc A",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value A"
+                    }, {
+                        Type: "Misc B",
+                        StartIndex: 3256,
+                        EndIndex: 3259,
+                        Symbol: "Value B"
+                    }, {
+                        Type: "Operator",
+                        StartIndex: 3487,
+                        EndIndex: 3520,
+                        Symbol: "Symbol From The Correct Precedence Level"
+                    }, {
+                        Type: "Misc D",
+                        StartIndex: 3214,
+                        EndIndex: 3219,
+                        Symbol: "Value D"
+                    }])
+                    return "Parsed Left"
+                } else {
+                    expect(tokens).toEqual([{
                         Type: "Misc F",
                         StartIndex: 3464,
                         EndIndex: 3471,
