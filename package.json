@@ -4,15 +4,15 @@
   "scripts": {
     "build": "tsc -p .",
     "build-watch": "tsc -w -p .",
-    "build-test-watch": "concurrently \"npm run-script test-watch\" \"npm run-script build-watch\" --raw",
+    "build-test-watch": "npm-run-all --parallel build-watch test-watch",
     "install-build-test-watch": "npm install && npm run-script build-test-watch",
-    "test-watch": "chokidar \"spec/**/*.js\" \"dist/index.js\" -c \"npm test\" --initial",
+    "test-watch": "nodemon -e js --watch spec --watch dist --exec \"npm test\"",
     "test": "jasmine JASMINE_CONFIG_PATH=spec/jasmine.json"
   },
   "devDependencies": {
-    "chokidar-cli": "^1.2.0",
-    "concurrently": "^3.4.0",
     "jasmine": "^2.5.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "rewire": "^2.5.2",
     "typescript": "^2.2.2"
   }
