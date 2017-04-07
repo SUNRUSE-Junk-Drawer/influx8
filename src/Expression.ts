@@ -96,4 +96,11 @@ type LambdaStatementIncorrectIdentifierTypeRawExpression = {
     Body: RawExpression
 }
 
-type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression
+type ReferenceExpression = {
+    Type: "Reference"
+    StartIndex: number
+    EndIndex: number
+    Name: string
+}
+
+type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression | ReferenceExpression
