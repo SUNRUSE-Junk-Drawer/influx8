@@ -1,12 +1,14 @@
 type BooleanExpression = {
     Type: "Boolean"
     StartIndex: number
+    EndIndex: number
     Value: boolean
 }
 
 type IntegerExpression = {
     Type: "Integer"
     StartIndex: number
+    EndIndex: number
     Value: number
 }
 

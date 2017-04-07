@@ -8,11 +8,13 @@ function ParseConstantExpression(tokens: ParenthesizedToken[]): BooleanExpressio
         case "Boolean": return {
             Type: "Boolean",
             StartIndex: onlyToken.StartIndex,
+            EndIndex: onlyToken.EndIndex,
             Value: onlyToken.Value
         }
         case "Integer": return {
             Type: "Integer",
             StartIndex: onlyToken.StartIndex,
+            EndIndex: onlyToken.EndIndex,
             Value: onlyToken.Value
         }
     }
