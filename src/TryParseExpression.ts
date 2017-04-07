@@ -1,4 +1,4 @@
-/// <reference path="Expression.ts" />
+/// <reference path="RawExpression.ts" />
 /// <reference path="ParenthesizeTokens.ts" />
 /// <reference path="ParseConstantExpression.ts" />
 /// <reference path="ParseOperatorExpression.ts" />

@@ -1,5 +1,5 @@
 /// <reference path="Token.ts" />
-/// <reference path="Expression.ts" />
+/// <reference path="RawExpression.ts" />
 
 function ParseReferenceExpression(tokens: ParenthesizedToken[]): ReferenceExpression | undefined {
     if (tokens.length != 1) return undefined
