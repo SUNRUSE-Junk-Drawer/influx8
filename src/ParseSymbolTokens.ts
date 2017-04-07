@@ -4,7 +4,8 @@
 
 const Symbols: { [symbol: string]: SymbolTokenType } = {
     "(": "OpeningParenthesis",
-    ")": "ClosingParenthesis"
+    ")": "ClosingParenthesis",
+    ":": "Lambda"
 }
 for (const symbol in UntypedUnarySymbols) Symbols[symbol] = "Operator"
 for (const symbol in UntypedBinarySymbols) Symbols[symbol] = "Operator"
