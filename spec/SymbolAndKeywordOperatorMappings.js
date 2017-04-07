@@ -25,9 +25,7 @@ describe("SymbolAndKeywordOperatorMappings", () => {
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "-", "Subtract")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "*", "Multiply")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "/", "Divide")
-    Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "&", "And")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "&&", "And")
-    Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "|", "Or")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "||", "Or")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "=", "Equal")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "==", "Equal")
@@ -39,6 +37,7 @@ describe("SymbolAndKeywordOperatorMappings", () => {
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "<=", "LessThanOrEqualTo")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, ">", "GreaterThan")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, ">=", "GreaterThanOrEqualTo")
+    Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "|", "Call")
 
     Maps(UntypedBinaryKeywords, UntypedBinaryKeywordsAndSymbols, "and", "And")
     Maps(UntypedBinaryKeywords, UntypedBinaryKeywordsAndSymbols, "or", "Or")

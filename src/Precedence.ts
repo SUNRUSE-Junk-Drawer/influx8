@@ -24,6 +24,9 @@ const Precedence: PrecedenceLevel[] = [{
     Operators: ["Equal", "NotEqual", "GreaterThan", "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo"]
 }, {
     Type: "Binary",
+    Operators: ["Call"]
+}, {
+    Type: "Binary",
     Operators: ["Subtract"]
 }, {
     Type: "Binary",

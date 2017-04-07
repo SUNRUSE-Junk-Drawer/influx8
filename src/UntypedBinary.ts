@@ -1,13 +1,11 @@
-type UntypedBinary = "Add" | "Subtract" | "Multiply" | "Divide" | "And" | "Or" | "Equal" | "NotEqual" | "GreaterThan" | "LessThan" | "GreaterThanOrEqualTo" | "LessThanOrEqualTo"
+type UntypedBinary = "Add" | "Subtract" | "Multiply" | "Divide" | "And" | "Or" | "Equal" | "NotEqual" | "GreaterThan" | "LessThan" | "GreaterThanOrEqualTo" | "LessThanOrEqualTo" | "Call"
 
 const UntypedBinarySymbols: { [symbol: string]: UntypedBinary } = {
     "+": "Add",
     "-": "Subtract",
     "*": "Multiply",
     "/": "Divide",
-    "&": "And",
     "&&": "And",
-    "|": "Or",
     "||": "Or",
     "=": "Equal",
     "==": "Equal",
@@ -18,7 +16,8 @@ const UntypedBinarySymbols: { [symbol: string]: UntypedBinary } = {
     ">": "GreaterThan",
     "<": "LessThan",
     ">=": "GreaterThanOrEqualTo",
-    "<=": "LessThanOrEqualTo"
+    "<=": "LessThanOrEqualTo",
+    "|": "Call"
 }
 
 const UntypedBinaryKeywords: { [keyword: string]: UntypedBinary } = {
