@@ -7,6 +7,7 @@ describe("ParseExpression", () => {
             case "Valid Expression": return "Test Expression"
             case "Invalid Expression": return undefined
             case "Valid Statement": return undefined
+            case "Valid Lambda Expression": return undefined
             default: fail()
         }
     })
@@ -16,6 +17,17 @@ describe("ParseExpression", () => {
             case "Valid Expression": return undefined
             case "Invalid Expression": return undefined
             case "Valid Statement": return "Test Statement"
+            case "Valid Lambda Expression": return undefined
+            default: fail()
+        }
+    })
+
+    Namespace.__set__("ParseLambdaExpression", (tokens) => {
+        switch (tokens) {
+            case "Valid Expression": return undefined
+            case "Invalid Expression": return undefined
+            case "Valid Statement": return undefined
+            case "Valid Lambda Expression": return "Test Parsed Lambda Expression"
             default: fail()
         }
     })
@@ -28,6 +40,7 @@ describe("ParseExpression", () => {
 
     Test("valid expression", "Valid Expression", "Test Expression")
     Test("statement", "Valid Statement", "Test Statement")
+    Test("lambda expression", "Valid Lambda Expression", "Test Parsed Lambda Expression")
     Test("invalid expression", "Invalid Expression", {
         Type: "Unknown",
         Tokens: "Invalid Expression",
