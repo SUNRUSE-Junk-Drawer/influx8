@@ -2,7 +2,7 @@ describe("InlineExpression", () => {
     const Namespace = require("rewire")("../dist/index.js")
     const InlineExpression = Namespace.__get__("InlineExpression")
 
-    function Test(description, input, output, inlineExpression, initialScope) {
+    function Test(description, input, output, inlineExpression, initialScope, inlineCallExpression) {
         describe(description, () => {
             let result, scope
             beforeEach(() => {
@@ -12,6 +12,7 @@ describe("InlineExpression", () => {
                     "test scope key c": "test scope value c"
                 }))
                 Namespace.__set__("InlineExpression", inlineExpression || fail)
+                Namespace.__set__("InlineCallExpression", inlineCallExpression || fail)
                 result = InlineExpression(input, scope)
             })
 
@@ -91,7 +92,7 @@ describe("InlineExpression", () => {
             return "Test Inlined Operand"
         })
 
-    Test("binary", {
+    Test("binary other than call", {
         Type: "Binary",
         Operator: "Anything",
         Left: "Test Uninlined Left",
@@ -112,6 +113,33 @@ describe("InlineExpression", () => {
                 case "Test Uninlined Right": return "Test Inlined Right"
                 default: fail("Unexpected expression")
             }
+        })
+
+    Test("binary call", {
+        Type: "Binary",
+        Operator: "Call",
+        Left: "Test Uninlined Left",
+        Right: "Test Uninlined Right"
+    }, {
+            Type: "Call",
+            Lambda: "Test Uninlined Left",
+            Argument: "Test Inlined Right",
+            Result: "Test Inlined Body"
+        }, (expression, scope) => {
+            expect(scope).toEqual({
+                "test scope key a": "test scope value a",
+                "test scope key b": "test scope value b",
+                "test scope key c": "test scope value c"
+            })
+            switch (expression) {
+                case "Test Uninlined Left": return "Test Inlined Left"
+                case "Test Uninlined Right": return "Test Inlined Right"
+                default: fail("Unexpected expression")
+            }
+        }, undefined, (expression, argument) => {
+            expect(expression).toEqual("Test Inlined Left")
+            expect(argument).toEqual("Test Inlined Right")
+            return "Test Inlined Body"
         })
 
     Test("let without identifier", {

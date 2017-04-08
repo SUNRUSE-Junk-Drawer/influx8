@@ -1,5 +1,6 @@
 /// <reference path="RawExpression.ts" />
 /// <reference path="InlinedExpression.ts" />
+/// <reference path="InlineCallExpression.ts" />
 
 function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpression {
     switch (expression.Type) {
@@ -15,11 +16,22 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
             Operand: InlineExpression(expression.Operand, scope)
         }
 
-        case "Binary": return {
-            Type: "Binary",
-            Operator: expression.Operator,
-            Left: InlineExpression(expression.Left, scope),
-            Right: InlineExpression(expression.Right, scope)
+        case "Binary": {
+            if (expression.Operator == "Call") {
+                const argument = InlineExpression(expression.Right, scope)
+                return {
+                    Type: "Call",
+                    Lambda: expression.Left,
+                    Argument: argument,
+                    Result: InlineCallExpression(InlineExpression(expression.Left, scope), argument)
+                }
+            }
+            return {
+                Type: "Binary",
+                Operator: expression.Operator,
+                Left: InlineExpression(expression.Left, scope),
+                Right: InlineExpression(expression.Right, scope)
+            }
         }
 
         case "LetWithoutIdentifier": return {

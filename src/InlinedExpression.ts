@@ -114,6 +114,18 @@ type ReferenceUndefinedInlinedExpression = {
     Name: string
 }
 
-type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression
+type CallExpression = {
+    Type: "Call"
+    Lambda: RawExpression
+    Argument: InlinedExpression
+    Result: InlinedExpression
+}
+
+type CallLambdaExpectedExpression = {
+    Type: "LambdaExpected"
+    Value: InlinedExpression
+}
+
+type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression
 
 type Scope = { [name: string]: InlinedExpression }
