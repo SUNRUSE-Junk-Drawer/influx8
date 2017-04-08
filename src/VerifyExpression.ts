@@ -52,7 +52,7 @@ function VerifyExpression(expression: InlinedExpression): VerifiedExpression | u
         case "Lambda":
         case "LambdaWithoutIdentifier":
         case "LambdaNameNotUnique":
-        case "LambdaExpected":
+        case "CallLambdaExpected":
         case "LambdaIncorrectIdentifierType":
         case "ReferenceUndefined":
         case "Unknown":

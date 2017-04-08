@@ -122,7 +122,7 @@ type CallExpression = {
 }
 
 type CallLambdaExpectedExpression = {
-    Type: "LambdaExpected"
+    Type: "CallLambdaExpected"
     Value: InlinedExpression
 }
 

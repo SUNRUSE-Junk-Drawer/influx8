@@ -33,7 +33,7 @@ describe("InlineCallExpression", () => {
         EndIndex: 48,
         Value: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "Boolean",
                 StartIndex: 32,
@@ -48,7 +48,7 @@ describe("InlineCallExpression", () => {
         EndIndex: 48,
         Value: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "Integer",
                 StartIndex: 32,
@@ -63,7 +63,7 @@ describe("InlineCallExpression", () => {
         EndIndex: 48,
         Tokens: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "Unknown",
                 StartIndex: 32,
@@ -76,7 +76,7 @@ describe("InlineCallExpression", () => {
         Type: "NextStatementNotFound",
         Tokens: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "NextStatementNotFound",
                 Tokens: "Irrelevant"
@@ -88,7 +88,7 @@ describe("InlineCallExpression", () => {
         Operator: "Any Operator",
         Operand: "Any Operand"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "Unary",
                 Operator: "Any Operator",
@@ -102,7 +102,7 @@ describe("InlineCallExpression", () => {
         Left: "Any Left Operand",
         Right: "Any Right Operand"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "Binary",
                 Operator: "Any Operator",
@@ -258,7 +258,7 @@ describe("InlineCallExpression", () => {
         EndIndex: 48,
         Name: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: {
                 Type: "ReferenceUndefined",
                 StartIndex: 32,
@@ -268,10 +268,10 @@ describe("InlineCallExpression", () => {
         })
 
     Test("lambda expected", {
-        Type: "LambdaExpected",
+        Type: "CallLambdaExpected",
         Value: "Irrelevant"
     }, {
-            Type: "LambdaExpected",
+            Type: "CallLambdaExpected",
             Value: "Irrelevant"
         })
 })

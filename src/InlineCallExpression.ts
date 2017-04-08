@@ -12,11 +12,11 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
         case "Binary":
         case "ReferenceUndefined":
             return {
-                Type: "LambdaExpected",
+                Type: "CallLambdaExpected",
                 Value: expression
             }
 
-        case "LambdaExpected": return expression
+        case "CallLambdaExpected": return expression
 
         case "Return":
         case "Reference":

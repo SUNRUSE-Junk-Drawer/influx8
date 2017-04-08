@@ -247,7 +247,7 @@ describe("VerifyExpression", () => {
     }, undefined)
 
     Test("lambda expected", {
-        Type: "LambdaExpected",
+        Type: "CallLambdaExpected",
         Value: "Irrelevant"
     }, undefined)
 
