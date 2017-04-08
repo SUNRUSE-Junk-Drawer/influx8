@@ -152,7 +152,7 @@ describe("InlineCallExpression", () => {
         return "Test Recursed Then"
     })
 
-    Test("let without identifier", {
+    Test("let incorrect identifier type", {
         Type: "LetIncorrectIdentifierType",
         StartIndex: 56,
         EndIndex: 63,

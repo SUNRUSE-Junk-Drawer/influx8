@@ -158,8 +158,7 @@ describe("VerifyExpression", () => {
         return "Test Recursed Then"
     })
 
-    // todo change this in other test
-    Test("let without identifier", {
+    Test("let incorrect identifier type", {
         Type: "LetIncorrectIdentifierType",
         StartIndex: 56,
         EndIndex: 63,
