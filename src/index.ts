@@ -3,3 +3,4 @@
 /// <reference path="ParenthesizeTokens.ts" />
 /// <reference path="ParseExpression.ts" />
 /// <reference path="InlineExpression.ts" />
+/// <reference path="VerifyExpression.ts" />
