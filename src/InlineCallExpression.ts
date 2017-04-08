@@ -22,7 +22,6 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
         case "Reference":
             return InlineCallExpression(expression.Value, argument)
 
-        // todo does letnamenotunique override scope?
         case "Let":
         case "LetNameNotUnique":
         case "LetWithoutIdentifier":
