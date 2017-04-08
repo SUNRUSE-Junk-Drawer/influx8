@@ -130,6 +130,30 @@ describe("InlineCallExpression", () => {
         return "Test Recursed Then"
     })
 
+    Test("let without identifier", {
+        Type: "LetWithoutIdentifier",
+        StartIndex: 56,
+        EndIndex: 63,
+        Then: "Test Then"
+    }, "Test Recursed Then", undefined, (expression, argument) => {
+        expect(expression).toEqual("Test Then")
+        expect(argument).toEqual("Test Argument")
+        return "Test Recursed Then"
+    })
+
+    Test("let without identifier", {
+        Type: "LetIncorrectIdentifierType",
+        StartIndex: 56,
+        EndIndex: 63,
+        ActualType: "Test Actual Type",
+        Value: "Test Value",
+        Then: "Test Then"
+    }, "Test Recursed Then", undefined, (expression, argument) => {
+        expect(expression).toEqual("Test Then")
+        expect(argument).toEqual("Test Argument")
+        return "Test Recursed Then"
+    })
+
     Test("return", {
         Type: "Return",
         StartIndex: 56,

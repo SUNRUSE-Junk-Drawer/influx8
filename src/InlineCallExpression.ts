@@ -25,10 +25,9 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
         // todo does letnamenotunique override scope?
         case "Let":
         case "LetNameNotUnique":
+        case "LetWithoutIdentifier":
+        case "LetIncorrectIdentifierType":
             return InlineCallExpression(expression.Then, argument)
-
-        case "LetWithoutIdentifier": throw "TODO: requires value inlined"
-        case "LetIncorrectIdentifierType": throw "TODO: requires value inlined"
 
         case "LambdaWithoutIdentifier":
         case "LambdaIncorrectIdentifierType":
