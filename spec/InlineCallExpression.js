@@ -16,6 +16,17 @@ describe("InlineCallExpression", () => {
         })
     }
 
+    Test("call", {
+        Type: "Call",
+        Lambda: "Test Lambda",
+        Argument: "Test Expression Argument",
+        Result: "Test Result"
+    }, "Test Recursed Result", undefined, (expression, argument) => {
+        expect(expression).toEqual("Test Result")
+        expect(argument).toEqual("Test Argument")
+        return "Test Recursed Result"
+    })
+
     Test("boolean", {
         Type: "Boolean",
         StartIndex: 32,
