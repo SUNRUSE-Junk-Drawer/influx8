@@ -1,0 +1,1 @@
+type Primitive = "Integer" | "Boolean"
