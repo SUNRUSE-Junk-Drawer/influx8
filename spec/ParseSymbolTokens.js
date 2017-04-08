@@ -501,8 +501,6 @@ describe("ParseSymbolTokens", () => {
             }
         })
 
-    // todo update following
-
     Test("short symbol at start and symbol similar to neither at middle", ">$%matches&&*nothing", [{
         Type: "Short Symbol",
         StartIndex: 32,
