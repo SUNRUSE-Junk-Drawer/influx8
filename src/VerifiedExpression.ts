@@ -1,5 +1,5 @@
-/// <reference path="UntypedUnary.ts" />
-/// <reference path="UntypedBinary.ts" />
+/// <reference path="TypedUnary.ts" />
+/// <reference path="TypedBinary.ts" />
 
 type BooleanVerifiedExpression = {
     Type: "Boolean"
@@ -13,13 +13,13 @@ type IntegerVerifiedExpression = {
 
 type UnaryVerifiedExpression = {
     Type: "Unary"
-    Operator: UntypedUnary
+    Operator: TypedUnary
     Operand: VerifiedExpression
 }
 
 type BinaryVerifiedExpression = {
     Type: "Binary"
-    Operator: UntypedBinary
+    Operator: TypedBinary
     Left: VerifiedExpression
     Right: VerifiedExpression
 }

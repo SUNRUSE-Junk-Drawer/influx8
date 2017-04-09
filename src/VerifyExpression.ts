@@ -1,7 +1,7 @@
-/// <reference path="InlinedExpression.ts" />
+/// <reference path="TypecheckedExpression.ts" />
 /// <reference path="VerifiedExpression.ts" />
 
-function VerifyExpression(expression: InlinedExpression): VerifiedExpression | undefined {
+function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression | undefined {
     switch (expression.Type) {
         case "Boolean": return {
             Type: "Boolean",
@@ -57,6 +57,8 @@ function VerifyExpression(expression: InlinedExpression): VerifiedExpression | u
         case "ReferenceUndefined":
         case "Unknown":
         case "NextStatementNotFound":
+        case "UnaryUnmatched":
+        case "BinaryUnmatched":
             return undefined
     }
 }

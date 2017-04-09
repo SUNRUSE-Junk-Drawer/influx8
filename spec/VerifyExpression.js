@@ -41,6 +41,12 @@ describe("VerifyExpression", () => {
         Tokens: "Irrelevant"
     }, undefined)
 
+    Test("unary unmatched", {
+        Type: "UnaryUnmatched",
+        Operator: "Any Operator",
+        Operand: "Any Operand"
+    }, undefined)
+
     Test("unary operand valid", {
         Type: "Unary",
         Operator: "Any Operator",
@@ -61,6 +67,13 @@ describe("VerifyExpression", () => {
     }, undefined, (expression) => {
         expect(expression).toEqual("Any Operand")
         return undefined
+    })
+
+    Test("binary unmatched", {
+        Type: "BinaryUnmatched",
+        Operator: "Any Operator",
+        Left: "Any Left Operand",
+        Right: "Any Right Operand"
     })
 
     Test("binary both operands valid", {
