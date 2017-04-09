@@ -9,7 +9,8 @@ describe("InlineCallExpression", () => {
                 Namespace.__set__("InlineExpression", inlineExpression || fail)
                 Namespace.__set__("InlineCallExpression", inlineCallExpression || fail)
                 expressionCopy = JSON.parse(JSON.stringify(expression))
-                result = InlineCallExpression(expression, "Test Argument")
+                // todo swap expression/expressionCopy
+                result = InlineCallExpression(expressionCopy, "Test Argument")
             })
             it("returns the expected value", () => expect(result).toEqual(output))
             it("does not modify the expression", () => expect(expressionCopy).toEqual(expression))
