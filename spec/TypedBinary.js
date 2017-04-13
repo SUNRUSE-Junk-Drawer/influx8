@@ -27,6 +27,7 @@ describe("TypedBinary", () => {
     DoesNotMapArgumentType("GreaterThanOrEqualTo", "Boolean")
     DoesNotMapArgumentType("LessThan", "Boolean")
     DoesNotMapArgumentType("LessThanOrEqualTo", "Boolean")
+    DoesNotMapArgumentType("Call", "Boolean")
 
     MapsArgumentType("Add", "Integer", "AddInteger")
     MapsArgumentType("Subtract", "Integer", "SubtractInteger")
@@ -40,6 +41,7 @@ describe("TypedBinary", () => {
     MapsArgumentType("GreaterThanOrEqualTo", "Integer", "GreaterThanOrEqualToInteger")
     MapsArgumentType("LessThan", "Integer", "LessThanInteger")
     MapsArgumentType("LessThanOrEqualTo", "Integer", "LessThanOrEqualToInteger")
+    DoesNotMapArgumentType("Call", "Integer")
 
     const BinaryReturnTypes = Namespace.__get__("BinaryReturnTypes")
 
