@@ -1,7 +1,17 @@
 /// <reference path="RawExpression.ts" />
-/// <reference path="InlinedExpression.ts" />
+/// <reference path="UnrolledExpression.ts" />
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
+
+type ConcatenateLeftTypecheckedExpression = {
+    Type: "ConcatenateLeft"
+    Value: TypecheckedExpression
+}
+
+type ConcatenateRightTypecheckedExpression = {
+    Type: "ConcatenateRight"
+    Value: TypecheckedExpression
+}
 
 type UnaryTypecheckedExpression = {
     Type: "Unary",
@@ -27,6 +37,13 @@ type BinaryUnmatchedTypecheckedExpression = {
     Operator: UntypedBinary,
     Left: TypecheckedExpression,
     Right: TypecheckedExpression
+}
+
+type BinaryInconsistentPluralityTypecheckedExpression = {
+    Type: "BinaryInconsistentPlurality"
+    Operator: UntypedBinary
+    Left: TypecheckedExpression[]
+    Right: TypecheckedExpression[]
 }
 
 type LetStatementWithoutIdentifierTypecheckedExpression = {
@@ -111,4 +128,4 @@ type CallLambdaExpectedTypecheckedExpression = {
     Value: TypecheckedExpression
 }
 
-type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceTypecheckedExpression | ReferenceUndefinedInlinedExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression
+type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression

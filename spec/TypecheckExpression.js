@@ -639,4 +639,49 @@ describe("TypecheckExpression", () => {
             expect(expression).toEqual("Test Value")
             return "Test Recursed Value"
         })
+
+    Test("concatenate left", {
+        Type: "ConcatenateLeft",
+        Value: "Test Value"
+    }, {
+            Type: "ConcatenateLeft",
+            Value: "Test Recursed Value"
+        }, (expression) => {
+            expect(expression).toEqual("Test Value")
+            return "Test Recursed Value"
+        })
+
+    Test("concatenate right", {
+        Type: "ConcatenateRight",
+        Value: "Test Value"
+    }, {
+            Type: "ConcatenateRight",
+            Value: "Test Recursed Value"
+        }, (expression) => {
+            expect(expression).toEqual("Test Value")
+            return "Test Recursed Value"
+        })
+
+    Test("binary inconsistent plurality", {
+        Type: "BinaryInconsistentPlurality",
+        Operator: "Any Operator",
+        Left: ["Test Left A", "Test Left B", "Test Left C"],
+        Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"]
+    }, {
+            Type: "BinaryInconsistentPlurality",
+            Operator: "Any Operator",
+            Left: ["Test Recursed Left A", "Test Recursed Left B", "Test Recursed Left C"],
+            Right: ["Test Recursed Right A", "Test Recursed Right B", "Test Recursed Right C", "Test Recursed Right D"]
+        }, (expression) => {
+            switch (expression) {
+                case "Test Left A": return "Test Recursed Left A"
+                case "Test Left B": return "Test Recursed Left B"
+                case "Test Left C": return "Test Recursed Left C"
+                case "Test Right A": return "Test Recursed Right A"
+                case "Test Right B": return "Test Recursed Right B"
+                case "Test Right C": return "Test Recursed Right C"
+                case "Test Right D": return "Test Recursed Right D"
+                default: fail("Unexpected expression")
+            }
+        })
 })

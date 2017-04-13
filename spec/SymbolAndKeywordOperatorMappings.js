@@ -38,6 +38,7 @@ describe("SymbolAndKeywordOperatorMappings", () => {
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, ">", "GreaterThan")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, ">=", "GreaterThanOrEqualTo")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "|", "Call")
+    Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, ",", "Concatenate")
 
     Maps(UntypedBinaryKeywords, UntypedBinaryKeywordsAndSymbols, "and", "And")
     Maps(UntypedBinaryKeywords, UntypedBinaryKeywordsAndSymbols, "or", "Or")

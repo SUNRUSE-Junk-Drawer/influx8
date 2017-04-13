@@ -3,6 +3,7 @@
 /// <reference path="ParenthesizeTokens.ts" />
 /// <reference path="ParseExpression.ts" />
 /// <reference path="InlineExpression.ts" />
+/// <reference path="UnrollExpression.ts" />
 /// <reference path="TypecheckExpression.ts" />
 /// <reference path="VerifyExpression.ts" />
 /// <reference path="CompileToJavaScript.ts" />

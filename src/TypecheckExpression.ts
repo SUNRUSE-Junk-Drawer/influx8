@@ -4,7 +4,7 @@
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
 
-function TypecheckExpression(expression: InlinedExpression): TypecheckedExpression {
+function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpression {
     switch (expression.Type) {
         case "Unknown":
         case "Boolean":
@@ -54,6 +54,20 @@ function TypecheckExpression(expression: InlinedExpression): TypecheckedExpressi
                 Left: leftOperand,
                 Right: rightOperand
             }
+        }
+
+        case "BinaryInconsistentPlurality": {
+            const output: BinaryInconsistentPluralityTypecheckedExpression = {
+                Type: "BinaryInconsistentPlurality",
+                Operator: expression.Operator,
+                Left: [],
+                Right: []
+            }
+
+            for (const operand of expression.Left) output.Left.push(TypecheckExpression(operand))
+            for (const operand of expression.Right) output.Right.push(TypecheckExpression(operand))
+
+            return output
         }
 
         case "Reference": return {
@@ -119,6 +133,16 @@ function TypecheckExpression(expression: InlinedExpression): TypecheckedExpressi
             ActualType: expression.ActualType,
             Value: TypecheckExpression(expression.Value),
             Then: TypecheckExpression(expression.Then)
+        }
+
+        case "ConcatenateLeft": return {
+            Type: "ConcatenateLeft",
+            Value: TypecheckExpression(expression.Value)
+        }
+
+        case "ConcatenateRight": return {
+            Type: "ConcatenateRight",
+            Value: TypecheckExpression(expression.Value)
         }
     }
 }

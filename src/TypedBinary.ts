@@ -61,6 +61,10 @@ const BinaryTypeMappings: {
         "Call": { // This should never be emitted, but is in the UntypedBinary type.
             Boolean: undefined,
             Integer: undefined
+        },
+        "Concatenate": { // This should never be emitted, but is in the UntypedBinary type.
+            Boolean: undefined,
+            Integer: undefined
         }
     }
 

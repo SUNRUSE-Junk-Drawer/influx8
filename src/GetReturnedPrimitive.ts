@@ -11,6 +11,8 @@ function GetReturnedPrimitive(expression: TypecheckedExpression): Primitive | un
         case "Binary": return BinaryReturnTypes[expression.Operator]
         case "Return":
         case "Reference":
+        case "ConcatenateLeft":
+        case "ConcatenateRight":
             return GetReturnedPrimitive(expression.Value)
         case "Let":
         case "LetNameNotUnique":
@@ -23,6 +25,7 @@ function GetReturnedPrimitive(expression: TypecheckedExpression): Primitive | un
         case "ReferenceUndefined":
         case "CallLambdaExpected":
         case "BinaryUnmatched":
+        case "BinaryInconsistentPlurality":
         case "UnaryUnmatched":
         case "NextStatementNotFound":
         case "Lambda":

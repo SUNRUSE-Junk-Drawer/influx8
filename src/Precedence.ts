@@ -30,6 +30,9 @@ const Precedence: PrecedenceLevel[] = [{
     Operators: ["Call"]
 }, {
     Type: "BinaryLeftToRight",
+    Operators: ["Concatenate"]
+}, {
+    Type: "BinaryLeftToRight",
     Operators: ["Subtract"]
 }, {
     Type: "BinaryLeftToRight",

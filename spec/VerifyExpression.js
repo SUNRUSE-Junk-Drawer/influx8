@@ -272,4 +272,27 @@ describe("VerifyExpression", () => {
         expect(expression).toEqual("Test Result")
         return "Test Recursed Result"
     })
+
+    Test("concatenate left", {
+        Type: "ConcatenateLeft",
+        Value: "Test Value"
+    }, "Test Recursed Value", (expression) => {
+        expect(expression).toEqual("Test Value")
+        return "Test Recursed Value"
+    })
+
+    Test("concatenate right", {
+        Type: "ConcatenateRight",
+        Value: "Test Value"
+    }, "Test Recursed Value", (expression) => {
+        expect(expression).toEqual("Test Value")
+        return "Test Recursed Value"
+    })
+
+    Test("binary inconsistent plurality", {
+        Type: "BinaryInconsistentPlurality",
+        Operator: "Test Operator",
+        Left: ["Test Left A", "Test Left B", "Test Left C"],
+        Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
+    }, undefined)
 })
