@@ -91,14 +91,14 @@ type ReturnStatementTypecheckedExpression = {
     Value: TypecheckedExpression
 }
 
-type TypecheckedtatementWithoutIdentifierTypecheckedExpression = {
+type LambdaStatementWithoutIdentifierTypecheckedExpression = {
     Type: "LambdaWithoutIdentifier"
     StartIndex: number
     EndIndex: number
     Body: TypecheckedExpression
 }
 
-type TypecheckedStatementIncorrectIdentifierTypeTypecheckedExpression = {
+type LambdaStatementIncorrectIdentifierTypeTypecheckedExpression = {
     Type: "LambdaIncorrectIdentifierType"
     StartIndex: number
     EndIndex: number
