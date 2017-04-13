@@ -66,4 +66,28 @@ describe("TypedBinary", () => {
     MapsReturnType("GreaterThanOrEqualToInteger", "Boolean")
     MapsReturnType("LessThanInteger", "Boolean")
     MapsReturnType("LessThanOrEqualToInteger", "Boolean")
+
+    const BinaryReversible = Namespace.__get__("BinaryReversible")
+
+    function IsReversible(operator) {
+        it("operator \"" + operator + "\" is reversible", () => expect(BinaryReversible[operator]).toBeTruthy())
+    }
+
+    function IsNotReversible(operator) {
+        it("operator \"" + operator + "\" is not reversible", () => expect(BinaryReversible[operator]).toBeFalsy())
+    }
+
+    IsReversible("AndBoolean")
+    IsReversible("OrBoolean")
+    IsReversible("EqualBoolean")
+    IsReversible("NotEqualBoolean")
+    IsReversible("AddInteger")
+    IsNotReversible("SubtractInteger")
+    IsReversible("MultiplyInteger")
+    IsReversible("EqualInteger")
+    IsReversible("NotEqualInteger")
+    IsNotReversible("GreaterThanInteger")
+    IsNotReversible("GreaterThanOrEqualToInteger")
+    IsNotReversible("LessThanInteger")
+    IsNotReversible("LessThanOrEqualToInteger")
 })

@@ -83,3 +83,19 @@ const BinaryReturnTypes: {[operator in TypedBinary]: Primitive} = {
     LessThanInteger: "Boolean",
     LessThanOrEqualToInteger: "Boolean"
 }
+
+const BinaryReversible: {[operator in TypedBinary]: boolean} = {
+    AndBoolean: true,
+    OrBoolean: true,
+    EqualBoolean: true,
+    NotEqualBoolean: true,
+    AddInteger: true,
+    SubtractInteger: false,
+    MultiplyInteger: true,
+    EqualInteger: true,
+    NotEqualInteger: true,
+    GreaterThanInteger: false,
+    GreaterThanOrEqualToInteger: false,
+    LessThanInteger: false,
+    LessThanOrEqualToInteger: false
+}
