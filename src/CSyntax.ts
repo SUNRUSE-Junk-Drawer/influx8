@@ -60,4 +60,10 @@ type FunctionCSyntaxMatch<TUnary extends string, TBinary extends string, TFuncti
     Arguments: CSyntaxMatch<TUnary, TBinary, TFunction>[]
 }
 
-type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction>
+type PropertyCSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = {
+    Type: "Property"
+    Name: string
+    Of: CSyntaxMatch<TUnary, TBinary, TFunction>
+}
+
+type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction>

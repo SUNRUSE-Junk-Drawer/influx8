@@ -22,5 +22,8 @@ function GenerateCSyntax<TUnary extends string, TBinary extends string, TFunctio
             }
             output += ")"
             return output
+
+        case "Property":
+            return `${GenerateCSyntax(expression.Of, syntax)}.${expression.Name}`
     }
 }

@@ -193,4 +193,30 @@ describe("GenerateCSyntax", () => {
             default: fail("Unexpected expression")
         }
     })
+
+    Test("property", {
+        Type: "Property",
+        Name: "Test Name",
+        Of: "Test Of"
+    }, "Test Recursed Of.Test Name", (expression, syntax) => {
+        expect(syntax).toEqual({
+            UnarySymbolsOrKeywords: {
+                "Test Unary Operator A": "Test Unary Keyword Or Symbol A",
+                "Test Unary Operator B": "Test Unary Keyword Or Symbol B",
+                "Test Unary Operator C": "Test Unary Keyword Or Symbol C"
+            },
+            BinarySymbolsOrKeywords: {
+                "Test Binary Operator A": "Test Binary Keyword Or Symbol A",
+                "Test Binary Operator B": "Test Binary Keyword Or Symbol B",
+                "Test Binary Operator C": "Test Binary Keyword Or Symbol C"
+            },
+            FunctionSymbolsOrKeywords: {
+                "Test Function A": "Test Function Keyword Or Symbol A",
+                "Test Function B": "Test Function Keyword Or Symbol B",
+                "Test Function C": "Test Function Keyword Or Symbol C"
+            }
+        })
+        expect(expression).toEqual("Test Of")
+        return "Test Recursed Of"
+    })
 })
