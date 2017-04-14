@@ -476,7 +476,7 @@ describe("MatchPattern", () => {
         }, [])
 
     Test("non-reversible binary unary", {
-        Type: "non-reversible binary",
+        Type: "Unary",
         Operator: "Test Unary Operator",
         Operand: "Test Expression Operand"
     }, {
@@ -578,7 +578,7 @@ describe("MatchPattern", () => {
         }, [])
 
     Test("reversible binary unary", {
-        Type: "reversible binary",
+        Type: "Unary",
         Operator: "Test Unary Operator",
         Operand: "Test Expression Operand"
     }, {
