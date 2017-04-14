@@ -3,6 +3,8 @@
 
 function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression | undefined {
     switch (expression.Type) {
+        case "Parameter": return expression
+
         case "Boolean": return {
             Type: "Boolean",
             Value: expression.Value

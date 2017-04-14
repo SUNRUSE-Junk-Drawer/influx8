@@ -2,6 +2,7 @@
 /// <reference path="UnrolledExpression.ts" />
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
+/// <reference path="Primitive.ts" />
 
 type ConcatenateLeftTypecheckedExpression = {
     Type: "ConcatenateLeft"
@@ -141,4 +142,11 @@ type GetItemOutOfRangeTypecheckedExpression = {
     Of: TypecheckedExpression[]
 }
 
-type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression | GetItemTypecheckedExpression | GetItemOutOfRangeTypecheckedExpression
+type ParameterTypecheckedExpression = {
+    Type: "Parameter"
+    Name: string
+    Primitive: Primitive
+    Item: number
+}
+
+type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression | GetItemTypecheckedExpression | GetItemOutOfRangeTypecheckedExpression | ParameterTypecheckedExpression
