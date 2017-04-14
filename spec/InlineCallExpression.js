@@ -288,4 +288,19 @@ describe("InlineCallExpression", () => {
                 Of: "Test Uninlined Value"
             }
         })
+
+    Test("parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Plurality: 7
+    }, {
+            Type: "CallLambdaExpected",
+            Value: {
+                Type: "Parameter",
+                Name: "Test Name",
+                Primitive: "Test Primitive",
+                Plurality: 7
+            }
+        })
 })

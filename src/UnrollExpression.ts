@@ -215,5 +215,16 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Value: items[expression.Item]
             }]
         }
+
+        case "Parameter": {
+            const output: UnrolledExpression[] = []
+            while (output.length < expression.Plurality) output.push({
+                Type: "Parameter",
+                Name: expression.Name,
+                Primitive: expression.Primitive,
+                Item: output.length
+            })
+            return output
+        }
     }
 }

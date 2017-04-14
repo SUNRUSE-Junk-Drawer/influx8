@@ -657,4 +657,43 @@ describe("UnrollExpression", () => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
     })
+
+    Test("parameter singular", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Plurality: 1
+    }, [{
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 0
+    }])
+
+    Test("parameter plural", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Plurality: 4
+    }, [{
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 0
+    }, {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 1
+    }, {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 2
+    }, {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 3
+    }])
 })

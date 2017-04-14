@@ -1,6 +1,7 @@
 /// <reference path="RawExpression.ts" />
 /// <reference path="UntypedUnary.ts" />
 /// <reference path="UntypedBinary.ts" />
+/// <reference path="Primitive.ts" />
 
 type UnaryInlinedExpression = {
     Type: "Unary",
@@ -132,6 +133,13 @@ type GetItemInlinedExpression = {
     Of: InlinedExpression
 }
 
-type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression | GetItemInlinedExpression
+type ParameterInlinedExpression = {
+    Type: "Parameter"
+    Name: string
+    Primitive: Primitive
+    Plurality: number
+}
+
+type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression | GetItemInlinedExpression | ParameterInlinedExpression
 
 type Scope = { [name: string]: InlinedExpression }

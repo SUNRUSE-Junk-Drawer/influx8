@@ -12,6 +12,7 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
         case "Binary":
         case "ReferenceUndefined":
         case "GetItem":
+        case "Parameter":
             return {
                 Type: "CallLambdaExpected",
                 Value: expression
