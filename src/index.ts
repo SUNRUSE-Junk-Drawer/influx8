@@ -8,3 +8,4 @@
 /// <reference path="VerifyExpression.ts" />
 /// <reference path="CompileToJavaScript.ts" />
 /// <reference path="MatchPattern.ts" />
+/// <reference path="ApplyMatchToPattern.ts" />
