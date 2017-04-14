@@ -25,9 +25,9 @@ type FunctionCSyntaxPattern<TFunction extends string> = {
 type CSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = UnaryCSyntaxPattern<TUnary> | BinaryCSyntaxPattern<TBinary> | FunctionCSyntaxPattern<TFunction>
 
 type CSyntax<TUnary extends string, TBinary extends string, TFunction extends string> = {
-    UnarySymbolsOrKeywords: {[operator in TUnary]: {}},
-    BinarySymbolsOrKeywords: {[operator in TBinary]: {}},
-    FunctionSymbolsOrKeywords: {[func in TFunction]: {}},
+    UnarySymbolsOrKeywords: {[operator in TUnary]: string},
+    BinarySymbolsOrKeywords: {[operator in TBinary]: string},
+    FunctionSymbolsOrKeywords: {[func in TFunction]: string},
     Patterns: CSyntaxPattern<TUnary, TBinary, TFunction>[]
 }
 
