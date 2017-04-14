@@ -265,4 +265,11 @@ describe("GetReturnedPrimitive", () => {
         Operator: "Test Unary B",
         Operand: "Test Operand"
     }, "Test Unary Type B")
+
+    Test("verified parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Item: 5,
+        Primitive: "Test Primitive"
+    }, "Test Primitive")
 })

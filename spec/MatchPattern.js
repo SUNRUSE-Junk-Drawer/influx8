@@ -149,6 +149,16 @@ describe("MatchPattern", () => {
             Value: false
         }, [])
 
+    Test("boolean true parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, [])
+
 
     Test("boolean true boolean false", {
         Type: "Boolean",
@@ -211,6 +221,16 @@ describe("MatchPattern", () => {
             Value: true
         }, [])
 
+    Test("boolean true parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, [])
+
 
     Test("integer zero boolean false", {
         Type: "Boolean",
@@ -268,6 +288,16 @@ describe("MatchPattern", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, [])
+
+    Test("integer zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Integer",
             Value: 0
@@ -351,6 +381,16 @@ describe("MatchPattern", () => {
             Value: 37
         }, [])
 
+    Test("integer non-zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, [])
+
 
     Test("unary boolean false", {
         Type: "Boolean",
@@ -428,6 +468,17 @@ describe("MatchPattern", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, [])
+
+    Test("unary zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Unary",
             Operator: "Test Unary Operator",
@@ -529,6 +580,18 @@ describe("MatchPattern", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
+    Test("non-reversible binary parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Binary",
             Operator: "Test Non-Reversible Binary Operator",
@@ -641,6 +704,18 @@ describe("MatchPattern", () => {
         Operator: "Test Alternative Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
+    Test("reversible binary parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Binary",
             Operator: "Test Reversible Binary Operator",

@@ -78,6 +78,16 @@ describe("ExpressionsEquivalent", () => {
             Value: false
         }, false)
 
+    Test("boolean false parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, false)
+
 
     Test("boolean true boolean false", {
         Type: "Boolean",
@@ -140,6 +150,16 @@ describe("ExpressionsEquivalent", () => {
             Value: true
         }, false)
 
+    Test("boolean true parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, false)
+
 
     Test("integer zero boolean false", {
         Type: "Boolean",
@@ -197,6 +217,16 @@ describe("ExpressionsEquivalent", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Integer",
             Value: 0
@@ -275,6 +305,16 @@ describe("ExpressionsEquivalent", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, false)
+
+    Test("integer non-zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Integer",
             Value: 37
@@ -371,6 +411,17 @@ describe("ExpressionsEquivalent", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, false)
+
+    Test("unary false parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Unary",
             Operator: "Test Unary Operator",
@@ -534,6 +585,18 @@ describe("ExpressionsEquivalent", () => {
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
         Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+    Test("non-reversible binary false parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
     }, {
             Type: "Binary",
             Operator: "Test Non-Reversible Binary Operator",
@@ -1031,5 +1094,129 @@ describe("ExpressionsEquivalent", () => {
             Operator: "Test Reversible Binary Operator",
             Left: "Test Pattern Left",
             Right: "Test Pattern Right"
+        }, false)
+
+    Test("reversible binary false parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+
+    Test("parameter boolean false", {
+        Type: "Boolean",
+        Value: false
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter boolean true", {
+        Type: "Boolean",
+        Value: true
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter integer zero", {
+        Type: "Integer",
+        Value: 0
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter integer non-zero", {
+        Type: "Integer",
+        Value: 37
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter unary", {
+        Type: "Unary",
+        Operator: "Test Unary Operator",
+        Operand: "Test Expression Operand"
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter reversible binary", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter non-reversible binary", {
+        Type: "Binary",
+        Operator: "Test Non-Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter parameter match", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, true)
+
+    Test("parameter parameter incorrect item", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 5
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter parameter incorrect name", {
+        Type: "Parameter",
+        Name: "Test Alternative Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
         }, false)
 })

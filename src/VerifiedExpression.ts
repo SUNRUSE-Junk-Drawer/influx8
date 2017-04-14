@@ -1,5 +1,6 @@
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
+/// <reference path="Primitive.ts" />
 
 type BooleanVerifiedExpression = {
     Type: "Boolean"
@@ -24,4 +25,11 @@ type BinaryVerifiedExpression = {
     Right: VerifiedExpression
 }
 
-type VerifiedExpression = BooleanVerifiedExpression | IntegerVerifiedExpression | UnaryVerifiedExpression | BinaryVerifiedExpression
+type ParameterVerifiedExpression = {
+    Type: "Parameter"
+    Name: string
+    Item: number
+    Primitive: Primitive
+}
+
+type VerifiedExpression = BooleanVerifiedExpression | IntegerVerifiedExpression | UnaryVerifiedExpression | BinaryVerifiedExpression | ParameterVerifiedExpression

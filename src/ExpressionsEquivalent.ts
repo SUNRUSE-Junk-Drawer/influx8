@@ -31,5 +31,12 @@ function ExpressionsEquivalent(a: VerifiedExpression, b: VerifiedExpression): bo
 
             return true
         }
+
+        case "Parameter": {
+            if (b.Type != "Parameter") return false
+            if (a.Name != b.Name) return false
+            if (a.Item != b.Item) return false
+            return true
+        }
     }
 }

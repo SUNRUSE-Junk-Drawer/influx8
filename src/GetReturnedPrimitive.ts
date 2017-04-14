@@ -15,6 +15,8 @@ function GetReturnedPrimitive(expression: TypecheckedExpression | VerifiedExpres
         case "ConcatenateRight":
         case "GetItem":
             return GetReturnedPrimitive(expression.Value)
+        case "Parameter":
+            return expression.Primitive
         case "Let":
         case "LetNameNotUnique":
         case "LetWithoutIdentifier":

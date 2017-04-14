@@ -75,6 +75,7 @@ function MatchCSyntaxConstant<TUnary extends string, TBinary extends string, TFu
 
         case "Unary":
         case "Binary":
+        case "Parameter":
             return undefined
     }
 }
