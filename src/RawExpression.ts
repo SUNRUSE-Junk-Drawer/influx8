@@ -105,4 +105,10 @@ type ReferenceRawExpression = {
     Name: string
 }
 
-type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression | ReferenceRawExpression
+type GetItemRawExpression = {
+    Type: "GetItem"
+    Item: number
+    Of: RawExpression
+}
+
+type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression | ReferenceRawExpression | GetItemRawExpression

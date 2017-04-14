@@ -684,4 +684,41 @@ describe("TypecheckExpression", () => {
                 default: fail("Unexpected expression")
             }
         })
+
+    Test("get item", {
+        Type: "GetItem",
+        Item: "Test Item",
+        Of: ["Test Of A", "Test Of B", "Test Of C"],
+        Value: "Test Value"
+    }, {
+            Type: "GetItem",
+            Item: "Test Item",
+            Of: ["Test Recursed Of A", "Test Recursed Of B", "Test Recursed Of C"],
+            Value: "Test Recursed Value"
+        }, (expression) => {
+            switch (expression) {
+                case "Test Of A": return "Test Recursed Of A"
+                case "Test Of B": return "Test Recursed Of B"
+                case "Test Of C": return "Test Recursed Of C"
+                case "Test Value": return "Test Recursed Value"
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("get item out of range", {
+        Type: "GetItemOutOfRange",
+        Item: "Test Item",
+        Of: ["Test Of A", "Test Of B", "Test Of C"]
+    }, {
+            Type: "GetItemOutOfRange",
+            Item: "Test Item",
+            Of: ["Test Recursed Of A", "Test Recursed Of B", "Test Recursed Of C"]
+        }, (expression) => {
+            switch (expression) {
+                case "Test Of A": return "Test Recursed Of A"
+                case "Test Of B": return "Test Recursed Of B"
+                case "Test Of C": return "Test Recursed Of C"
+                default: fail("Unexpected expression")
+            }
+        })
 })

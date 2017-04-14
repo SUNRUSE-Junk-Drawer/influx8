@@ -574,4 +574,72 @@ describe("UnrollExpression", () => {
         Type: "CallLambdaExpected",
         Value: "Test Value"
     }])
+
+    Test("get item first", {
+        Type: "GetItem",
+        Item: 0,
+        Of: "Test Value"
+    }, [{
+        Type: "GetItem",
+        Item: 0,
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+        Value: "Test Recursed Value A"
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    })
+
+    Test("get item middle", {
+        Type: "GetItem",
+        Item: 1,
+        Of: "Test Value"
+    }, [{
+        Type: "GetItem",
+        Item: 1,
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+        Value: "Test Recursed Value B"
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    })
+
+    Test("get item last", {
+        Type: "GetItem",
+        Item: 2,
+        Of: "Test Value"
+    }, [{
+        Type: "GetItem",
+        Item: 2,
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+        Value: "Test Recursed Value C"
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    })
+
+    Test("get item over bound", {
+        Type: "GetItem",
+        Item: 3,
+        Of: "Test Value"
+    }, [{
+        Type: "GetItemOutOfRange",
+        Item: 3,
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    })
+
+    Test("get item beyond bound", {
+        Type: "GetItem",
+        Item: 4,
+        Of: "Test Value"
+    }, [{
+        Type: "GetItemOutOfRange",
+        Item: 4,
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+    })
 })

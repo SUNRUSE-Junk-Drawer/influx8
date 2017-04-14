@@ -88,13 +88,13 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
         case "Call": return {
             Type: "Call",
             Lambda: expression.Lambda,
-            Argument: TypecheckExpression(expression.Argument),
+            Argument: TypecheckExpression(expression.Argument as UnrolledExpression /* TODO: This breaks the type system. */),
             Result: TypecheckExpression(expression.Result)
         }
 
         case "CallLambdaExpected": return {
             Type: "CallLambdaExpected",
-            Value: TypecheckExpression(expression.Value)
+            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */)
         }
 
         case "Let": return {
@@ -104,7 +104,7 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             Name: expression.Name,
             NameStartIndex: expression.NameStartIndex,
             NameEndIndex: expression.NameEndIndex,
-            Value: TypecheckExpression(expression.Value),
+            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
             Then: TypecheckExpression(expression.Then)
         }
 
@@ -115,7 +115,7 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             Name: expression.Name,
             NameStartIndex: expression.NameStartIndex,
             NameEndIndex: expression.NameEndIndex,
-            Value: TypecheckExpression(expression.Value),
+            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
             Then: TypecheckExpression(expression.Then)
         }
 
@@ -131,7 +131,7 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             StartIndex: expression.StartIndex,
             EndIndex: expression.EndIndex,
             ActualType: expression.ActualType,
-            Value: TypecheckExpression(expression.Value),
+            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
             Then: TypecheckExpression(expression.Then)
         }
 
@@ -143,6 +143,29 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
         case "ConcatenateRight": return {
             Type: "ConcatenateRight",
             Value: TypecheckExpression(expression.Value)
+        }
+
+        case "GetItem": {
+            const output: GetItemTypecheckedExpression = {
+                Type: "GetItem",
+                Item: expression.Item,
+                Of: [],
+                Value: TypecheckExpression(expression.Value)
+            }
+
+            for (const item of expression.Of) output.Of.push(TypecheckExpression(item))
+            return output
+        }
+
+        case "GetItemOutOfRange": {
+            const output: GetItemOutOfRangeTypecheckedExpression = {
+                Type: "GetItemOutOfRange",
+                Item: expression.Item,
+                Of: []
+            }
+
+            for (const item of expression.Of) output.Of.push(TypecheckExpression(item))
+            return output
         }
     }
 }

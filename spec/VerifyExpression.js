@@ -295,4 +295,20 @@ describe("VerifyExpression", () => {
         Left: ["Test Left A", "Test Left B", "Test Left C"],
         Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
     }, undefined)
+
+    Test("get item", {
+        Type: "GetItem",
+        Item: "Test Item",
+        Of: "Test Of",
+        Value: "Test Value"
+    }, "Test Recursed Value", (expression) => {
+        expect(expression).toEqual("Test Value")
+        return "Test Recursed Value"
+    })
+
+    Test("get item out of range", {
+        Type: "GetItemOutOfRange",
+        Item: "Test Item",
+        Of: "Test Of"
+    }, undefined)
 })

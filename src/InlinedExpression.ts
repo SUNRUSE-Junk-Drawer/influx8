@@ -126,6 +126,12 @@ type CallLambdaExpectedExpression = {
     Value: InlinedExpression
 }
 
-type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression
+type GetItemInlinedExpression = {
+    Type: "GetItem"
+    Item: number
+    Of: InlinedExpression
+}
+
+type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression | GetItemInlinedExpression
 
 type Scope = { [name: string]: InlinedExpression }

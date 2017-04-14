@@ -141,4 +141,17 @@ type CallLambdaExpectedUnrolledExpression = {
     Value: InlinedExpression
 }
 
-type UnrolledExpression = ConcatenateLeftUnrolledExpression | ConcatenateRightUnrolledExpression | UnknownExpression | BooleanExpression | IntegerExpression | BinaryUnrolledExpression | BinaryInconsistentPluralityUnrolledExpression | UnaryUnrolledExpression | LetStatementUnrolledExpression | LetStatementWithoutIdentifierUnrolledExpression | LetStatementIncorrectIdentifierTypeUnrolledExpression | LetStatementNameNotUniqueUnrolledExpression | ReturnStatementUnrolledExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceUnrolledExpression | ReferenceUndefinedUnrolledExpression | CallUnrolledExpression | CallLambdaExpectedUnrolledExpression
+type GetItemUnrolledExpression = {
+    Type: "GetItem"
+    Item: number
+    Of: UnrolledExpression[]
+    Value: UnrolledExpression
+}
+
+type GetItemOutOfRangeUnrolledExpression = {
+    Type: "GetItemOutOfRange"
+    Item: number
+    Of: UnrolledExpression[]
+}
+
+type UnrolledExpression = ConcatenateLeftUnrolledExpression | ConcatenateRightUnrolledExpression | UnknownExpression | BooleanExpression | IntegerExpression | BinaryUnrolledExpression | BinaryInconsistentPluralityUnrolledExpression | UnaryUnrolledExpression | LetStatementUnrolledExpression | LetStatementWithoutIdentifierUnrolledExpression | LetStatementIncorrectIdentifierTypeUnrolledExpression | LetStatementNameNotUniqueUnrolledExpression | ReturnStatementUnrolledExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceUnrolledExpression | ReferenceUndefinedUnrolledExpression | CallUnrolledExpression | CallLambdaExpectedUnrolledExpression | GetItemUnrolledExpression | GetItemOutOfRangeUnrolledExpression

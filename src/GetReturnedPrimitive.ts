@@ -13,6 +13,7 @@ function GetReturnedPrimitive(expression: TypecheckedExpression | VerifiedExpres
         case "Reference":
         case "ConcatenateLeft":
         case "ConcatenateRight":
+        case "GetItem":
             return GetReturnedPrimitive(expression.Value)
         case "Let":
         case "LetNameNotUnique":
@@ -32,6 +33,7 @@ function GetReturnedPrimitive(expression: TypecheckedExpression | VerifiedExpres
         case "LambdaWithoutIdentifier":
         case "LambdaIncorrectIdentifierType":
         case "LambdaNameNotUnique":
+        case "GetItemOutOfRange":
             return undefined
     }
 }

@@ -275,4 +275,17 @@ describe("InlineCallExpression", () => {
             Type: "CallLambdaExpected",
             Value: "Irrelevant"
         })
+
+    Test("get item", {
+        Type: "GetItem",
+        Item: "Test Item",
+        Of: "Test Uninlined Value"
+    }, {
+            Type: "CallLambdaExpected",
+            Value: {
+                Type: "GetItem",
+                Item: "Test Item",
+                Of: "Test Uninlined Value"
+            }
+        })
 })

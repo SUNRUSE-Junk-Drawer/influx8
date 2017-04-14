@@ -569,4 +569,22 @@ describe("InlineExpression", () => {
             EndIndex: 48,
             Name: "constructor"
         })
+
+    Test("get item", {
+        Type: "GetItem",
+        Item: "Test Item",
+        Of: "Test Uninlined Value"
+    }, {
+            Type: "GetItem",
+            Item: "Test Item",
+            Of: "Test Inlined Value"
+        }, (expression, scope) => {
+            expect(expression).toEqual("Test Uninlined Value")
+            expect(scope).toEqual({
+                "test scope key a": "test scope value a",
+                "test scope key b": "test scope value b",
+                "test scope key c": "test scope value c"
+            })
+            return "Test Inlined Value"
+        })
 })

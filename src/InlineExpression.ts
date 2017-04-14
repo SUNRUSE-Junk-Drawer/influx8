@@ -142,5 +142,11 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
                 Value: scope[expression.Name]
             }
         }
+
+        case "GetItem": return {
+            Type: "GetItem",
+            Item: expression.Item,
+            Of: InlineExpression(expression.Of, scope)
+        }
     }
 }

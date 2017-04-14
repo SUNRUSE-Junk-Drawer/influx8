@@ -194,5 +194,21 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
             })
             return output
         }
+
+        case "GetItem": {
+            const items = UnrollExpression(expression.Of)
+            if (expression.Item >= items.length) return [{
+                Type: "GetItemOutOfRange",
+                Item: expression.Item,
+                Of: items
+            }]
+
+            return [{
+                Type: "GetItem",
+                Item: expression.Item,
+                Of: items,
+                Value: items[expression.Item]
+            }]
+        }
     }
 }

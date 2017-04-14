@@ -46,6 +46,7 @@ function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression
         case "Reference":
         case "ConcatenateLeft":
         case "ConcatenateRight":
+        case "GetItem":
             return VerifyExpression(expression.Value)
 
         case "Call":
@@ -62,6 +63,7 @@ function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression
         case "UnaryUnmatched":
         case "BinaryUnmatched":
         case "BinaryInconsistentPlurality":
+        case "GetItemOutOfRange":
             return undefined
     }
 }

@@ -128,4 +128,17 @@ type CallLambdaExpectedTypecheckedExpression = {
     Value: TypecheckedExpression
 }
 
-type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression
+type GetItemTypecheckedExpression = {
+    Type: "GetItem"
+    Item: number
+    Of: TypecheckedExpression[]
+    Value: TypecheckedExpression
+}
+
+type GetItemOutOfRangeTypecheckedExpression = {
+    Type: "GetItemOutOfRange"
+    Item: number
+    Of: TypecheckedExpression[]
+}
+
+type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression | GetItemTypecheckedExpression | GetItemOutOfRangeTypecheckedExpression

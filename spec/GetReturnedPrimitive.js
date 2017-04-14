@@ -227,6 +227,22 @@ describe("GetReturnedPrimitive", () => {
         Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
     }, undefined)
 
+    Test("get item", {
+        Type: "GetItem",
+        Item: "Test Item",
+        Of: "Test Of",
+        Value: "Test Value"
+    }, "Test Recursed Value", (expression) => {
+        expect(expression).toEqual("Test Value")
+        return "Test Recursed Value"
+    })
+
+    Test("get item out of range", {
+        Type: "GetItemOutOfRange",
+        Item: "Test Item",
+        Of: "Test Of"
+    })
+
     Test("verified boolean", {
         Type: "Boolean",
         Value: "Anything"
