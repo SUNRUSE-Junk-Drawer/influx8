@@ -7,3 +7,4 @@
 /// <reference path="TypecheckExpression.ts" />
 /// <reference path="VerifyExpression.ts" />
 /// <reference path="CompileToJavaScript.ts" />
+/// <reference path="MatchPattern.ts" />
