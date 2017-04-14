@@ -1,10 +1,11 @@
 /// <reference path="Pattern.ts" />
 /// <reference path="GetReturnedPrimitive.ts" />
+/// <reference path="ExpressionsEquivalent.ts" />
 
 function CombinePatternMatches(a: PatternMatch, b: PatternMatch): PatternMatch | undefined {
     const combined: { [name: string]: VerifiedExpression } = {}
     for (const key in a) {
-        if (Object.prototype.hasOwnProperty.call(b, key) && !MatchPattern(a[key], b[key]).length) return undefined
+        if (Object.prototype.hasOwnProperty.call(b, key) && !ExpressionsEquivalent(a[key], b[key])) return undefined
         combined[key] = a[key]
     }
     for (const key in b) {

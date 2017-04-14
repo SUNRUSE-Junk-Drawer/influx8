@@ -2,9 +2,9 @@ describe("CombinePatternMatches", () => {
     const Namespace = require("rewire")("../dist/index.js")
     const CombinePatternMatches = Namespace.__get__("CombinePatternMatches")
 
-    function Test(description, a, b, output, matchPattern) {
+    function Test(description, a, b, output, expressionsEquivalent) {
         it(description, () => {
-            Namespace.__set__("MatchPattern", matchPattern || fail)
+            Namespace.__set__("ExpressionsEquivalent", expressionsEquivalent || fail)
             expect(CombinePatternMatches(a, b)).toEqual(output)
         })
     }
@@ -56,10 +56,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -74,10 +74,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -92,10 +92,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -110,10 +110,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -136,10 +136,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -156,10 +156,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -176,10 +176,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -196,10 +196,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -222,10 +222,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -242,10 +242,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -262,10 +262,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -282,10 +282,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -314,10 +314,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -337,10 +337,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -360,10 +360,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -383,10 +383,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return []
+                    return false
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return []
+                    return false
                 default: fail("Unexpected expression")
             }
         })
@@ -414,10 +414,10 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A A":
                     expect(pattern).toEqual("Test Value B A")
-                    return ["Test Result A"]
+                    return true
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -444,7 +444,7 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
@@ -471,7 +471,7 @@ describe("CombinePatternMatches", () => {
             switch (expression) {
                 case "Test Value A B":
                     expect(pattern).toEqual("Test Value B B")
-                    return ["Test Result B"]
+                    return true
                 default: fail("Unexpected expression")
             }
         })
