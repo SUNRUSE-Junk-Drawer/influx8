@@ -58,7 +58,7 @@ type LetStatementIncorrectIdentifierTypeTypecheckedExpression = {
     StartIndex: number
     EndIndex: number
     ActualType: string
-    Value: TypecheckedExpression
+    Value: TypecheckedExpression[]
     Then: TypecheckedExpression
 }
 
@@ -69,7 +69,7 @@ type LetStatementTypecheckedExpression = {
     Name: string
     NameStartIndex: number
     NameEndIndex: number
-    Value: TypecheckedExpression
+    Value: TypecheckedExpression[]
     Then: TypecheckedExpression
 }
 
@@ -80,7 +80,7 @@ type LetStatementNameNotUniqueTypecheckedExpression = {
     Name: string
     NameStartIndex: number
     NameEndIndex: number
-    Value: TypecheckedExpression
+    Value: TypecheckedExpression[]
     Then: TypecheckedExpression
 }
 
@@ -119,13 +119,13 @@ type ReferenceTypecheckedExpression = {
 type CallTypecheckedExpression = {
     Type: "Call"
     Lambda: RawExpression
-    Argument: TypecheckedExpression
+    Argument: TypecheckedExpression[]
     Result: TypecheckedExpression
 }
 
 type CallLambdaExpectedTypecheckedExpression = {
     Type: "CallLambdaExpected"
-    Value: TypecheckedExpression
+    Value: TypecheckedExpression[]
 }
 
 type GetItemTypecheckedExpression = {

@@ -42,7 +42,7 @@ type LetStatementIncorrectIdentifierTypeUnrolledExpression = {
     StartIndex: number
     EndIndex: number
     ActualType: string
-    Value: InlinedExpression
+    Value: UnrolledExpression[]
     Then: UnrolledExpression
 }
 
@@ -53,7 +53,7 @@ type LetStatementUnrolledExpression = {
     Name: string
     NameStartIndex: number
     NameEndIndex: number
-    Value: InlinedExpression
+    Value: UnrolledExpression[]
     Then: UnrolledExpression
 }
 
@@ -64,7 +64,7 @@ type LetStatementNameNotUniqueUnrolledExpression = {
     Name: string
     NameStartIndex: number
     NameEndIndex: number
-    Value: InlinedExpression
+    Value: UnrolledExpression[]
     Then: UnrolledExpression
 }
 
@@ -132,13 +132,13 @@ type ReferenceUndefinedUnrolledExpression = {
 type CallUnrolledExpression = {
     Type: "Call"
     Lambda: RawExpression
-    Argument: InlinedExpression
+    Argument: UnrolledExpression[]
     Result: UnrolledExpression
 }
 
 type CallLambdaExpectedUnrolledExpression = {
     Type: "CallLambdaExpected"
-    Value: InlinedExpression
+    Value: UnrolledExpression[]
 }
 
 type GetItemUnrolledExpression = {

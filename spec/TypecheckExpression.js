@@ -49,17 +49,20 @@ describe("TypecheckExpression", () => {
     Test("call", {
         Type: "Call",
         Lambda: "Test Lambda",
-        Argument: "Test Expression Argument",
+        Argument: ["Test Expression Argument A", "Test Expression Argument B", "Test Expression Argument C"],
         Result: "Test Result"
     }, {
             Type: "Call",
             Lambda: "Test Lambda",
-            Argument: "Test Recursed Expression Argument",
+            Argument: ["Test Recursed Expression Argument A", "Test Recursed Expression Argument B", "Test Recursed Expression Argument C"],
             Result: "Test Recursed Result"
         }, (expression) => {
             switch (expression) {
                 case "Test Expression Argument": return "Test Recursed Expression Argument"
                 case "Test Result": return "Test Recursed Result"
+                case "Test Expression Argument A": return "Test Recursed Expression Argument A"
+                case "Test Expression Argument B": return "Test Recursed Expression Argument B"
+                case "Test Expression Argument C": return "Test Recursed Expression Argument C"
                 default: fail("Unexpected expression")
             }
         })
@@ -427,7 +430,7 @@ describe("TypecheckExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: ["Test Value A", "Test Value B", "Test Value C"],
         Then: "Test Then"
     }, {
             Type: "Let",
@@ -436,12 +439,15 @@ describe("TypecheckExpression", () => {
             Name: "Test Name",
             NameStartIndex: 32,
             NameEndIndex: 41,
-            Value: "Test Recursed Value",
+            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
             Then: "Test Recursed Then"
         }, (expression) => {
             switch (expression) {
                 case "Test Value": return "Test Recursed Value"
                 case "Test Then": return "Test Recursed Then"
+                case "Test Value A": return "Test Recursed Value A"
+                case "Test Value B": return "Test Recursed Value B"
+                case "Test Value C": return "Test Recursed Value C"
                 default: fail("Unexpected expression")
             }
         })
@@ -453,7 +459,7 @@ describe("TypecheckExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: ["Test Value A", "Test Value B", "Test Value C"],
         Then: "Test Then"
     }, {
             Type: "LetNameNotUnique",
@@ -462,12 +468,15 @@ describe("TypecheckExpression", () => {
             Name: "Test Name",
             NameStartIndex: 32,
             NameEndIndex: 41,
-            Value: "Test Recursed Value",
+            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
             Then: "Test Recursed Then"
         }, (expression) => {
             switch (expression) {
                 case "Test Value": return "Test Recursed Value"
                 case "Test Then": return "Test Recursed Then"
+                case "Test Value A": return "Test Recursed Value A"
+                case "Test Value B": return "Test Recursed Value B"
+                case "Test Value C": return "Test Recursed Value C"
                 default: fail("Unexpected expression")
             }
         })
@@ -492,19 +501,22 @@ describe("TypecheckExpression", () => {
         StartIndex: 56,
         EndIndex: 63,
         ActualType: "Test Actual Type",
-        Value: "Test Value",
+        Value: ["Test Value A", "Test Value B", "Test Value C"],
         Then: "Test Then"
     }, {
             Type: "LetIncorrectIdentifierType",
             StartIndex: 56,
             EndIndex: 63,
             ActualType: "Test Actual Type",
-            Value: "Test Recursed Value",
+            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
             Then: "Test Recursed Then"
         }, (expression) => {
             switch (expression) {
                 case "Test Value": return "Test Recursed Value"
                 case "Test Then": return "Test Recursed Then"
+                case "Test Value A": return "Test Recursed Value A"
+                case "Test Value B": return "Test Recursed Value B"
+                case "Test Value C": return "Test Recursed Value C"
                 default: fail("Unexpected expression")
             }
         })
@@ -631,13 +643,17 @@ describe("TypecheckExpression", () => {
 
     Test("lambda expected", {
         Type: "CallLambdaExpected",
-        Value: "Test Value"
+        Value: ["Test Value A", "Test Value B", "Test Value C"]
     }, {
             Type: "CallLambdaExpected",
-            Value: "Test Recursed Value"
+            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
         }, (expression) => {
-            expect(expression).toEqual("Test Value")
-            return "Test Recursed Value"
+            switch (expression) {
+                case "Test Value A": return "Test Recursed Value A"
+                case "Test Value B": return "Test Recursed Value B"
+                case "Test Value C": return "Test Recursed Value C"
+                default: fail("Unexpected expression")
+            }
         })
 
     Test("concatenate left", {

@@ -12,26 +12,29 @@ describe("UnrollExpression", () => {
     Test("call", {
         Type: "Call",
         Lambda: "Test Lambda",
-        Argument: "Test Expression Argument",
+        Argument: "Test Argument",
         Result: "Test Result"
     }, [{
         Type: "Call",
         Lambda: "Test Lambda",
-        Argument: "Test Expression Argument",
+        Argument: "Test Recursed Argument",
         Result: "Test Recursed Result A"
     }, {
         Type: "Call",
         Lambda: "Test Lambda",
-        Argument: "Test Expression Argument",
+        Argument: "Test Recursed Argument",
         Result: "Test Recursed Result B"
     }, {
         Type: "Call",
         Lambda: "Test Lambda",
-        Argument: "Test Expression Argument",
+        Argument: "Test Recursed Argument",
         Result: "Test Recursed Result C"
     }], (expression) => {
-        expect(expression).toEqual("Test Result")
-        return ["Test Recursed Result A", "Test Recursed Result B", "Test Recursed Result C"]
+        switch (expression) {
+            case "Test Result": return ["Test Recursed Result A", "Test Recursed Result B", "Test Recursed Result C"]
+            case "Test Argument": return "Test Recursed Argument"
+            default: fail("Unexpected expression")
+        }
     })
 
     Test("boolean", {
@@ -269,7 +272,7 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then A"
     }, {
         Type: "Let",
@@ -278,7 +281,7 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then B"
     }, {
         Type: "Let",
@@ -287,11 +290,14 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then C"
     }], (expression) => {
-        expect(expression).toEqual("Test Then")
-        return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+        switch (expression) {
+            case "Test Then": return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+            case "Test Value": return "Test Recursed Value"
+            default: fail("Unexpected expression")
+        }
     })
 
     Test("let name not unique", {
@@ -310,7 +316,7 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then A"
     }, {
         Type: "LetNameNotUnique",
@@ -319,7 +325,7 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then B"
     }, {
         Type: "LetNameNotUnique",
@@ -328,11 +334,14 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         NameStartIndex: 32,
         NameEndIndex: 41,
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then C"
     }], (expression) => {
-        expect(expression).toEqual("Test Then")
-        return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+        switch (expression) {
+            case "Test Then": return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+            case "Test Value": return "Test Recursed Value"
+            default: fail("Unexpected expression")
+        }
     })
 
     Test("let without identifier", {
@@ -372,25 +381,28 @@ describe("UnrollExpression", () => {
         StartIndex: 56,
         EndIndex: 63,
         ActualType: "Test Actual Type",
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then A"
     }, {
         Type: "LetIncorrectIdentifierType",
         StartIndex: 56,
         EndIndex: 63,
         ActualType: "Test Actual Type",
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then B"
     }, {
         Type: "LetIncorrectIdentifierType",
         StartIndex: 56,
         EndIndex: 63,
         ActualType: "Test Actual Type",
-        Value: "Test Value",
+        Value: "Test Recursed Value",
         Then: "Test Recursed Then C"
     }], (expression) => {
-        expect(expression).toEqual("Test Then")
-        return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+        switch (expression) {
+            case "Test Then": return ["Test Recursed Then A", "Test Recursed Then B", "Test Recursed Then C"]
+            case "Test Value": return "Test Recursed Value"
+            default: fail("Unexpected expression")
+        }
     })
 
     Test("return", {
@@ -572,8 +584,11 @@ describe("UnrollExpression", () => {
         Value: "Test Value"
     }, [{
         Type: "CallLambdaExpected",
-        Value: "Test Value"
-    }])
+        Value: "Test Recursed Value"
+    }], (expression) => {
+        expect(expression).toEqual("Test Value")
+        return "Test Recursed Value"
+    })
 
     Test("get item first", {
         Type: "GetItem",

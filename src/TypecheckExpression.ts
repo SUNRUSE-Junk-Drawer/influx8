@@ -85,38 +85,54 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             Value: TypecheckExpression(expression.Value)
         }
 
-        case "Call": return {
-            Type: "Call",
-            Lambda: expression.Lambda,
-            Argument: TypecheckExpression(expression.Argument as UnrolledExpression /* TODO: This breaks the type system. */),
-            Result: TypecheckExpression(expression.Result)
+        case "Call": {
+            const output: CallTypecheckedExpression = {
+                Type: "Call",
+                Lambda: expression.Lambda,
+                Argument: [],
+                Result: TypecheckExpression(expression.Result)
+            }
+            for (const dimension of expression.Argument) output.Argument.push(TypecheckExpression(dimension))
+            return output
         }
 
-        case "CallLambdaExpected": return {
-            Type: "CallLambdaExpected",
-            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */)
+        case "CallLambdaExpected": {
+            const output: CallLambdaExpectedTypecheckedExpression = {
+                Type: "CallLambdaExpected",
+                Value: []
+            }
+            for (const dimension of expression.Value) output.Value.push(TypecheckExpression(dimension))
+            return output
         }
 
-        case "Let": return {
-            Type: "Let",
-            StartIndex: expression.StartIndex,
-            EndIndex: expression.EndIndex,
-            Name: expression.Name,
-            NameStartIndex: expression.NameStartIndex,
-            NameEndIndex: expression.NameEndIndex,
-            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
-            Then: TypecheckExpression(expression.Then)
+        case "Let": {
+            const output: LetStatementTypecheckedExpression = {
+                Type: "Let",
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex,
+                Name: expression.Name,
+                NameStartIndex: expression.NameStartIndex,
+                NameEndIndex: expression.NameEndIndex,
+                Value: [],
+                Then: TypecheckExpression(expression.Then)
+            }
+            for (const dimension of expression.Value) output.Value.push(TypecheckExpression(dimension))
+            return output
         }
 
-        case "LetNameNotUnique": return {
-            Type: "LetNameNotUnique",
-            StartIndex: expression.StartIndex,
-            EndIndex: expression.EndIndex,
-            Name: expression.Name,
-            NameStartIndex: expression.NameStartIndex,
-            NameEndIndex: expression.NameEndIndex,
-            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
-            Then: TypecheckExpression(expression.Then)
+        case "LetNameNotUnique": {
+            const output: LetStatementNameNotUniqueTypecheckedExpression = {
+                Type: "LetNameNotUnique",
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex,
+                Name: expression.Name,
+                NameStartIndex: expression.NameStartIndex,
+                NameEndIndex: expression.NameEndIndex,
+                Value: [],
+                Then: TypecheckExpression(expression.Then)
+            }
+            for (const dimension of expression.Value) output.Value.push(TypecheckExpression(dimension))
+            return output
         }
 
         case "LetWithoutIdentifier": return {
@@ -126,13 +142,17 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             Then: TypecheckExpression(expression.Then)
         }
 
-        case "LetIncorrectIdentifierType": return {
-            Type: "LetIncorrectIdentifierType",
-            StartIndex: expression.StartIndex,
-            EndIndex: expression.EndIndex,
-            ActualType: expression.ActualType,
-            Value: TypecheckExpression(expression.Value as UnrolledExpression /* TODO: This breaks the type system. */),
-            Then: TypecheckExpression(expression.Then)
+        case "LetIncorrectIdentifierType": {
+            const output: LetStatementIncorrectIdentifierTypeTypecheckedExpression = {
+                Type: "LetIncorrectIdentifierType",
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex,
+                ActualType: expression.ActualType,
+                Value: [],
+                Then: TypecheckExpression(expression.Then)
+            }
+            for (const dimension of expression.Value) output.Value.push(TypecheckExpression(dimension))
+            return output
         }
 
         case "ConcatenateLeft": return {

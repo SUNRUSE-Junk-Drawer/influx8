@@ -8,8 +8,12 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
         case "NextStatementNotFound":
         case "Lambda":
         case "LambdaNameNotUnique":
-        case "CallLambdaExpected":
             return [expression]
+
+        case "CallLambdaExpected": return [{
+            Type: "CallLambdaExpected",
+            Value: UnrollExpression(expression.Value)
+        }]
 
         case "Unary": {
             const operand = UnrollExpression(expression.Operand)
@@ -108,7 +112,7 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Name: expression.Name,
                 NameStartIndex: expression.NameStartIndex,
                 NameEndIndex: expression.NameEndIndex,
-                Value: expression.Value,
+                Value: UnrollExpression(expression.Value),
                 Then: dimension
             })
             return output
@@ -124,7 +128,7 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Name: expression.Name,
                 NameStartIndex: expression.NameStartIndex,
                 NameEndIndex: expression.NameEndIndex,
-                Value: expression.Value,
+                Value: UnrollExpression(expression.Value),
                 Then: dimension
             })
             return output
@@ -138,7 +142,7 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 StartIndex: expression.StartIndex,
                 EndIndex: expression.EndIndex,
                 ActualType: expression.ActualType,
-                Value: expression.Value,
+                Value: UnrollExpression(expression.Value),
                 Then: dimension
             })
             return output
@@ -185,11 +189,12 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
 
         case "Call": {
             const result = UnrollExpression(expression.Result)
+            const argument = UnrollExpression(expression.Argument)
             const output: UnrolledExpression[] = []
             for (const dimension of result) output.push({
                 Type: "Call",
                 Lambda: expression.Lambda,
-                Argument: expression.Argument,
+                Argument: argument,
                 Result: dimension
             })
             return output
