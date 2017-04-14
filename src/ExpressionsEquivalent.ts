@@ -24,8 +24,11 @@ function ExpressionsEquivalent(a: VerifiedExpression, b: VerifiedExpression): bo
         case "Binary": {
             if (b.Type != "Binary") return false
             if (a.Operator != b.Operator) return false
-            if (!ExpressionsEquivalent(a.Left, b.Left)) return false
-            if (!ExpressionsEquivalent(a.Right, b.Right)) return false
+            if (
+                (!ExpressionsEquivalent(a.Left, b.Left) || !ExpressionsEquivalent(a.Right, b.Right))
+                && (!BinaryReversible[a.Operator] || !ExpressionsEquivalent(a.Left, b.Right) || !ExpressionsEquivalent(a.Right, b.Left))
+            ) return false
+
             return true
         }
     }
