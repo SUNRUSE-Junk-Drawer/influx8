@@ -29,8 +29,13 @@ describe("ApplyMatchToPattern", () => {
             Value: "Anything"
         })
 
-    Test("any", {
-        Type: "Any",
+    Test("any boolean", {
+        Type: "AnyBoolean",
+        Name: "Test Key A"
+    }, "Test Value A")
+
+    Test("any integer", {
+        Type: "AnyInteger",
         Name: "Test Key A"
     }, "Test Value A")
 

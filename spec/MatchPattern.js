@@ -9,114 +9,83 @@ describe("MatchPattern", () => {
         "Test Alternative Reversible Binary Operator": true
     })
 
-    function Test(description, expression, pattern, output, matchPattern, combinePatternMatchSets) {
+    function Test(description, expression, pattern, output, matchPattern, combinePatternMatchSets, getReturnedPrimitive) {
         it(description, () => {
             Namespace.__set__("MatchPattern", matchPattern || fail)
             Namespace.__set__("CombinePatternMatchSets", combinePatternMatchSets || fail)
+            Namespace.__set__("GetReturnedPrimitive", getReturnedPrimitive || fail)
             expect(MatchPattern(expression, pattern)).toEqual(output)
         })
     }
 
-    Test("anything boolean false", {
-        Type: "Boolean",
-        Value: false
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Boolean",
-                Value: false
-            }
-        }])
+    Test("any boolean boolean", "Test Expression", {
+        Type: "AnyBoolean",
+        Name: "Test Name"
+    }, [{
+        "Test Name": "Test Expression"
+    }], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Boolean"
+    })
 
-    Test("anything boolean true", {
-        Type: "Boolean",
-        Value: true
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Boolean",
-                Value: true
-            }
-        }])
+    Test("any boolean integer", "Test Expression", {
+        Type: "AnyBoolean",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Integer"
+    })
 
-    Test("anything integer zero", {
-        Type: "Integer",
-        Value: 0
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Integer",
-                Value: 0
-            }
-        }])
+    Test("any boolean other non-boolean", "Test Expression", {
+        Type: "AnyBoolean",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Non-Boolean"
+    })
 
-    Test("anything integer non-zero", {
-        Type: "Integer",
-        Value: 37
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Integer",
-                Value: 37
-            }
-        }])
+    Test("any boolean undefined", "Test Expression", {
+        Type: "AnyBoolean",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return undefined
+    })
 
-    Test("anything unary", {
-        Type: "Unary",
-        Operator: "Test Unary Operator",
-        Operand: "Test Expression Operand"
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Unary",
-                Operator: "Test Unary Operator",
-                Operand: "Test Expression Operand"
-            }
-        }])
 
-    Test("anything non-reversible binary", {
-        Type: "Binary",
-        Operator: "Test Non-Reversible Binary Operator",
-        Left: "Test Expression Left",
-        Right: "Test Expression Right"
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Binary",
-                Operator: "Test Non-Reversible Binary Operator",
-                Left: "Test Expression Left",
-                Right: "Test Expression Right"
-            }
-        }])
+    Test("any integer integer", "Test Expression", {
+        Type: "AnyInteger",
+        Name: "Test Name"
+    }, [{
+        "Test Name": "Test Expression"
+    }], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Integer"
+    })
 
-    Test("anything reversible binary", {
-        Type: "Binary",
-        Operator: "Test Reversible Binary Operator",
-        Left: "Test Expression Left",
-        Right: "Test Expression Right"
-    }, {
-            Type: "Any",
-            Name: "Test Name"
-        }, [{
-            "Test Name": {
-                Type: "Binary",
-                Operator: "Test Reversible Binary Operator",
-                Left: "Test Expression Left",
-                Right: "Test Expression Right"
-            }
-        }])
+    Test("any integer boolean", "Test Expression", {
+        Type: "AnyInteger",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Boolean"
+    })
+
+    Test("any integer other non-integer", "Test Expression", {
+        Type: "AnyInteger",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Non-Boolean"
+    })
+
+    Test("any integer undefined", "Test Expression", {
+        Type: "AnyInteger",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return undefined
+    })
 
 
     Test("boolean false boolean false", {

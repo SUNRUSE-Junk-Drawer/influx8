@@ -6,7 +6,9 @@ function ApplyMatchToPattern(match: PatternMatch, pattern: Pattern): VerifiedExp
         case "Boolean":
         case "Integer":
             return pattern
-        case "Any": return match[pattern.Name]
+        case "AnyBoolean":
+        case "AnyInteger":
+            return match[pattern.Name]
         case "Unary": return {
             Type: "Unary",
             Operator: pattern.Operator,

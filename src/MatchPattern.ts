@@ -1,4 +1,5 @@
 /// <reference path="Pattern.ts" />
+/// <reference path="GetReturnedPrimitive.ts" />
 
 function CombinePatternMatches(a: PatternMatch, b: PatternMatch): PatternMatch | undefined {
     const combined: { [name: string]: VerifiedExpression } = {}
@@ -24,7 +25,15 @@ function CombinePatternMatchSets(a: PatternMatch[], b: PatternMatch[]): PatternM
 
 function MatchPattern(expression: VerifiedExpression, pattern: Pattern): PatternMatch[] {
     switch (pattern.Type) {
-        case "Any": {
+        case "AnyBoolean": {
+            if (GetReturnedPrimitive(expression) != "Boolean") return []
+            const output: { [name: string]: VerifiedExpression } = {}
+            output[pattern.Name] = expression
+            return [output]
+        }
+
+        case "AnyInteger": {
+            if (GetReturnedPrimitive(expression) != "Integer") return []
             const output: { [name: string]: VerifiedExpression } = {}
             output[pattern.Name] = expression
             return [output]
