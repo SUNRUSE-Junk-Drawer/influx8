@@ -226,4 +226,27 @@ describe("GetReturnedPrimitive", () => {
         Left: ["Test Left A", "Test Left B", "Test Left C"],
         Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
     }, undefined)
+
+    Test("verified boolean", {
+        Type: "Boolean",
+        Value: "Anything"
+    }, "Boolean")
+
+    Test("verified integer", {
+        Type: "Integer",
+        Value: "Anything"
+    }, "Integer")
+
+    Test("verified binary", {
+        Type: "Binary",
+        Operator: "Test Binary B",
+        Left: "Test Left",
+        Right: "Test Right"
+    }, "Test Binary Type B")
+
+    Test("verified unary", {
+        Type: "Unary",
+        Operator: "Test Unary B",
+        Operand: "Test Operand"
+    }, "Test Unary Type B")
 })

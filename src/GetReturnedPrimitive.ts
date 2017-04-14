@@ -3,7 +3,7 @@
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
 
-function GetReturnedPrimitive(expression: TypecheckedExpression): Primitive | undefined {
+function GetReturnedPrimitive(expression: TypecheckedExpression | VerifiedExpression): Primitive | undefined {
     switch (expression.Type) {
         case "Boolean": return "Boolean"
         case "Integer": return "Integer"
