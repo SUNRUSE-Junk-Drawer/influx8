@@ -593,7 +593,7 @@ describe("ExpressionsEquivalent", () => {
             Right: "Test Pattern Right"
         }, false)
 
-    Test("reversible binary non-reversible binary correct operator", {
+    Test("reversible binary non-reversible binary", {
         Type: "Binary",
         Operator: "Test Non-Reversible Binary Operator",
         Left: "Test Expression Left",
@@ -605,7 +605,7 @@ describe("ExpressionsEquivalent", () => {
             Right: "Test Pattern Right"
         }, false)
 
-    Test("reversible binary reversible binary", {
+    Test("reversible binary reversible binary both combinations recurse", {
         Type: "Binary",
         Operator: "Test Reversible Binary Operator",
         Left: "Test Expression Left",
@@ -618,13 +618,403 @@ describe("ExpressionsEquivalent", () => {
         }, true, (expression, pattern) => {
             switch (expression) {
                 case "Test Expression Left": switch (pattern) {
-                    case "Test Pattern Left": return "Test Matches Left Left"
-                    case "Test Pattern Right": return "Test Matches Left Right"
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
                     default: fail("Unexpected pattern")
                 }
                 case "Test Expression Right": switch (pattern) {
-                    case "Test Pattern Left": return "Test Matches Right Left"
-                    case "Test Pattern Right": return "Test Matches Right Right"
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary no combinations recurse", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only normal orientation recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only swapped orientation recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only left side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only right side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only original orientation of the left side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only swapped orientation of the left side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only original orientation of the right side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only swapped orientation of the right side recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only original orientation of the left side does not recurse", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only swapped orientation of the left side does not recurse", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only original orientation of the right side does not recurse", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only swapped orientation of the right side does not recurse", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, true, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only the right side of both orientations recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return false
+                    case "Test Pattern Right": return true
+                    default: fail("Unexpected pattern")
+                }
+                default: fail("Unexpected expression")
+            }
+        })
+
+    Test("reversible binary reversible binary only the left side of both orientations recurses", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false, (expression, pattern) => {
+            switch (expression) {
+                case "Test Expression Left": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
+                    default: fail("Unexpected pattern")
+                }
+                case "Test Expression Right": switch (pattern) {
+                    case "Test Pattern Left": return true
+                    case "Test Pattern Right": return false
                     default: fail("Unexpected pattern")
                 }
                 default: fail("Unexpected expression")
