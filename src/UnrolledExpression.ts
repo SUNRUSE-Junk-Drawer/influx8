@@ -154,4 +154,11 @@ type GetItemOutOfRangeUnrolledExpression = {
     Of: UnrolledExpression[]
 }
 
-type UnrolledExpression = ConcatenateLeftUnrolledExpression | ConcatenateRightUnrolledExpression | UnknownExpression | BooleanExpression | IntegerExpression | BinaryUnrolledExpression | BinaryInconsistentPluralityUnrolledExpression | UnaryUnrolledExpression | LetStatementUnrolledExpression | LetStatementWithoutIdentifierUnrolledExpression | LetStatementIncorrectIdentifierTypeUnrolledExpression | LetStatementNameNotUniqueUnrolledExpression | ReturnStatementUnrolledExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceUnrolledExpression | ReferenceUndefinedUnrolledExpression | CallUnrolledExpression | CallLambdaExpectedUnrolledExpression | GetItemUnrolledExpression | GetItemOutOfRangeUnrolledExpression
+type ParameterUnrolledExpression = {
+    Type: "Parameter"
+    Name: string
+    Primitive: Primitive
+    Item: number
+}
+
+type UnrolledExpression = ConcatenateLeftUnrolledExpression | ConcatenateRightUnrolledExpression | UnknownExpression | BooleanExpression | IntegerExpression | BinaryUnrolledExpression | BinaryInconsistentPluralityUnrolledExpression | UnaryUnrolledExpression | LetStatementUnrolledExpression | LetStatementWithoutIdentifierUnrolledExpression | LetStatementIncorrectIdentifierTypeUnrolledExpression | LetStatementNameNotUniqueUnrolledExpression | ReturnStatementUnrolledExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceUnrolledExpression | ReferenceUndefinedUnrolledExpression | CallUnrolledExpression | CallLambdaExpectedUnrolledExpression | GetItemUnrolledExpression | GetItemOutOfRangeUnrolledExpression | ParameterUnrolledExpression

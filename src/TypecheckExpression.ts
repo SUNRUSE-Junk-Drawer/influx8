@@ -15,6 +15,7 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
         case "LambdaWithoutIdentifier":
         case "LambdaIncorrectIdentifierType":
         case "LambdaNameNotUnique":
+        case "Parameter":
             return expression
 
         case "Unary": {

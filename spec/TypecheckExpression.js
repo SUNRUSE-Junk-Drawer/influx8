@@ -737,4 +737,16 @@ describe("TypecheckExpression", () => {
                 default: fail("Unexpected expression")
             }
         })
+
+    Test("parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Item: 7,
+        Primitive: "Test Primitive"
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Item: 7,
+            Primitive: "Test Primitive"
+        })
 })
