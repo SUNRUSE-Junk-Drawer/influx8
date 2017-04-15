@@ -19,6 +19,7 @@ describe("Keywords", () => {
     DoesNotMap("+")
     DoesNotMap("!")
     DoesNotMap(":")
+    DoesNotMap("::")
     Maps("and", "Operator")
     Maps("not", "Operator")
     Maps("let", "Statement")

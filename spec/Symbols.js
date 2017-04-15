@@ -19,6 +19,7 @@ describe("Symbols", () => {
     Maps("+", "Operator")
     Maps("!", "Operator")
     Maps(":", "Lambda")
+    Maps("::", "GetItem")
     DoesNotMap("and")
     DoesNotMap("not")
     DoesNotMap("let", "Statement")

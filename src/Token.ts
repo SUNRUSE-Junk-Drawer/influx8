@@ -24,7 +24,7 @@ type IdentifierToken = {
     Value: string
 }
 
-type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator" | "Statement" | "Lambda"
+type SymbolTokenType = "OpeningParenthesis" | "ClosingParenthesis" | "Operator" | "Statement" | "Lambda" | "GetItem"
 
 type SymbolToken = {
     Type: SymbolTokenType
