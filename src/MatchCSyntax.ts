@@ -53,6 +53,8 @@ function MatchCSyntaxPatternMatch<TUnary extends string, TBinary extends string,
                 Arguments: args
             }
         }
+
+        case "Custom": return pattern.Convert(match)
     }
 }
 

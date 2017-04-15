@@ -22,7 +22,13 @@ type FunctionCSyntaxPattern<TFunction extends string> = {
     ResultArguments: Pattern[][]
 }
 
-type CSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = UnaryCSyntaxPattern<TUnary> | BinaryCSyntaxPattern<TBinary> | FunctionCSyntaxPattern<TFunction>
+type CustomCSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = {
+    Type: "Custom"
+    Pattern: Pattern[]
+    Convert(match: PatternMatch): CSyntaxMatch<TUnary, TBinary, TFunction>
+}
+
+type CSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = UnaryCSyntaxPattern<TUnary> | BinaryCSyntaxPattern<TBinary> | FunctionCSyntaxPattern<TFunction> | CustomCSyntaxPattern<TUnary, TBinary, TFunction>
 
 type CSyntax<TUnary extends string, TBinary extends string, TFunction extends string> = {
     UnarySymbolsOrKeywords: {[operator in TUnary]: string},

@@ -521,4 +521,13 @@ describe("MatchCSyntaxPatternMatch", () => {
             default: fail("Unexpected expression length")
         }
     })
+
+    Test("custom", {
+        Type: "Custom",
+        Pattern: "Test Matched Pattern",
+        Convert: (match) => {
+            expect(match).toEqual("Test Match")
+            return "Test Recursed Match"
+        }
+    }, "Test Recursed Match")
 })
