@@ -8,6 +8,7 @@ function ApplyMatchToPattern(match: PatternMatch, pattern: Pattern): VerifiedExp
             return pattern
         case "AnyBoolean":
         case "AnyInteger":
+        case "AnyParameter":
             return match[pattern.Name]
         case "Unary": return {
             Type: "Unary",

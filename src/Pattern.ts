@@ -1,6 +1,7 @@
 /// <reference path="VerifiedExpression.ts" />
 /// <reference path="TypedUnary.ts" />
 /// <reference path="TypedBinary.ts" />
+/// <reference path="Primitive.ts" />
 
 type AnyBooleanPattern = {
     Type: "AnyBoolean"
@@ -9,6 +10,11 @@ type AnyBooleanPattern = {
 
 type AnyIntegerPattern = {
     Type: "AnyInteger"
+    Name: string
+}
+
+type AnyParameterPattern = {
+    Type: "AnyParameter"
     Name: string
 }
 
@@ -35,6 +41,6 @@ type IntegerPattern = {
     Value: number
 }
 
-type Pattern = AnyBooleanPattern | AnyIntegerPattern | BinaryPattern | UnaryPattern | BooleanPattern | IntegerPattern
+type Pattern = AnyBooleanPattern | AnyIntegerPattern | BinaryPattern | UnaryPattern | BooleanPattern | IntegerPattern | AnyParameterPattern
 
 type PatternMatch = { [name: string]: VerifiedExpression }

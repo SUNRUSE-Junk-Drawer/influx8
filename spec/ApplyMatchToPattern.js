@@ -39,6 +39,11 @@ describe("ApplyMatchToPattern", () => {
         Name: "Test Key A"
     }, "Test Value A")
 
+    Test("any parameter", {
+        Type: "AnyParameter",
+        Name: "Test Key A"
+    }, "Test Value A")
+
     Test("unary", {
         Type: "Unary",
         Operator: "Test Operator",

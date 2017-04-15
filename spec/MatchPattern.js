@@ -722,4 +722,83 @@ describe("MatchPattern", () => {
             Left: "Test Pattern Left",
             Right: "Test Pattern Right"
         }, [])
+
+
+    Test("any parameter boolean false", {
+        Type: "Boolean",
+        Value: false
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter boolean true", {
+        Type: "Boolean",
+        Value: true
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter integer zero", {
+        Type: "Integer",
+        Value: 0
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter integer non-zero", {
+        Type: "Integer",
+        Value: 37
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter unary", {
+        Type: "Unary",
+        Operator: "Test Unary Operator",
+        Operand: "Test Expression Operand"
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter non-reversible binary", {
+        Type: "Binary",
+        Operator: "Test Non-Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter reversible binary", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter parameter", {
+        Type: "Parameter",
+        Name: "Test Parameter Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [{
+            "Test Name": {
+                Type: "Parameter",
+                Name: "Test Parameter Name",
+                Primitive: "Test Primitive",
+                Item: 7
+            }
+        }])
 })

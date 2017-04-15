@@ -65,6 +65,13 @@ function MatchPattern(expression: VerifiedExpression, pattern: Pattern): Pattern
             if (!BinaryReversible[expression.Operator]) return firstSet
             return firstSet.concat(CombinePatternMatchSets(MatchPattern(expression.Left, pattern.Right), MatchPattern(expression.Right, pattern.Left)))
         }
+
+        case "AnyParameter": {
+            if (expression.Type != "Parameter") return []
+            const output: { [name: string]: VerifiedExpression } = {}
+            output[pattern.Name] = expression
+            return [output]
+        }
     }
 }
 
