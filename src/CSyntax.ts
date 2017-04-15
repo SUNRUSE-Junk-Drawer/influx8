@@ -25,7 +25,7 @@ type FunctionCSyntaxPattern<TFunction extends string> = {
 type CustomCSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = {
     Type: "Custom"
     Pattern: Pattern[]
-    Convert(match: PatternMatch): CSyntaxMatch<TUnary, TBinary, TFunction>
+    Convert(match: PatternMatch): CSyntaxMatch<TUnary, TBinary, TFunction> | undefined
 }
 
 type CSyntaxPattern<TUnary extends string, TBinary extends string, TFunction extends string> = UnaryCSyntaxPattern<TUnary> | BinaryCSyntaxPattern<TBinary> | FunctionCSyntaxPattern<TFunction> | CustomCSyntaxPattern<TUnary, TBinary, TFunction>
