@@ -66,4 +66,9 @@ type PropertyCSyntaxMatch<TUnary extends string, TBinary extends string, TFuncti
     Of: CSyntaxMatch<TUnary, TBinary, TFunction>
 }
 
-type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction>
+type ReferenceCSyntaxMatch = {
+    Type: "Reference",
+    Name: string
+}
+
+type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction> | ReferenceCSyntaxMatch

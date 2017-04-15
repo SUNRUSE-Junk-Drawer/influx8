@@ -25,5 +25,8 @@ function GenerateCSyntax<TUnary extends string, TBinary extends string, TFunctio
 
         case "Property":
             return `${GenerateCSyntax(expression.Of, syntax)}.${expression.Name}`
+
+        case "Reference":
+            return expression.Name
     }
 }

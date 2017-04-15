@@ -219,4 +219,9 @@ describe("GenerateCSyntax", () => {
         expect(expression).toEqual("Test Of")
         return "Test Recursed Of"
     })
+
+    Test("reference", {
+        Type: "Reference",
+        Name: "Test Name"
+    }, "Test Name")
 })
