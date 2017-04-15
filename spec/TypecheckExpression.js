@@ -742,11 +742,13 @@ describe("TypecheckExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Item: 7,
-        Primitive: "Test Primitive"
+        Primitive: "Test Primitive",
+        Plurality: 10
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Item: 7,
-            Primitive: "Test Primitive"
+            Primitive: "Test Primitive",
+            Plurality: 10
         })
 })
