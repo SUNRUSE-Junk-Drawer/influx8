@@ -270,6 +270,7 @@ describe("GetReturnedPrimitive", () => {
         Type: "Parameter",
         Name: "Test Name",
         Item: 5,
-        Primitive: "Test Primitive"
+        Primitive: "Test Primitive",
+        Plurality: 10
     }, "Test Primitive")
 })

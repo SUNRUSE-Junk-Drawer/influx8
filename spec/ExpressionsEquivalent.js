@@ -1188,35 +1188,41 @@ describe("ExpressionsEquivalent", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 7
+        Item: 7,
+        Plurality: 10
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Primitive: "Test Primitive",
-            Item: 7
+            Item: 7,
+            Plurality: 10
         }, true)
 
     Test("parameter parameter incorrect item", {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 5
+        Item: 5,
+        Plurality: 10
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Primitive: "Test Primitive",
-            Item: 7
+            Item: 7,
+            Plurality: 10
         }, false)
 
     Test("parameter parameter incorrect name", {
         Type: "Parameter",
         Name: "Test Alternative Name",
         Primitive: "Test Primitive",
-        Item: 7
+        Item: 7,
+        Plurality: 10
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Primitive: "Test Primitive",
-            Item: 7
+            Item: 7,
+            Plurality: 10
         }, false)
 })

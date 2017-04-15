@@ -29,6 +29,7 @@ type ParameterVerifiedExpression = {
     Type: "Parameter"
     Name: string
     Item: number
+    Plurality: number
     Primitive: Primitive
 }
 

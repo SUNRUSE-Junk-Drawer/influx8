@@ -316,11 +316,13 @@ describe("VerifyExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 7
+        Item: 7,
+        Plurality: 10
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Primitive: "Test Primitive",
-            Item: 7
+            Item: 7,
+            Plurality: 10
         })
 })
