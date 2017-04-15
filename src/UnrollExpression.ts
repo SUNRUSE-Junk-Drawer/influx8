@@ -222,7 +222,8 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Type: "Parameter",
                 Name: expression.Name,
                 Primitive: expression.Primitive,
-                Item: output.length
+                Item: output.length,
+                Plurality: expression.Plurality
             })
             return output
         }

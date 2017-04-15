@@ -667,7 +667,8 @@ describe("UnrollExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 0
+        Item: 0,
+        Plurality: 1
     }])
 
     Test("parameter plural", {
@@ -679,21 +680,25 @@ describe("UnrollExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 0
+        Item: 0,
+        Plurality: 4
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 1
+        Item: 1,
+        Plurality: 4
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 2
+        Item: 2,
+        Plurality: 4
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Item: 3
+        Item: 3,
+        Plurality: 4
     }])
 })
