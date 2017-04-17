@@ -36,6 +36,8 @@ describe("Precedence", () => {
         it("places \"" + over + "\" over \"" + under + "\"", () => expect(LevelOf(over) < LevelOf(under)).toBeTruthy())
     }
 
+    Order("Call", "Concatenate")
+    Order("Concatenate", "And")
     Order("And", "Not")
     Order("Not", "Or")
     Order("Or", "Equal")
@@ -44,9 +46,7 @@ describe("Precedence", () => {
     SameLevel("Equal", "LessThan")
     SameLevel("Equal", "GreaterThanOrEqualTo")
     SameLevel("Equal", "LessThanOrEqualTo")
-    Order("Equal", "Call")
-    Order("Call", "Concatenate")
-    Order("Concatenate", "Subtract")
+    Order("Equal", "Subtract")
     Order("Subtract", "Add")
     Order("Add", "Multiply")
     Order("Multiply", "Divide")

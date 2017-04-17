@@ -14,6 +14,12 @@ type PrecedenceLevel =
     }
 
 const Precedence: PrecedenceLevel[] = [{
+    Type: "BinaryRightToLeft",
+    Operators: ["Call"]
+}, {
+    Type: "BinaryLeftToRight",
+    Operators: ["Concatenate"]
+}, {
     Type: "BinaryLeftToRight",
     Operators: ["And"]
 }, {
@@ -25,12 +31,6 @@ const Precedence: PrecedenceLevel[] = [{
 }, {
     Type: "BinaryLeftToRight",
     Operators: ["Equal", "NotEqual", "GreaterThan", "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo"]
-}, {
-    Type: "BinaryRightToLeft",
-    Operators: ["Call"]
-}, {
-    Type: "BinaryLeftToRight",
-    Operators: ["Concatenate"]
 }, {
     Type: "BinaryLeftToRight",
     Operators: ["Subtract"]
