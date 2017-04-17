@@ -7,6 +7,7 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
         case "Unknown":
         case "Boolean":
         case "Integer":
+        case "Float":
         case "NextStatementNotFound":
             return expression
 

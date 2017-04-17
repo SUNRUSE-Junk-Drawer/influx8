@@ -7,6 +7,7 @@ function GetReturnedPrimitive(expression: TypecheckedExpression | VerifiedExpres
     switch (expression.Type) {
         case "Boolean": return "Boolean"
         case "Integer": return "Integer"
+        case "Float": return "Float"
         case "Unary": return UnaryReturnTypes[expression.Operator]
         case "Binary": return BinaryReturnTypes[expression.Operator]
         case "Return":

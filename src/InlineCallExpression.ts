@@ -6,6 +6,7 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
     switch (expression.Type) {
         case "Boolean":
         case "Integer":
+        case "Float":
         case "Unknown":
         case "NextStatementNotFound":
         case "Unary":

@@ -47,6 +47,11 @@ type IntegerCSyntaxMatch = {
     Value: number
 }
 
+type FloatCSyntaxMatch = {
+    Type: "Float"
+    Value: number
+}
+
 type UnaryCSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = {
     Type: "Unary"
     Operator: TUnary
@@ -77,4 +82,4 @@ type ReferenceCSyntaxMatch = {
     Name: string
 }
 
-type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction> | ReferenceCSyntaxMatch
+type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | FloatCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction> | ReferenceCSyntaxMatch

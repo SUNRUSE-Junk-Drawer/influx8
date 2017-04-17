@@ -14,6 +14,12 @@ function ExpressionsEquivalent(a: VerifiedExpression, b: VerifiedExpression): bo
             return true
         }
 
+        case "Float": {
+            if (b.Type != "Float") return false
+            if (a.Value != b.Value) return false // TODO: should we consider very close numbers the same due to rounding error?
+            return true;
+        }
+
         case "Unary": {
             if (b.Type != "Unary") return false
             if (a.Operator != b.Operator) return false

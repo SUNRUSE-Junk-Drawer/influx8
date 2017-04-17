@@ -17,6 +17,13 @@ type IntegerToken = {
     Value: number
 }
 
+type FloatToken = {
+    Type: "Float"
+    StartIndex: number
+    EndIndex: number
+    Value: number
+}
+
 type IdentifierToken = {
     Type: "Identifier"
     StartIndex: number
@@ -40,7 +47,7 @@ type UnknownToken = {
     Text: string
 }
 
-type UnparenthesizedToken = BooleanToken | IntegerToken | IdentifierToken | SymbolToken | UnknownToken
+type UnparenthesizedToken = BooleanToken | IntegerToken | FloatToken | IdentifierToken | SymbolToken | UnknownToken
 
 type ParenthesesToken = {
     Type: "Parentheses"

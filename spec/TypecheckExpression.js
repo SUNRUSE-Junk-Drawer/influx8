@@ -91,6 +91,18 @@ describe("TypecheckExpression", () => {
             Value: "Irrelevant"
         })
 
+    Test("float", {
+        Type: "Float",
+        StartIndex: 32,
+        EndIndex: 48,
+        Value: "Irrelevant"
+    }, {
+            Type: "Float",
+            StartIndex: 32,
+            EndIndex: 48,
+            Value: "Irrelevant"
+        })
+
     Test("unknown", {
         Type: "Unknown",
         StartIndex: 32,

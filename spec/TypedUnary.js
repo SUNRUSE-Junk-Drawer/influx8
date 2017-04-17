@@ -19,6 +19,8 @@ describe("TypedUnary", () => {
     MapsArgumentType("Not", "Boolean", "NotBoolean")
     MapsArgumentType("Negate", "Integer", "NegateInteger")
     DoesNotMapArgumentType("Not", "Integer")
+    DoesNotMapArgumentType("Negate", "Float")
+    DoesNotMapArgumentType("Not", "Float")
 
     const UnaryReturnTypes = Namespace.__get__("UnaryReturnTypes")
 

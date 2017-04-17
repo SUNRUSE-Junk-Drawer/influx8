@@ -45,6 +45,21 @@ describe("TypedBinary", () => {
     DoesNotMapArgumentType("Call", "Integer")
     DoesNotMapArgumentType("Concatenate", "Integer")
 
+    DoesNotMapArgumentType("Add", "Float")
+    DoesNotMapArgumentType("Subtract", "Float")
+    DoesNotMapArgumentType("Multiply", "Float")
+    DoesNotMapArgumentType("Divide", "Float")
+    DoesNotMapArgumentType("And", "Float")
+    DoesNotMapArgumentType("Or", "Float")
+    DoesNotMapArgumentType("Equal", "Float")
+    DoesNotMapArgumentType("NotEqual", "Float")
+    DoesNotMapArgumentType("GreaterThan", "Float")
+    DoesNotMapArgumentType("GreaterThanOrEqualTo", "Float")
+    DoesNotMapArgumentType("LessThan", "Float")
+    DoesNotMapArgumentType("LessThanOrEqualTo", "Float")
+    DoesNotMapArgumentType("Call", "Float")
+    DoesNotMapArgumentType("Concatenate", "Float")
+
     const BinaryReturnTypes = Namespace.__get__("BinaryReturnTypes")
 
     function MapsReturnType(operator, primitive) {

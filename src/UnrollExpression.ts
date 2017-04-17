@@ -4,6 +4,7 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
     switch (expression.Type) {
         case "Boolean":
         case "Integer":
+        case "Float":
         case "Unknown":
         case "NextStatementNotFound":
         case "Lambda":

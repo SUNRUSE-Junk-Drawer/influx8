@@ -41,6 +41,13 @@ describe("GetReturnedPrimitive", () => {
         Value: "Anything"
     }, "Integer")
 
+    Test("float", {
+        Type: "Float",
+        StartIndex: 32,
+        EndIndex: 48,
+        Value: "Anything"
+    }, "Float")
+
     Test("binary", {
         Type: "Binary",
         Operator: "Test Binary B",
@@ -252,6 +259,11 @@ describe("GetReturnedPrimitive", () => {
         Type: "Integer",
         Value: "Anything"
     }, "Integer")
+
+    Test("verified float", {
+        Type: "Float",
+        Value: "Anything"
+    }, "Float")
 
     Test("verified binary", {
         Type: "Binary",

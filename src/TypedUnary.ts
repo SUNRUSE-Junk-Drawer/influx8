@@ -10,11 +10,13 @@ const UnaryTypeMappings: {
 } = {
         Not: {
             Boolean: "NotBoolean",
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         },
         Negate: {
             Boolean: undefined,
-            Integer: "NegateInteger"
+            Integer: "NegateInteger",
+            Float: undefined
         }
     }
 

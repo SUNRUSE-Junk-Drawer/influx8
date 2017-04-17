@@ -45,6 +45,46 @@ describe("GenerateCSyntax", () => {
         Value: 37
     }, "37")
 
+    Test("float zero", {
+        Type: "Float",
+        Value: 0
+    }, "0.0")
+
+    Test("float integer", {
+        Type: "Float",
+        Value: 37
+    }, "37.0")
+
+    Test("float integer trailing zeroes", {
+        Type: "Float",
+        Value: 3700
+    }, "3700.0")
+
+    Test("float float", {
+        Type: "Float",
+        Value: 37.4
+    }, "37.4")
+
+    Test("float fractional", {
+        Type: "Float",
+        Value: 0.4
+    }, "0.4")
+
+    Test("float fractional point has trailing zeroes", {
+        Type: "Float",
+        Value: 0.004
+    }, "0.004")
+
+    Test("float float integer has trailing zeroes", {
+        Type: "Float",
+        Value: 3700.4
+    }, "3700.4")
+
+    Test("float float point has trailing zeroes", {
+        Type: "Float",
+        Value: 37.0004
+    }, "37.0004")
+
     Test("unary", {
         Type: "Unary",
         Operator: "Test Unary Operator B",

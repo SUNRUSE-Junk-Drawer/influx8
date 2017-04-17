@@ -6,13 +6,20 @@ function GenerateCSyntax<TUnary extends string, TBinary extends string, TFunctio
         case "Integer":
             return JSON.stringify(expression.Value)
 
+        case "Float": {
+            // TODO: How will NaN/infinity work here?
+            const output = JSON.stringify(expression.Value)
+            if (output.indexOf(".") == -1) return output + ".0"
+            return output
+        }
+
         case "Unary":
             return `(${syntax.UnarySymbolsOrKeywords[expression.Operator]}${GenerateCSyntax(expression.Operand, syntax)})`
 
         case "Binary":
             return `(${GenerateCSyntax(expression.Left, syntax)} ${syntax.BinarySymbolsOrKeywords[expression.Operator]} ${GenerateCSyntax(expression.Right, syntax)})`
 
-        case "Function":
+        case "Function": {
             let output = `${syntax.FunctionSymbolsOrKeywords[expression.Function]}(`
             let first = true
             for (const argument of expression.Arguments) {
@@ -22,6 +29,7 @@ function GenerateCSyntax<TUnary extends string, TBinary extends string, TFunctio
             }
             output += ")"
             return output
+        }
 
         case "Property":
             return `${GenerateCSyntax(expression.Of, syntax)}.${expression.Name}`

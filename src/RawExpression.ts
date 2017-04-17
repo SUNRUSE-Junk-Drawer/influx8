@@ -12,6 +12,13 @@ type IntegerExpression = {
     Value: number
 }
 
+type FloatExpression = {
+    Type: "Float"
+    StartIndex: number
+    EndIndex: number
+    Value: number
+}
+
 type UnknownExpression = {
     Type: "Unknown"
     StartIndex: number
@@ -111,4 +118,4 @@ type GetItemRawExpression = {
     Of: RawExpression
 }
 
-type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression | ReferenceRawExpression | GetItemRawExpression
+type RawExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryRawExpression | UnaryRawExpression | LetStatementRawExpression | LetStatementWithoutIdentifierRawExpression | LetStatementIncorrectIdentifierTypeRawExpression | ReturnStatementRawExpression | NextStatementNotFoundExpression | LambdaRawExpression | LambdaStatementWithoutIdentifierRawExpression | LambdaStatementIncorrectIdentifierTypeRawExpression | ReferenceRawExpression | GetItemRawExpression | FloatExpression

@@ -12,59 +12,73 @@ const BinaryTypeMappings: {
 } = {
         And: {
             Boolean: "AndBoolean",
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         },
         Or: {
             Boolean: "OrBoolean",
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         },
         "Equal": {
             Boolean: "EqualBoolean",
-            Integer: "EqualInteger"
+            Integer: "EqualInteger",
+            Float: undefined
         },
         "NotEqual": {
             Boolean: "NotEqualBoolean",
-            Integer: "NotEqualInteger"
+            Integer: "NotEqualInteger",
+            Float: undefined
         },
         "Add": {
             Boolean: undefined,
-            Integer: "AddInteger"
+            Integer: "AddInteger",
+            Float: undefined
         },
         "Subtract": {
             Boolean: undefined,
-            Integer: "SubtractInteger"
+            Integer: "SubtractInteger",
+            Float: undefined
         },
         "Multiply": {
             Boolean: undefined,
-            Integer: "MultiplyInteger"
+            Integer: "MultiplyInteger",
+            Float: undefined
         },
         "Divide": {
             Boolean: undefined,
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         },
         "GreaterThan": {
             Boolean: undefined,
-            Integer: "GreaterThanInteger"
+            Integer: "GreaterThanInteger",
+            Float: undefined
         },
         "GreaterThanOrEqualTo": {
             Boolean: undefined,
-            Integer: "GreaterThanOrEqualToInteger"
+            Integer: "GreaterThanOrEqualToInteger",
+            Float: undefined
         },
         "LessThan": {
             Boolean: undefined,
-            Integer: "LessThanInteger"
+            Integer: "LessThanInteger",
+            Float: undefined
         },
         "LessThanOrEqualTo": {
             Boolean: undefined,
-            Integer: "LessThanOrEqualToInteger"
+            Integer: "LessThanOrEqualToInteger",
+            Float: undefined
         },
         "Call": { // This should never be emitted, but is in the UntypedBinary type.
             Boolean: undefined,
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         },
         "Concatenate": { // This should never be emitted, but is in the UntypedBinary type.
             Boolean: undefined,
-            Integer: undefined
+            Integer: undefined,
+            Float: undefined
         }
     }
 

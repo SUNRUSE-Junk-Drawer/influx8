@@ -49,6 +49,22 @@ describe("ExpressionsEquivalent", () => {
             Value: false
         }, false)
 
+    Test("boolean false float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, false)
+
+    Test("boolean false float non-zero", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, false)
+
     Test("boolean false unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -121,6 +137,22 @@ describe("ExpressionsEquivalent", () => {
             Value: true
         }, false)
 
+    Test("boolean true float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, false)
+
+    Test("boolean true float non-zero", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, false)
+
     Test("boolean true unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -188,6 +220,22 @@ describe("ExpressionsEquivalent", () => {
     Test("integer zero integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero integer non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Integer",
             Value: 0
@@ -281,6 +329,38 @@ describe("ExpressionsEquivalent", () => {
             Value: 37
         }, false)
 
+    Test("integer non-zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, false)
+
+    Test("integer non-zero float match", {
+        Type: "Float",
+        Value: 37
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, false)
+
+    Test("integer non-zero float greater", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, false)
+
+    Test("integer non-zero float less", {
+        Type: "Float",
+        Value: 33.7
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, false)
+
     Test("integer non-zero unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -321,6 +401,334 @@ describe("ExpressionsEquivalent", () => {
         }, false)
 
 
+    Test("integer zero boolean false", {
+        Type: "Boolean",
+        Value: false
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero boolean true", {
+        Type: "Boolean",
+        Value: true
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero integer zero", {
+        Type: "Integer",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, true)
+
+    Test("integer zero integer non-zero", {
+        Type: "Integer",
+        Value: 37
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero integer non-zero", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero unary", {
+        Type: "Unary",
+        Operator: "Test Unary Operator",
+        Operand: "Test Expression Operand"
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero non-reversible binary", {
+        Type: "Binary",
+        Operator: "Test Non-Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero reversible binary", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+    Test("integer zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, false)
+
+
+    Test("float integer non-zero boolean false", {
+        Type: "Boolean",
+        Value: false
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero boolean true", {
+        Type: "Boolean",
+        Value: true
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero integer zero", {
+        Type: "Integer",
+        Value: 0
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero integer match", {
+        Type: "Integer",
+        Value: 37
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero integer greater", {
+        Type: "Integer",
+        Value: 39
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero integer less", {
+        Type: "Integer",
+        Value: 35
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero float match", {
+        Type: "Float",
+        Value: 37
+    }, {
+            Type: "Float",
+            Value: 37
+        }, true)
+
+    Test("float integer non-zero float greater", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero float less", {
+        Type: "Float",
+        Value: 33.7
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero unary", {
+        Type: "Unary",
+        Operator: "Test Unary Operator",
+        Operand: "Test Expression Operand"
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero non-reversible binary", {
+        Type: "Binary",
+        Operator: "Test Non-Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero reversible binary", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+    Test("float integer non-zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Float",
+            Value: 37
+        }, false)
+
+
+    Test("float decimal non-zero boolean false", {
+        Type: "Boolean",
+        Value: false
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero boolean true", {
+        Type: "Boolean",
+        Value: true
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero integer zero", {
+        Type: "Integer",
+        Value: 0
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero integer match rounded", {
+        Type: "Integer",
+        Value: 37
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero integer greater", {
+        Type: "Integer",
+        Value: 39
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero integer less", {
+        Type: "Integer",
+        Value: 35
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero float match", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, true)
+
+    Test("float decimal non-zero float greater", {
+        Type: "Float",
+        Value: 37.5
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero float less", {
+        Type: "Float",
+        Value: 37.3
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero unary", {
+        Type: "Unary",
+        Operator: "Test Unary Operator",
+        Operand: "Test Expression Operand"
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero non-reversible binary", {
+        Type: "Binary",
+        Operator: "Test Non-Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero reversible binary", {
+        Type: "Binary",
+        Operator: "Test Reversible Binary Operator",
+        Left: "Test Expression Left",
+        Right: "Test Expression Right"
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+    Test("float decimal non-zero parameter", {
+        Type: "Parameter",
+        Name: "Test Name",
+        Primitive: "Test Primitive",
+        Item: 7
+    }, {
+            Type: "Float",
+            Value: 37.4
+        }, false)
+
+
     Test("unary boolean false", {
         Type: "Boolean",
         Value: false
@@ -350,6 +758,24 @@ describe("ExpressionsEquivalent", () => {
 
     Test("unary integer non-zero", {
         Type: "Integer",
+        Value: 37
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, false)
+
+    Test("unary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, false)
+
+    Test("unary float non-zero", {
+        Type: "Float",
         Value: 37
     }, {
             Type: "Unary",
@@ -462,6 +888,26 @@ describe("ExpressionsEquivalent", () => {
     Test("non-reversible binary integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+    Test("non-reversible binary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+    Test("non-reversible binary float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Binary",
             Operator: "Test Non-Reversible Binary Operator",
@@ -638,6 +1084,26 @@ describe("ExpressionsEquivalent", () => {
     Test("reversible binary integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+    Test("reversible binary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, false)
+
+    Test("reversible binary float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Binary",
             Operator: "Test Reversible Binary Operator",
@@ -1142,6 +1608,26 @@ describe("ExpressionsEquivalent", () => {
     Test("parameter integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Parameter",
+            Name: "Test Name",
+            Primitive: "Test Primitive",
+            Item: 7
+        }, false)
+
+    Test("parameter float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Parameter",
             Name: "Test Name",

@@ -4,9 +4,10 @@
 /// <reference path="ParseSymbolTokens.ts" />
 /// <reference path="ParseIdentifierToken.ts" />
 /// <reference path="ParseKeywordToken.ts" />
+/// <reference path="ParseFloatToken.ts" />
 
 function ParseTokens(token: UntypedToken): UnparenthesizedToken[] {
-    const primitive = ParseBooleanToken(token) || ParseIntegerToken(token) || ParseKeywordToken(token) || ParseIdentifierToken(token)
+    const primitive = ParseBooleanToken(token) || ParseIntegerToken(token) || ParseFloatToken(token) || ParseKeywordToken(token) || ParseIdentifierToken(token)
     if (primitive) return [primitive]
     return ParseSymbolTokens(token) || [{
         Type: "Unknown",

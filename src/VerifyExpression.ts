@@ -15,6 +15,11 @@ function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression
             Value: expression.Value
         }
 
+        case "Float": return {
+            Type: "Float",
+            Value: expression.Value
+        }
+
         case "Unary": {
             const operand = VerifyExpression(expression.Operand)
             if (!operand) return undefined

@@ -19,6 +19,14 @@ describe("ParseTokens", () => {
         }
     })
 
+    Namespace.__set__("ParseFloatToken", (token) => {
+        expect(token.StartIndex).toEqual(32)
+        switch (token.Text) {
+            case "Matches Float": return "Matched Float"
+            case "Matches Float And Symbol": return "Matched Float Over Symbol"
+        }
+    })
+
     Namespace.__set__("ParseIdentifierToken", (token) => {
         expect(token.StartIndex).toEqual(32)
         switch (token.Text) {
@@ -66,11 +74,13 @@ describe("ParseTokens", () => {
 
     Test("integer", "Matches Integer", ["Matched Integer"])
     Test("boolean", "Matches Boolean", ["Matched Boolean"])
+    Test("float", "Matches Float", ["Matched Float"])
     Test("identifier", "Matches Identifier", ["Matched Identifier"])
     Test("symbol", "Matches Symbol", "Matched Symbol")
     Test("integer over symbol", "Matches Integer And Symbol", ["Matched Integer Over Symbol"])
     Test("boolean over symbol", "Matches Boolean And Symbol", ["Matched Boolean Over Symbol"])
     Test("boolean over identifier", "Matches Boolean And Identifier", ["Matched Boolean Over Identifier"])
+    Test("float over symbol", "Matches Float And Symbol", ["Matched Float Over Symbol"])
     Test("identifier over symbol", "Matches Identifier And Symbol", ["Matched Identifier Over Symbol"])
     Test("keyword over identifier", "Matches Keyword And Identifier", ["Matched Keyword Over Identifier"])
     Test("keyword over symbol", "Matches Keyword And Symbol", ["Matched Keyword Over Symbol"])

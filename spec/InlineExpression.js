@@ -66,6 +66,18 @@ describe("InlineExpression", () => {
             Value: "anything"
         })
 
+    Test("float", {
+        Type: "Float",
+        StartIndex: 32,
+        EndIndex: 48,
+        Value: "anything"
+    }, {
+            Type: "Float",
+            StartIndex: 32,
+            EndIndex: 48,
+            Value: "anything"
+        })
+
     Test("next statement not found", {
         Type: "NextStatementNotFound",
         Tokens: "Anything"

@@ -73,6 +73,7 @@ function MatchCSyntaxConstant<TUnary extends string, TBinary extends string, TFu
     switch (onlyExpression.Type) {
         case "Boolean":
         case "Integer":
+        case "Float":
             return onlyExpression
 
         case "Unary":

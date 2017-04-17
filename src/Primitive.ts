@@ -1,1 +1,1 @@
-type Primitive = "Integer" | "Boolean"
+type Primitive = "Integer" | "Boolean" | "Float"

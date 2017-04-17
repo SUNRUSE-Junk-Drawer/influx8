@@ -12,6 +12,11 @@ type IntegerVerifiedExpression = {
     Value: number
 }
 
+type FloatVerifiedExpression = {
+    Type: "Float"
+    Value: number
+}
+
 type UnaryVerifiedExpression = {
     Type: "Unary"
     Operator: TypedUnary
@@ -33,4 +38,4 @@ type ParameterVerifiedExpression = {
     Primitive: Primitive
 }
 
-type VerifiedExpression = BooleanVerifiedExpression | IntegerVerifiedExpression | UnaryVerifiedExpression | BinaryVerifiedExpression | ParameterVerifiedExpression
+type VerifiedExpression = BooleanVerifiedExpression | IntegerVerifiedExpression | FloatVerifiedExpression | UnaryVerifiedExpression | BinaryVerifiedExpression | ParameterVerifiedExpression

@@ -9,6 +9,7 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
         case "Unknown":
         case "Boolean":
         case "Integer":
+        case "Float":
         case "NextStatementNotFound":
         case "ReferenceUndefined":
         case "Lambda":
