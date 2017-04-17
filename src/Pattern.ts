@@ -13,6 +13,11 @@ type AnyIntegerPattern = {
     Name: string
 }
 
+type AnyFloatPattern = {
+    Type: "AnyFloat"
+    Name: string
+}
+
 type AnyParameterPattern = {
     Type: "AnyParameter"
     Name: string
@@ -41,6 +46,6 @@ type IntegerPattern = {
     Value: number
 }
 
-type Pattern = AnyBooleanPattern | AnyIntegerPattern | BinaryPattern | UnaryPattern | BooleanPattern | IntegerPattern | AnyParameterPattern
+type Pattern = AnyBooleanPattern | AnyIntegerPattern | AnyFloatPattern | BinaryPattern | UnaryPattern | BooleanPattern | IntegerPattern | AnyParameterPattern
 
 type PatternMatch = { [name: string]: VerifiedExpression }

@@ -36,6 +36,14 @@ describe("MatchPattern", () => {
         return "Integer"
     })
 
+    Test("any boolean float", "Test Expression", {
+        Type: "AnyBoolean",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Float"
+    })
+
     Test("any boolean other non-boolean", "Test Expression", {
         Type: "AnyBoolean",
         Name: "Test Name"
@@ -71,6 +79,14 @@ describe("MatchPattern", () => {
         return "Boolean"
     })
 
+    Test("any integer float", "Test Expression", {
+        Type: "AnyInteger",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Float"
+    })
+
     Test("any integer other non-integer", "Test Expression", {
         Type: "AnyInteger",
         Name: "Test Name"
@@ -81,6 +97,49 @@ describe("MatchPattern", () => {
 
     Test("any integer undefined", "Test Expression", {
         Type: "AnyInteger",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return undefined
+    })
+
+
+    Test("any float integer", "Test Expression", {
+        Type: "AnyFloat",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Integer"
+    })
+
+    Test("any float boolean", "Test Expression", {
+        Type: "AnyFloat",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Boolean"
+    })
+
+    Test("any float float", "Test Expression", {
+        Type: "AnyFloat",
+        Name: "Test Name"
+    }, [{
+        "Test Name": "Test Expression"
+    }], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Float"
+    })
+
+    Test("any float other non-float", "Test Expression", {
+        Type: "AnyFloat",
+        Name: "Test Name"
+    }, [], undefined, undefined, (expression) => {
+        expect(expression).toEqual("Test Expression")
+        return "Non-Boolean"
+    })
+
+    Test("any float undefined", "Test Expression", {
+        Type: "AnyFloat",
         Name: "Test Name"
     }, [], undefined, undefined, (expression) => {
         expect(expression).toEqual("Test Expression")
@@ -115,6 +174,22 @@ describe("MatchPattern", () => {
     Test("boolean false integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, [])
+
+    Test("boolean false float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Boolean",
+            Value: false
+        }, [])
+
+    Test("boolean false float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Boolean",
             Value: false
@@ -192,6 +267,22 @@ describe("MatchPattern", () => {
             Value: true
         }, [])
 
+    Test("boolean true float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, [])
+
+    Test("boolean true float non-zero", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Boolean",
+            Value: true
+        }, [])
+
     Test("boolean true unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -259,6 +350,22 @@ describe("MatchPattern", () => {
     Test("integer zero integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, [])
+
+    Test("integer zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 0
+        }, [])
+
+    Test("integer zero float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Integer",
             Value: 0
@@ -352,6 +459,38 @@ describe("MatchPattern", () => {
             Value: 37
         }, [])
 
+    Test("integer non-zero float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, [])
+
+    Test("integer non-zero float match", {
+        Type: "Float",
+        Value: 37
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, [])
+
+    Test("integer non-zero float greater", {
+        Type: "Integer",
+        Value: 37.1
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, [])
+
+    Test("integer non-zero float less", {
+        Type: "Float",
+        Value: 37.8
+    }, {
+            Type: "Integer",
+            Value: 37
+        }, [])
+
     Test("integer non-zero unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -422,6 +561,24 @@ describe("MatchPattern", () => {
     Test("unary integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, [])
+
+    Test("unary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Unary",
+            Operator: "Test Unary Operator",
+            Operand: "Test Pattern Operand"
+        }, [])
+
+    Test("unary float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Unary",
             Operator: "Test Unary Operator",
@@ -519,6 +676,26 @@ describe("MatchPattern", () => {
     Test("non-reversible binary integer non-zero", {
         Type: "Integer",
         Value: 37
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
+    Test("non-reversible binary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Binary",
+            Operator: "Test Non-Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
+    Test("non-reversible binary float non-zero", {
+        Type: "Float",
+        Value: 37.4
     }, {
             Type: "Binary",
             Operator: "Test Non-Reversible Binary Operator",
@@ -640,6 +817,26 @@ describe("MatchPattern", () => {
             Right: "Test Pattern Right"
         }, [])
 
+    Test("reversible binary float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
+    Test("reversible binary float non-zero", {
+        Type: "Float",
+        Value: 37.4
+    }, {
+            Type: "Binary",
+            Operator: "Test Reversible Binary Operator",
+            Left: "Test Pattern Left",
+            Right: "Test Pattern Right"
+        }, [])
+
     Test("reversible binary unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
@@ -750,6 +947,22 @@ describe("MatchPattern", () => {
 
     Test("any parameter integer non-zero", {
         Type: "Integer",
+        Value: 37
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter float zero", {
+        Type: "Float",
+        Value: 0
+    }, {
+            Type: "AnyParameter",
+            Name: "Test Name"
+        }, [])
+
+    Test("any parameter float non-zero", {
+        Type: "Float",
         Value: 37
     }, {
             Type: "AnyParameter",

@@ -40,6 +40,13 @@ function MatchPattern(expression: VerifiedExpression, pattern: Pattern): Pattern
             return [output]
         }
 
+        case "AnyFloat": {
+            if (GetReturnedPrimitive(expression) != "Float") return []
+            const output: { [name: string]: VerifiedExpression } = {}
+            output[pattern.Name] = expression
+            return [output]
+        }
+
         case "Boolean": {
             if (expression.Type != "Boolean") return []
             if (expression.Value != pattern.Value) return []
