@@ -9,6 +9,8 @@ type GLSLBinary =
     "AndBool" | "OrBool"
     | "AddInt" | "AddIVec2" | "AddIVec3" | "AddIVec4"
     | "AddFloat" | "AddVec2" | "AddVec3" | "AddVec4"
+    | "SubtractInt" | "SubtractIVec2" | "SubtractIVec3" | "SubtractIVec4"
+    | "SubtractFloat" | "SubtractVec2" | "SubtractVec3" | "SubtractVec4"
 
 type GLSLFunction =
     "NotBVec2" | "NotBVec3" | "NotBVec4"
@@ -40,7 +42,15 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         AddFloat: "+",
         AddVec2: "+",
         AddVec3: "+",
-        AddVec4: "+"
+        AddVec4: "+",
+        SubtractInt: "-",
+        SubtractIVec2: "-",
+        SubtractIVec3: "-",
+        SubtractIVec4: "-",
+        SubtractFloat: "-",
+        SubtractVec2: "-",
+        SubtractVec3: "-",
+        SubtractVec4: "-"
     },
     FunctionSymbolsOrKeywords: {
         NotBVec2: "not",
@@ -446,6 +456,406 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         Pattern: [{
             Type: "Binary",
             Operator: "AddFloat",
+            Left: { Type: "AnyFloat", Name: "X" },
+            Right: { Type: "AnyFloat", Name: "Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "X" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Z" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A W" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }, { Type: "AnyInteger", Name: "A Z" }, { Type: "AnyInteger", Name: "A W" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }, { Type: "AnyInteger", Name: "B Z" }, { Type: "AnyInteger", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Z" },
+            Right: { Type: "AnyInteger", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A W" },
+            Right: { Type: "AnyInteger", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }, { Type: "AnyInteger", Name: "A Z" }, { Type: "AnyInteger", Name: "A W" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }, { Type: "AnyInteger", Name: "B Z" }, { Type: "AnyInteger", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Z" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }, { Type: "AnyInteger", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }, { Type: "AnyInteger", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Z" },
+            Right: { Type: "AnyInteger", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }, { Type: "AnyInteger", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }, { Type: "AnyInteger", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractIVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A X" },
+            Right: { Type: "AnyInteger", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "A Y" },
+            Right: { Type: "AnyInteger", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "A X" }, { Type: "AnyInteger", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "B X" }, { Type: "AnyInteger", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractInt",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractInteger",
+            Left: { Type: "AnyInteger", Name: "X" },
+            Right: { Type: "AnyInteger", Name: "Y" }
+        }],
+        ResultLeft: [{ Type: "AnyInteger", Name: "X" }],
+        ResultRight: [{ Type: "AnyInteger", Name: "Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }, { Type: "AnyFloat", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A W" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }, { Type: "AnyFloat", Name: "A W" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A W" },
+            Right: { Type: "AnyFloat", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }, { Type: "AnyFloat", Name: "A W" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }, { Type: "AnyFloat", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "SubtractFloat",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "SubtractFloat",
             Left: { Type: "AnyFloat", Name: "X" },
             Right: { Type: "AnyFloat", Name: "Y" }
         }],
