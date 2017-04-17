@@ -11,6 +11,8 @@ type GLSLFunction =
     | "BVec2" | "BVec3" | "BVec4"
     | "AnyBVec3" | "AnyBVec4"
     | "AllBVec3" | "AllBVec4"
+    | "IVec2" | "IVec3" | "IVec4"
+    | "Vec2" | "Vec3" | "Vec4"
 
 const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
     UnarySymbolsOrKeywords: {
@@ -30,7 +32,13 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         AnyBVec3: "any",
         AnyBVec4: "any",
         AllBVec3: "all",
-        AllBVec4: "all"
+        AllBVec4: "all",
+        IVec2: "ivec2",
+        IVec3: "ivec3",
+        IVec4: "ivec4",
+        Vec2: "vec2",
+        Vec3: "vec3",
+        Vec4: "vec4"
     },
     Patterns: [{
         Type: "Custom",
@@ -414,6 +422,210 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         ResultArguments: [
             [{ Type: "AnyBoolean", Name: "A" }],
             [{ Type: "AnyBoolean", Name: "B" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec4",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec4",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "B"
+        }, {
+            Type: "AnyInteger",
+            Name: "C"
+        }, {
+            Type: "AnyInteger",
+            Name: "D"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }],
+            [{ Type: "AnyInteger", Name: "B" }],
+            [{ Type: "AnyInteger", Name: "C" }],
+            [{ Type: "AnyInteger", Name: "D" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec3",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec3",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "B"
+        }, {
+            Type: "AnyInteger",
+            Name: "C"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }],
+            [{ Type: "AnyInteger", Name: "B" }],
+            [{ Type: "AnyInteger", Name: "C" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec2",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "IVec2",
+        Pattern: [{
+            Type: "AnyInteger",
+            Name: "A"
+        }, {
+            Type: "AnyInteger",
+            Name: "B"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyInteger", Name: "A" }],
+            [{ Type: "AnyInteger", Name: "B" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec4",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec4",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "B"
+        }, {
+            Type: "AnyFloat",
+            Name: "C"
+        }, {
+            Type: "AnyFloat",
+            Name: "D"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }],
+            [{ Type: "AnyFloat", Name: "B" }],
+            [{ Type: "AnyFloat", Name: "C" }],
+            [{ Type: "AnyFloat", Name: "D" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec3",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec3",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "B"
+        }, {
+            Type: "AnyFloat",
+            Name: "C"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }],
+            [{ Type: "AnyFloat", Name: "B" }],
+            [{ Type: "AnyFloat", Name: "C" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec2",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "A"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }]
+        ]
+    }, {
+        Type: "Function",
+        Function: "Vec2",
+        Pattern: [{
+            Type: "AnyFloat",
+            Name: "A"
+        }, {
+            Type: "AnyFloat",
+            Name: "B"
+        }],
+        ResultArguments: [
+            [{ Type: "AnyFloat", Name: "A" }],
+            [{ Type: "AnyFloat", Name: "B" }]
         ]
     }]
 }
