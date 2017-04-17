@@ -13,6 +13,7 @@ type GLSLBinary =
     | "SubtractFloat" | "SubtractVec2" | "SubtractVec3" | "SubtractVec4"
     | "MultiplyInt" | "MultiplyIVec2" | "MultiplyIVec3" | "MultiplyIVec4"
     | "MultiplyFloat" | "MultiplyVec2" | "MultiplyVec3" | "MultiplyVec4"
+    | "DivideFloat" | "DivideVec2" | "DivideVec3" | "DivideVec4"
 
 type GLSLFunction =
     "NotBVec2" | "NotBVec3" | "NotBVec4"
@@ -60,7 +61,11 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         MultiplyFloat: "*",
         MultiplyVec2: "*",
         MultiplyVec3: "*",
-        MultiplyVec4: "*"
+        MultiplyVec4: "*",
+        DivideFloat: "/",
+        DivideVec2: "/",
+        DivideVec3: "/",
+        DivideVec4: "/"
     },
     FunctionSymbolsOrKeywords: {
         NotBVec2: "not",
@@ -1140,6 +1145,206 @@ const GLSLCSyntax: CSyntax<GLSLUnary, GLSLBinary, GLSLFunction> = {
         Pattern: [{
             Type: "Binary",
             Operator: "SubtractFloat",
+            Left: { Type: "AnyFloat", Name: "X" },
+            Right: { Type: "AnyFloat", Name: "Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "X" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }, { Type: "AnyFloat", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A W" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }, { Type: "AnyFloat", Name: "A W" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec4",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A W" },
+            Right: { Type: "AnyFloat", Name: "B W" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }, { Type: "AnyFloat", Name: "A W" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }, { Type: "AnyFloat", Name: "B W" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec3",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Z" },
+            Right: { Type: "AnyFloat", Name: "B Z" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }, { Type: "AnyFloat", Name: "A Z" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }, { Type: "AnyFloat", Name: "B Z" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideVec2",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A X" },
+            Right: { Type: "AnyFloat", Name: "B X" }
+        }, {
+            Type: "Binary",
+            Operator: "DivideFloat",
+            Left: { Type: "AnyFloat", Name: "A Y" },
+            Right: { Type: "AnyFloat", Name: "B Y" }
+        }],
+        ResultLeft: [{ Type: "AnyFloat", Name: "A X" }, { Type: "AnyFloat", Name: "A Y" }],
+        ResultRight: [{ Type: "AnyFloat", Name: "B X" }, { Type: "AnyFloat", Name: "B Y" }]
+    }, {
+        Type: "Binary",
+        Operator: "DivideFloat",
+        Pattern: [{
+            Type: "Binary",
+            Operator: "DivideFloat",
             Left: { Type: "AnyFloat", Name: "X" },
             Right: { Type: "AnyFloat", Name: "Y" }
         }],
