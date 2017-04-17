@@ -9,3 +9,4 @@
 /// <reference path="MatchCSyntax.ts" />
 /// <reference path="GenerateCSyntax.ts" />
 /// <reference path="Compile.ts" />
+/// <reference path="GLSLCSyntax.ts" />
