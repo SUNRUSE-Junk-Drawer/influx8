@@ -4,6 +4,7 @@
 type TypedBinary =
     "AndBoolean" | "OrBoolean" | "EqualBoolean" | "NotEqualBoolean"
     | "AddInteger" | "SubtractInteger" | "MultiplyInteger" | "EqualInteger" | "NotEqualInteger" | "GreaterThanInteger" | "LessThanInteger" | "GreaterThanOrEqualToInteger" | "LessThanOrEqualToInteger"
+    | "AddFloat" | "SubtractFloat" | "MultiplyFloat" | "DivideFloat" | "GreaterThanFloat" | "LessThanFloat"
 
 const BinaryTypeMappings: {
     [untyped in UntypedBinary]: {
@@ -33,27 +34,27 @@ const BinaryTypeMappings: {
         "Add": {
             Boolean: undefined,
             Integer: "AddInteger",
-            Float: undefined
+            Float: "AddFloat"
         },
         "Subtract": {
             Boolean: undefined,
             Integer: "SubtractInteger",
-            Float: undefined
+            Float: "SubtractFloat"
         },
         "Multiply": {
             Boolean: undefined,
             Integer: "MultiplyInteger",
-            Float: undefined
+            Float: "MultiplyFloat"
         },
         "Divide": {
             Boolean: undefined,
             Integer: undefined,
-            Float: undefined
+            Float: "DivideFloat"
         },
         "GreaterThan": {
             Boolean: undefined,
             Integer: "GreaterThanInteger",
-            Float: undefined
+            Float: "GreaterThanFloat"
         },
         "GreaterThanOrEqualTo": {
             Boolean: undefined,
@@ -63,7 +64,7 @@ const BinaryTypeMappings: {
         "LessThan": {
             Boolean: undefined,
             Integer: "LessThanInteger",
-            Float: undefined
+            Float: "LessThanFloat"
         },
         "LessThanOrEqualTo": {
             Boolean: undefined,
@@ -95,7 +96,13 @@ const BinaryReturnTypes: {[operator in TypedBinary]: Primitive} = {
     GreaterThanInteger: "Boolean",
     GreaterThanOrEqualToInteger: "Boolean",
     LessThanInteger: "Boolean",
-    LessThanOrEqualToInteger: "Boolean"
+    LessThanOrEqualToInteger: "Boolean",
+    AddFloat: "Float",
+    SubtractFloat: "Float",
+    MultiplyFloat: "Float",
+    DivideFloat: "Float",
+    GreaterThanFloat: "Boolean",
+    LessThanFloat: "Boolean"
 }
 
 const BinaryReversible: {[operator in TypedBinary]: boolean} = {
@@ -111,5 +118,11 @@ const BinaryReversible: {[operator in TypedBinary]: boolean} = {
     GreaterThanInteger: false,
     GreaterThanOrEqualToInteger: false,
     LessThanInteger: false,
-    LessThanOrEqualToInteger: false
+    LessThanOrEqualToInteger: false,
+    AddFloat: true,
+    SubtractFloat: false,
+    MultiplyFloat: true,
+    DivideFloat: false,
+    GreaterThanFloat: false,
+    LessThanFloat: false
 }
