@@ -9,10 +9,11 @@ describe("ExpressionsEquivalent", () => {
         "Test Alternative Reversible Binary Operator": true
     })
 
-    function Test(description, expression, pattern, output, expressionsEquivalent, getReturnedPrimitive) {
+    function Test(description, expression, pattern, output, expressionsEquivalent, getReturnedPrimitive, floatsEquivalent) {
         it(description, () => {
             Namespace.__set__("ExpressionsEquivalent", expressionsEquivalent || fail)
             Namespace.__set__("GetReturnedPrimitive", getReturnedPrimitive || fail)
+            Namespace.__set__("FloatsEquivalent", floatsEquivalent || fail)
             expect(ExpressionsEquivalent(expression, pattern)).toEqual(output)
         })
     }
@@ -543,7 +544,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(0)
+            expect(b).toEqual(37)
+            return "Test Compared Floats"
+        })
 
     Test("float integer non-zero float match", {
         Type: "Float",
@@ -551,7 +556,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37
-        }, true)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(37)
+            expect(b).toEqual(37)
+            return "Test Compared Floats"
+        })
 
     Test("float integer non-zero float greater", {
         Type: "Float",
@@ -559,7 +568,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(37.4)
+            expect(b).toEqual(37)
+            return "Test Compared Floats"
+        })
 
     Test("float integer non-zero float less", {
         Type: "Float",
@@ -567,7 +580,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(33.7)
+            expect(b).toEqual(37)
+            return "Test Compared Floats"
+        })
 
     Test("float integer non-zero unary", {
         Type: "Unary",
@@ -663,7 +680,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37.4
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(0)
+            expect(b).toEqual(37.4)
+            return "Test Compared Floats"
+        })
 
     Test("float decimal non-zero float match", {
         Type: "Float",
@@ -671,7 +692,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37.4
-        }, true)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(37.4)
+            expect(b).toEqual(37.4)
+            return "Test Compared Floats"
+        })
 
     Test("float decimal non-zero float greater", {
         Type: "Float",
@@ -679,7 +704,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37.4
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(37.5)
+            expect(b).toEqual(37.4)
+            return "Test Compared Floats"
+        })
 
     Test("float decimal non-zero float less", {
         Type: "Float",
@@ -687,7 +716,11 @@ describe("ExpressionsEquivalent", () => {
     }, {
             Type: "Float",
             Value: 37.4
-        }, false)
+        }, "Test Compared Floats", undefined, undefined, (a, b) => {
+            expect(a).toEqual(37.3)
+            expect(b).toEqual(37.4)
+            return "Test Compared Floats"
+        })
 
     Test("float decimal non-zero unary", {
         Type: "Unary",

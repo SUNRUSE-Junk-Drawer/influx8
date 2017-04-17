@@ -1,4 +1,5 @@
 /// <reference path="VerifiedExpression.ts" />
+/// <reference path="FloatsEquivalent.ts" />
 
 function ExpressionsEquivalent(a: VerifiedExpression, b: VerifiedExpression): boolean {
     switch (a.Type) {
@@ -16,8 +17,7 @@ function ExpressionsEquivalent(a: VerifiedExpression, b: VerifiedExpression): bo
 
         case "Float": {
             if (b.Type != "Float") return false
-            if (a.Value != b.Value) return false // TODO: should we consider very close numbers the same due to rounding error?
-            return true;
+            return FloatsEquivalent(a.Value, b.Value)
         }
 
         case "Unary": {
