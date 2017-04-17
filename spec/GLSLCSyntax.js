@@ -1888,4 +1888,14 @@ describe("GLSLCSyntax", () => {
     Test("int float int int", "testinta, testfloata, testinta, testinta", undefined)
     Test("int int float int", "testinta, testinta, testfloata, testinta", undefined)
     Test("int int int float", "testinta, testinta, testinta, testfloata", undefined)
+
+    Test("NegateVec4", "(-testfloata), (-testfloatb), (-testfloatc), (-testfloatd)", "(-vec4(testfloata, testfloatb, testfloatc, testfloatd))")
+    Test("NegateVec3", "(-testfloata), (-testfloatb), (-testfloatc)", "(-vec3(testfloata, testfloatb, testfloatc))")
+    Test("NegateVec2", "(-testfloata), (-testfloatb)", "(-vec2(testfloata, testfloatb))")
+    Test("NegateFloat", "-testfloata", "(-testfloata)")
+
+    Test("NegateIVec4", "(-testinta), (-testintb), (-testintc), (-testintd)", "(-ivec4(testinta, testintb, testintc, testintd))")
+    Test("NegateIVec3", "(-testinta), (-testintb), (-testintc)", "(-ivec3(testinta, testintb, testintc))")
+    Test("NegateIVec2", "(-testinta), (-testintb)", "(-ivec2(testinta, testintb))")
+    Test("NegateInt", "-testinta", "(-testinta)")
 })
