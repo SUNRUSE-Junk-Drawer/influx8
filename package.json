@@ -1,6 +1,6 @@
 {
   "name": "@sunruse/influx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "A simple programming language offering basic functional programming and vector mathematics which compile to JavaScript and GLSL.",
   "main": "index.js",
