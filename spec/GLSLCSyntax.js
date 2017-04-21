@@ -2091,4 +2091,10 @@ describe("GLSLCSyntax", () => {
     Test("bool xxx", "testboola::0, testboola::0, testboola::0", "bvec3(testboola)")
     Test("bool xxxx", "testboola::0, testboola::0, testboola::0, testboola::0", "bvec4(testboola)")
     Test("bool xxxxx", "testboola::0, testboola::0, testboola::0, testboola::0, testboola::0", undefined)
+
+    Test("BooleanTrue", "true", "true")
+    Test("BooleanFalse", "false", "false")
+    Test("Integer", "3548", "3548")
+    Test("Float", "35.48", "35.48")
+    Test("FloatInteger", "35.0", "35.0")
 })
