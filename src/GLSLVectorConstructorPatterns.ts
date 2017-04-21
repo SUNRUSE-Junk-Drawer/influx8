@@ -9,6 +9,25 @@ const GLSLVectorConstructorPatterns: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLF
         Name: "A"
     }, {
         Type: "AnyBoolean",
+        Name: "A"
+    }, {
+        Type: "AnyBoolean",
+        Name: "A"
+    }, {
+        Type: "AnyBoolean",
+        Name: "A"
+    }],
+    ResultArguments: [
+        [{ Type: "AnyBoolean", Name: "A" }]
+    ]
+}, {
+    Type: "Function",
+    Function: "BVec4",
+    Pattern: [{
+        Type: "AnyBoolean",
+        Name: "A"
+    }, {
+        Type: "AnyBoolean",
         Name: "B"
     }, {
         Type: "AnyBoolean",
