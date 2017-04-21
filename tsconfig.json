@@ -1,6 +1,6 @@
 {
     "files": [
-        "src/Exports.ts"
+        "src/Compiler/Exports.ts"
     ],
     "compilerOptions": {
         "allowJs": false,
