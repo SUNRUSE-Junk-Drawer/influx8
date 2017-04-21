@@ -36,5 +36,11 @@ function GenerateCSyntax<TUnary extends string, TBinary extends string, TFunctio
 
         case "Reference":
             return expression.Name
+
+        case "Block": {
+            const recursed: string[] = []
+            for (const item of expression.Contents) recursed.push(GenerateCSyntax(item, syntax))
+            return `${expression.Opener}${recursed.join(expression.Delimiter)}${expression.Closer}`
+        }
     }
 }

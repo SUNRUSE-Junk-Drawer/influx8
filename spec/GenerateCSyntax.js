@@ -264,4 +264,103 @@ describe("GenerateCSyntax", () => {
         Type: "Reference",
         Name: "Test Name"
     }, "Test Name")
+
+    Test("block empty", {
+        Type: "Block",
+        Opener: "Test Opener",
+        Delimiter: "Test Delimiter",
+        Closer: "Test Closer",
+        Contents: []
+    }, "Test OpenerTest Closer")
+
+    Test("block one item", {
+        Type: "Block",
+        Opener: "Test Opener",
+        Delimiter: "Test Delimiter",
+        Closer: "Test Closer",
+        Contents: ["Test Item"]
+    }, "Test OpenerTest Recursed ItemTest Closer", (expression, syntax) => {
+        expect(syntax).toEqual({
+            UnarySymbolsOrKeywords: {
+                "Test Unary Operator A": "Test Unary Keyword Or Symbol A",
+                "Test Unary Operator B": "Test Unary Keyword Or Symbol B",
+                "Test Unary Operator C": "Test Unary Keyword Or Symbol C"
+            },
+            BinarySymbolsOrKeywords: {
+                "Test Binary Operator A": "Test Binary Keyword Or Symbol A",
+                "Test Binary Operator B": "Test Binary Keyword Or Symbol B",
+                "Test Binary Operator C": "Test Binary Keyword Or Symbol C"
+            },
+            FunctionSymbolsOrKeywords: {
+                "Test Function A": "Test Function Keyword Or Symbol A",
+                "Test Function B": "Test Function Keyword Or Symbol B",
+                "Test Function C": "Test Function Keyword Or Symbol C"
+            }
+        })
+        expect(expression).toEqual("Test Item")
+        return "Test Recursed Item"
+    })
+
+    Test("block two items", {
+        Type: "Block",
+        Opener: "Test Opener",
+        Delimiter: "Test Delimiter",
+        Closer: "Test Closer",
+        Contents: ["Test Item A", "Test Item B"]
+    }, "Test OpenerTest Recursed Item ATest DelimiterTest Recursed Item BTest Closer", (expression, syntax) => {
+        expect(syntax).toEqual({
+            UnarySymbolsOrKeywords: {
+                "Test Unary Operator A": "Test Unary Keyword Or Symbol A",
+                "Test Unary Operator B": "Test Unary Keyword Or Symbol B",
+                "Test Unary Operator C": "Test Unary Keyword Or Symbol C"
+            },
+            BinarySymbolsOrKeywords: {
+                "Test Binary Operator A": "Test Binary Keyword Or Symbol A",
+                "Test Binary Operator B": "Test Binary Keyword Or Symbol B",
+                "Test Binary Operator C": "Test Binary Keyword Or Symbol C"
+            },
+            FunctionSymbolsOrKeywords: {
+                "Test Function A": "Test Function Keyword Or Symbol A",
+                "Test Function B": "Test Function Keyword Or Symbol B",
+                "Test Function C": "Test Function Keyword Or Symbol C"
+            }
+        })
+        switch (expression) {
+            case "Test Item A": return "Test Recursed Item A"
+            case "Test Item B": return "Test Recursed Item B"
+            default: fail("Unexpected expression")
+        }
+    })
+
+    Test("block three items", {
+        Type: "Block",
+        Opener: "Test Opener",
+        Delimiter: "Test Delimiter",
+        Closer: "Test Closer",
+        Contents: ["Test Item A", "Test Item B", "Test Item C"]
+    }, "Test OpenerTest Recursed Item ATest DelimiterTest Recursed Item BTest DelimiterTest Recursed Item CTest Closer", (expression, syntax) => {
+        expect(syntax).toEqual({
+            UnarySymbolsOrKeywords: {
+                "Test Unary Operator A": "Test Unary Keyword Or Symbol A",
+                "Test Unary Operator B": "Test Unary Keyword Or Symbol B",
+                "Test Unary Operator C": "Test Unary Keyword Or Symbol C"
+            },
+            BinarySymbolsOrKeywords: {
+                "Test Binary Operator A": "Test Binary Keyword Or Symbol A",
+                "Test Binary Operator B": "Test Binary Keyword Or Symbol B",
+                "Test Binary Operator C": "Test Binary Keyword Or Symbol C"
+            },
+            FunctionSymbolsOrKeywords: {
+                "Test Function A": "Test Function Keyword Or Symbol A",
+                "Test Function B": "Test Function Keyword Or Symbol B",
+                "Test Function C": "Test Function Keyword Or Symbol C"
+            }
+        })
+        switch (expression) {
+            case "Test Item A": return "Test Recursed Item A"
+            case "Test Item B": return "Test Recursed Item B"
+            case "Test Item C": return "Test Recursed Item C"
+            default: fail("Unexpected expression")
+        }
+    })
 })

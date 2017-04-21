@@ -82,4 +82,12 @@ type ReferenceCSyntaxMatch = {
     Name: string
 }
 
-type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | FloatCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction> | ReferenceCSyntaxMatch
+type BlockCSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = {
+    Type: "Block"
+    Opener: string
+    Delimiter: string
+    Closer: string
+    Contents: CSyntaxMatch<TUnary, TBinary, TFunction>[]
+}
+
+type CSyntaxMatch<TUnary extends string, TBinary extends string, TFunction extends string> = BooleanCSyntaxMatch | IntegerCSyntaxMatch | FloatCSyntaxMatch | UnaryCSyntaxMatch<TUnary, TBinary, TFunction> | BinaryCSyntaxMatch<TUnary, TBinary, TFunction> | FunctionCSyntaxMatch<TUnary, TBinary, TFunction> | PropertyCSyntaxMatch<TUnary, TBinary, TFunction> | ReferenceCSyntaxMatch | BlockCSyntaxMatch<TUnary, TBinary, TFunction>
