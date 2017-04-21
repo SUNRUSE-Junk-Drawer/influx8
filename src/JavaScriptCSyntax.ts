@@ -161,5 +161,203 @@ const JavaScriptCSyntax: CSyntax<JavaScriptUnary, JavaScriptBinary, JavaScriptFu
             Operand: { Type: "AnyFloat", Name: "Operand" }
         }],
         ResultOperand: [{ Type: "AnyFloat", Name: "Operand" }],
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyFloat", Name: "X" },
+            { Type: "AnyFloat", Name: "Y" },
+            { Type: "AnyFloat", Name: "Z" },
+            { Type: "AnyFloat", Name: "W" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            const w = MatchCSyntax([match["W"]], JavaScriptCSyntax)
+            if (!w) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z, w]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyFloat", Name: "X" },
+            { Type: "AnyFloat", Name: "Y" },
+            { Type: "AnyFloat", Name: "Z" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyFloat", Name: "X" },
+            { Type: "AnyFloat", Name: "Y" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyInteger", Name: "X" },
+            { Type: "AnyInteger", Name: "Y" },
+            { Type: "AnyInteger", Name: "Z" },
+            { Type: "AnyInteger", Name: "W" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            const w = MatchCSyntax([match["W"]], JavaScriptCSyntax)
+            if (!w) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z, w]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyInteger", Name: "X" },
+            { Type: "AnyInteger", Name: "Y" },
+            { Type: "AnyInteger", Name: "Z" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyInteger", Name: "X" },
+            { Type: "AnyInteger", Name: "Y" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyBoolean", Name: "X" },
+            { Type: "AnyBoolean", Name: "Y" },
+            { Type: "AnyBoolean", Name: "Z" },
+            { Type: "AnyBoolean", Name: "W" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            const w = MatchCSyntax([match["W"]], JavaScriptCSyntax)
+            if (!w) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z, w]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyBoolean", Name: "X" },
+            { Type: "AnyBoolean", Name: "Y" },
+            { Type: "AnyBoolean", Name: "Z" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            const z = MatchCSyntax([match["Z"]], JavaScriptCSyntax)
+            if (!z) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y, z]
+            }
+        }
+    }, {
+        Type: "Custom",
+        Pattern: [
+            { Type: "AnyBoolean", Name: "X" },
+            { Type: "AnyBoolean", Name: "Y" }
+        ],
+        Convert(match) {
+            const x = MatchCSyntax([match["X"]], JavaScriptCSyntax)
+            if (!x) return undefined
+            const y = MatchCSyntax([match["Y"]], JavaScriptCSyntax)
+            if (!y) return undefined
+            return {
+                Type: "Block",
+                Opener: "[",
+                Delimiter: ", ",
+                Closer: "]",
+                Contents: [x, y]
+            }
+        }
     }]
 }
