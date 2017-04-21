@@ -10,6 +10,7 @@
     "test": "jasmine JASMINE_CONFIG_PATH=spec/jasmine.json"
   },
   "devDependencies": {
+    "@types/node": "^7.0.13",
     "jasmine": "^2.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
