@@ -228,6 +228,7 @@ describe("GLSLCSyntax", () => {
     Test("NotBVec3AllComponentsIdentical", "!testboola, !testboola, !testboola", "bvec3((!testboola))")
     Test("NotBVec4AllComponentsIdentical", "!testboola, !testboola, !testboola, !testboola", "bvec4((!testboola))")
 
+    Test("BVec5 all same", "testboola, testboola, testboola, testboola, testboola", undefined)
     Test("BVec4 all same", "testboola, testboola, testboola, testboola", "bvec4(testboola)")
     Test("BVec4 first different", "testboolb, testboola, testboola, testboola", "bvec4(testboolb, testboola, testboola, testboola)")
     Test("BVec4 second different", "testboola, testboolb, testboola, testboola", "bvec4(testboola, testboolb, testboola, testboola)")
@@ -764,6 +765,7 @@ describe("GLSLCSyntax", () => {
     Test("BVec2 abba", "testbvec2a#1, testbvec2b#1, testbvec2b#1, testbvec2a#1", "bvec4(testbvec2a.y, testbvec2b.y, testbvec2b.y, testbvec2a.y)")
     Test("BVec2 5 components", "testbvec2a#1, testbvec2a#1, testbvec2a#1, testbvec2a#1, testbvec2a#0", undefined)
 
+    Test("IVec5 all same", "testinta, testinta, testinta, testinta, testinta", undefined)
     Test("IVec4 all same", "testinta, testinta, testinta, testinta", "ivec4(testinta)")
     Test("IVec4 first different", "testintb, testinta, testinta, testinta", "ivec4(testintb, testinta, testinta, testinta)")
     Test("IVec4 second different", "testinta, testintb, testinta, testinta", "ivec4(testinta, testintb, testinta, testinta)")
@@ -1300,6 +1302,7 @@ describe("GLSLCSyntax", () => {
     Test("IVec2 abba", "testivec2a#1, testivec2b#1, testivec2b#1, testivec2a#1", "ivec4(testivec2a.y, testivec2b.y, testivec2b.y, testivec2a.y)")
     Test("IVec2 5 components", "testivec2a#1, testivec2a#1, testivec2a#1, testivec2a#1, testivec2a#0", undefined)
 
+    Test("Vec5 all same", "testfloata, testfloata, testfloata, testfloata, testfloata", undefined)
     Test("Vec4 all same", "testfloata, testfloata, testfloata, testfloata", "vec4(testfloata)")
     Test("Vec4 first different", "testfloatb, testfloata, testfloata, testfloata", "vec4(testfloatb, testfloata, testfloata, testfloata)")
     Test("Vec4 second different", "testfloata, testfloatb, testfloata, testfloata", "vec4(testfloata, testfloatb, testfloata, testfloata)")
