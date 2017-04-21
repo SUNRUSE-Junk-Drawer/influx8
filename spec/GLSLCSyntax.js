@@ -2073,4 +2073,22 @@ describe("GLSLCSyntax", () => {
     Test("DivideVec2AllComponentsIdentical", "testfloata / testfloatb, testfloata / testfloatb", "vec2((testfloata / testfloatb))")
     Test("DivideVec3AllComponentsIdentical", "testfloata / testfloatb, testfloata / testfloatb, testfloata / testfloatb", "vec3((testfloata / testfloatb))")
     Test("DivideVec4AllComponentsIdentical", "testfloata / testfloatb, testfloata / testfloatb, testfloata / testfloatb, testfloata / testfloatb", "vec4((testfloata / testfloatb))")
+
+    Test("int x", "testinta::0", "testinta")
+    Test("int xx", "testinta::0, testinta::0", "ivec2(testinta)")
+    Test("int xxx", "testinta::0, testinta::0, testinta::0", "ivec3(testinta)")
+    Test("int xxxx", "testinta::0, testinta::0, testinta::0, testinta::0", "ivec4(testinta)")
+    Test("int xxxxx", "testinta::0, testinta::0, testinta::0, testinta::0, testinta::0", undefined)
+
+    Test("float x", "testfloata::0", "testfloata")
+    Test("float xx", "testfloata::0, testfloata::0", "vec2(testfloata)")
+    Test("float xxx", "testfloata::0, testfloata::0, testfloata::0", "vec3(testfloata)")
+    Test("float xxxx", "testfloata::0, testfloata::0, testfloata::0, testfloata::0", "vec4(testfloata)")
+    Test("float xxxxx", "testfloata::0, testfloata::0, testfloata::0, testfloata::0, testfloata::0", undefined)
+
+    Test("bool x", "testboola::0", "testboola")
+    Test("bool xx", "testboola::0, testboola::0", "bvec2(testboola)")
+    Test("bool xxx", "testboola::0, testboola::0, testboola::0", "bvec3(testboola)")
+    Test("bool xxxx", "testboola::0, testboola::0, testboola::0, testboola::0", "bvec4(testboola)")
+    Test("bool xxxxx", "testboola::0, testboola::0, testboola::0, testboola::0, testboola::0", undefined)
 })
