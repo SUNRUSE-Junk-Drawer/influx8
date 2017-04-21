@@ -1,6 +1,27 @@
 {
-  "name": "sunruse-influx",
-  "version": "0.0.0",
+  "name": "@sunruse/influx",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "A simple programming language offering basic functional programming and vector mathematics which compile to JavaScript and GLSL.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.js.map"
+  ],
+  "author": {
+    "name": "James Wild",
+    "email": "open.source@sunruse.co.uk",
+    "url": "https://sunruse.co.uk"
+  },
+  "bugs": {
+    "email": "open.source@sunruse.co.uk",
+    "url": "https://github.com/jameswilddev/influx8/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jameswilddev/influx8.git"
+  },
+  "homepage": "https://github.com/jameswilddev/influx8",
   "scripts": {
     "build": "tsc -p .",
     "build-watch": "tsc -w -p .",
