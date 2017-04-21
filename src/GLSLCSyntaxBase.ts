@@ -22,10 +22,12 @@ type GLSLFunction =
     | "Vec2" | "Vec3" | "Vec4"
 
 type GLSLOperatorType = {
+    ConstructorFunctions: [GLSLFunction, GLSLFunction, GLSLFunction]
     ParameterFromName(name: string): Pattern
 }
 
 const IntegerGLSLOperatorType: GLSLOperatorType = {
+    ConstructorFunctions: ["IVec2", "IVec3", "IVec4"],
     ParameterFromName(name: string): AnyIntegerPattern {
         return {
             Type: "AnyInteger",
@@ -35,6 +37,7 @@ const IntegerGLSLOperatorType: GLSLOperatorType = {
 }
 
 const FloatGLSLOperatorType: GLSLOperatorType = {
+    ConstructorFunctions: ["Vec2", "Vec3", "Vec4"],
     ParameterFromName(name: string): AnyFloatPattern {
         return {
             Type: "AnyFloat",

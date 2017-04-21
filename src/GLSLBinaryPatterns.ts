@@ -16,6 +16,38 @@ function GLSLBinaryPattern(operator: TypedBinary, operatorType: GLSLOperatorType
     }]
 
     for (let i = 1; i < 4; i++) {
+        const allSame: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLFunction> = {
+            Type: "Custom",
+            Pattern: [],
+            Convert(match) {
+                const left = MatchCSyntax([match["Left"]], GLSLCSyntax)
+                if (!left) return undefined
+                const right = MatchCSyntax([match["Right"]], GLSLCSyntax)
+                if (!right) return undefined
+                return {
+                    Type: "Function",
+                    Function: operatorType.ConstructorFunctions[i - 1],
+                    Arguments: [{
+                        Type: "Binary",
+                        Operator: resultOperators[0],
+                        Left: left,
+                        Right: right
+                    }]
+                }
+            }
+        }
+
+        for (let j = 0; j <= i; j++) {
+            allSame.Pattern.push({
+                Type: "Binary",
+                Operator: operator,
+                Left: operatorType.ParameterFromName("Left"),
+                Right: operatorType.ParameterFromName("Right")
+            })
+        }
+
+        output.push(allSame)
+
         if (!BinaryReversible[operator]) {
             const allLeftSame: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLFunction> = {
                 Type: "Binary",

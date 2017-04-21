@@ -94,6 +94,38 @@ const GLSLBooleanPatterns: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLFunction>[]
     ResultLeft: [{ Type: "AnyBoolean", Name: "A" }],
     ResultRight: [{ Type: "AnyBoolean", Name: "B" }]
 }, {
+    Type: "Custom",
+    Pattern: [{
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }],
+    Convert(match) {
+        const operand = MatchCSyntax([match["Operand"]], GLSLCSyntax)
+        if (!operand) return undefined
+        return {
+            Type: "Function",
+            Function: "BVec4",
+            Arguments: [{
+                Type: "Unary",
+                Operator: "NotBool",
+                Operand: operand
+            }]
+        }
+    }
+}, {
     Type: "Function",
     Function: "NotBVec4",
     Pattern: [{
@@ -120,6 +152,34 @@ const GLSLBooleanPatterns: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLFunction>[]
         { Type: "AnyBoolean", Name: "D" }
     ]]
 }, {
+    Type: "Custom",
+    Pattern: [{
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }],
+    Convert(match) {
+        const operand = MatchCSyntax([match["Operand"]], GLSLCSyntax)
+        if (!operand) return undefined
+        return {
+            Type: "Function",
+            Function: "BVec3",
+            Arguments: [{
+                Type: "Unary",
+                Operator: "NotBool",
+                Operand: operand
+            }]
+        }
+    }
+}, {
     Type: "Function",
     Function: "NotBVec3",
     Pattern: [{
@@ -140,6 +200,30 @@ const GLSLBooleanPatterns: CSyntaxPattern<GLSLUnary, GLSLBinary, GLSLFunction>[]
         { Type: "AnyBoolean", Name: "B" },
         { Type: "AnyBoolean", Name: "C" }
     ]]
+}, {
+    Type: "Custom",
+    Pattern: [{
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }, {
+        Type: "Unary",
+        Operator: "NotBoolean",
+        Operand: { Type: "AnyBoolean", Name: "Operand" }
+    }],
+    Convert(match) {
+        const operand = MatchCSyntax([match["Operand"]], GLSLCSyntax)
+        if (!operand) return undefined
+        return {
+            Type: "Function",
+            Function: "BVec2",
+            Arguments: [{
+                Type: "Unary",
+                Operator: "NotBool",
+                Operand: operand
+            }]
+        }
+    }
 }, {
     Type: "Function",
     Function: "NotBVec2",
