@@ -20,3 +20,25 @@ type GLSLFunction =
     | "AllBVec3" | "AllBVec4"
     | "IVec2" | "IVec3" | "IVec4"
     | "Vec2" | "Vec3" | "Vec4"
+
+type GLSLOperatorType = {
+    ParameterFromName(name: string): Pattern
+}
+
+const IntegerGLSLOperatorType: GLSLOperatorType = {
+    ParameterFromName(name: string): AnyIntegerPattern {
+        return {
+            Type: "AnyInteger",
+            Name: name
+        }
+    }
+}
+
+const FloatGLSLOperatorType: GLSLOperatorType = {
+    ParameterFromName(name: string): AnyFloatPattern {
+        return {
+            Type: "AnyFloat",
+            Name: name
+        }
+    }
+}
