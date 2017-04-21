@@ -10,3 +10,4 @@
 /// <reference path="GenerateCSyntax.ts" />
 /// <reference path="Compile.ts" />
 /// <reference path="GLSLCSyntax.ts" />
+/// <reference path="JavaScriptCSyntax.ts" />
