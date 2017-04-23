@@ -6,7 +6,9 @@
   "main": "Exports.js",
   "files": [
     "Exports.js",
-    "Exports.js.map"
+    "Exports.js.map",
+    "Exports.min.js",
+    "Exports.min.js.map"
   ],
   "author": {
     "name": "James Wild",
@@ -23,9 +25,12 @@
   },
   "homepage": "https://github.com/jameswilddev/influx8",
   "scripts": {
-    "build": "tsc -p Exports.tsconfig.json",
+    "build": "tsc -p Exports.tsconfig.json && npm run-script minify",
+    "minify": "npm-run-all minify-exports",
+    "minify-exports": "uglifyjs --compress --mangle --wrap Exports.js -o Exports.min.js --in-source-map Exports.js.map --source-map Exports.min.js.map",
+    "minify-watch": "nodemon -e js --watch . --ignore \"*.min.js\" --ignore node_modules/ --ignore spec/ --exec \"npm run-script minify\"",
     "build-exports-watch": "tsc -w -p Exports.tsconfig.json",
-    "build-watch": "npm-run-all --parallel build-exports-watch",
+    "build-watch": "npm-run-all --parallel build-exports-watch minify-watch",
     "build-test-watch": "npm-run-all --parallel build-watch test-watch",
     "install-build-test-watch": "npm install && npm run-script build-test-watch",
     "test-watch": "nodemon -e js --watch . --ignore node_modules/ --exec \"npm test\"",
@@ -37,6 +42,7 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "rewire": "^2.5.2",
-    "typescript": "^2.2.2"
+    "typescript": "^2.2.2",
+    "uglify-js": "^2.8.22"
   }
 }
