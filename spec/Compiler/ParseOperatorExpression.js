@@ -1,5 +1,5 @@
 describe("ParseOperatorExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseOperatorExpression = Namespace.__get__("ParseOperatorExpression")
 
     Namespace.__set__("Precedence", ["LevelA", "LevelB", "LevelC", "LevelD"])

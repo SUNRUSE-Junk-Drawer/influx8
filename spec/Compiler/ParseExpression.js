@@ -1,5 +1,5 @@
 describe("ParseExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseExpression = Namespace.__get__("ParseExpression")
 
     Namespace.__set__("TryParseExpression", (tokens) => {

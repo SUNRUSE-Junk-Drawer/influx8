@@ -1,5 +1,5 @@
 describe("ParseSymbolTokens", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseSymbolTokens = Namespace.__get__("ParseSymbolTokens")
     Namespace.__set__("Symbols", {
         ">$%": "Short Symbol",

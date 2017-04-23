@@ -1,7 +1,4 @@
 {
-    "files": [
-        "src/Compiler/Exports.ts"
-    ],
     "compilerOptions": {
         "allowJs": false,
         "allowUnreachableCode": false,

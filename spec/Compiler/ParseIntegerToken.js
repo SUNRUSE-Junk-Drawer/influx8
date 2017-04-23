@@ -1,5 +1,5 @@
 describe("ParseIntegerToken", () => {
-    const ParseIntegerToken = require("rewire")("../../index.js").__get__("ParseIntegerToken")
+    const ParseIntegerToken = require("rewire")("../../Exports.js").__get__("ParseIntegerToken")
 
     function Test(description, input, output) {
         it(description, () => {

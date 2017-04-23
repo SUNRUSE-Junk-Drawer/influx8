@@ -1,5 +1,5 @@
 describe("GetReturnedPrimitive", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const GetReturnedPrimitive = Namespace.__get__("GetReturnedPrimitive")
     Namespace.__set__("BinaryReturnTypes", {
         "Test Binary A": "Test Binary Type A",

@@ -3,10 +3,10 @@
   "version": "0.0.2",
   "license": "MIT",
   "description": "A simple programming language offering basic functional programming and vector mathematics which compile to JavaScript and GLSL.",
-  "main": "index.js",
+  "main": "Exports.js",
   "files": [
-    "index.js",
-    "index.js.map"
+    "Exports.js",
+    "Exports.js.map"
   ],
   "author": {
     "name": "James Wild",
@@ -23,8 +23,9 @@
   },
   "homepage": "https://github.com/jameswilddev/influx8",
   "scripts": {
-    "build": "tsc -p .",
-    "build-watch": "tsc -w -p .",
+    "build": "tsc -p Exports.tsconfig.json",
+    "build-exports-watch": "tsc -w -p Exports.tsconfig.json",
+    "build-watch": "npm-run-all --parallel build-exports-watch",
     "build-test-watch": "npm-run-all --parallel build-watch test-watch",
     "install-build-test-watch": "npm install && npm run-script build-test-watch",
     "test-watch": "nodemon -e js --watch . --ignore node_modules/ --exec \"npm test\"",

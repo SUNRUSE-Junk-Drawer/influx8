@@ -1,5 +1,5 @@
 describe("InlineCallExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const InlineCallExpression = Namespace.__get__("InlineCallExpression")
 
     function Test(description, expression, output, inlineExpression, inlineCallExpression) {

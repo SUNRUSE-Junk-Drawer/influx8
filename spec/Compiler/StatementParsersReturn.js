@@ -1,5 +1,5 @@
 describe("StatementParsers return", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const StatementParsers = Namespace.__get__("StatementParsers")
 
     Namespace.__set__("ParseExpression", (tokens, startIndex, endIndex) => {

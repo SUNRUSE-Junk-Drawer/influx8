@@ -1,5 +1,5 @@
 describe("ParseBooleanToken", () => {
-    const ParseBooleanToken = require("rewire")("../../index.js").__get__("ParseBooleanToken")
+    const ParseBooleanToken = require("rewire")("../../Exports.js").__get__("ParseBooleanToken")
 
     function Test(description, input, output) {
         it(description, () => {

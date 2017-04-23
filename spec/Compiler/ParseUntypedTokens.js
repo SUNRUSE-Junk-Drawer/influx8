@@ -1,5 +1,5 @@
 describe("ParseUntypedTokens", () => {
-    const ParseUntypedTokens = require("rewire")("../../index.js").__get__("ParseUntypedTokens")
+    const ParseUntypedTokens = require("rewire")("../../Exports.js").__get__("ParseUntypedTokens")
 
     function Test(description, input, output) {
         it(description, () => {

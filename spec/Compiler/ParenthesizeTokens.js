@@ -1,5 +1,5 @@
 describe("ParenthesizeTokens", () => {
-    const ParenthesizeTokens = require("rewire")("../../index.js").__get__("ParenthesizeTokens")
+    const ParenthesizeTokens = require("rewire")("../../Exports.js").__get__("ParenthesizeTokens")
 
     function Test(description, input, output) {
         it(description, () => {

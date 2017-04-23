@@ -1,5 +1,5 @@
 describe("TypedUnary", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
 
     const UnaryTypeMappings = Namespace.__get__("UnaryTypeMappings")
 

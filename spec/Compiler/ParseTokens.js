@@ -1,5 +1,5 @@
 describe("ParseTokens", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseTokens = Namespace.__get__("ParseTokens")
 
     Namespace.__set__("ParseIntegerToken", (token) => {

@@ -1,5 +1,5 @@
 describe("ExpressionsEquivalent", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ExpressionsEquivalent = Namespace.__get__("ExpressionsEquivalent")
 
     Namespace.__set__("BinaryReversible", {

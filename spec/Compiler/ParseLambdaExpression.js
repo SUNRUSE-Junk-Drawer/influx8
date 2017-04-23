@@ -1,5 +1,5 @@
 describe("ParseLambdaExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseLambdaExpression = Namespace.__get__("ParseLambdaExpression")
 
     function Test(description, input, output, parseExpression) {

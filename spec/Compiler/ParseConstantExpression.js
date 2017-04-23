@@ -1,5 +1,5 @@
 describe("ParseConstantExpression", () => {
-    const ParseConstantExpression = require("rewire")("../../index.js").__get__("ParseConstantExpression")
+    const ParseConstantExpression = require("rewire")("../../Exports.js").__get__("ParseConstantExpression")
 
     function Test(description, input, output) {
         it(description, () => {

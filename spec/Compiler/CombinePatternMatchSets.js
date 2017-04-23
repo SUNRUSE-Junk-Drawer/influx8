@@ -1,5 +1,5 @@
 describe("CombinePatternMatchSets", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const CombinePatternMatchSets = Namespace.__get__("CombinePatternMatchSets")
 
     function Test(description, a, b, output, combinePatternMatches) {

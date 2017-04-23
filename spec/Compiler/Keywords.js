@@ -1,5 +1,5 @@
 describe("Keywords", () => {
-    const Keywords = require("rewire")("../../index.js").__get__("Keywords")
+    const Keywords = require("rewire")("../../Exports.js").__get__("Keywords")
 
     function Maps(keyword, to) {
         it("maps \"" + keyword + "\" to \"" + to + "\"", function () {

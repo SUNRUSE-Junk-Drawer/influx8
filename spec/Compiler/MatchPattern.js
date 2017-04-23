@@ -1,5 +1,5 @@
 describe("MatchPattern", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const MatchPattern = Namespace.__get__("MatchPattern")
 
     Namespace.__set__("BinaryReversible", {

@@ -1,5 +1,5 @@
 describe("MatchCSyntax", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const MatchCSyntax = Namespace.__get__("MatchCSyntax")
 
     Namespace.__set__("MatchCSyntaxConstant", (expression) => {

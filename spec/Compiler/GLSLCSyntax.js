@@ -1,5 +1,5 @@
 describe("GLSLCSyntax", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const Compile = Namespace.__get__("Compile")
     const GLSLCSyntax = Namespace.__get__("GLSLCSyntax")
 

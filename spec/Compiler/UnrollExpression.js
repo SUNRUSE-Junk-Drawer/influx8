@@ -1,5 +1,5 @@
 describe("UnrollExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const UnrollExpression = Namespace.__get__("UnrollExpression")
 
     function Test(description, expression, output, unrollExpression) {

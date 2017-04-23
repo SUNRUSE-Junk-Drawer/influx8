@@ -1,5 +1,5 @@
 describe("ApplyMatchToPattern", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ApplyMatchToPattern = Namespace.__get__("ApplyMatchToPattern")
 
     function Test(description, pattern, output, applyMatchToPattern) {

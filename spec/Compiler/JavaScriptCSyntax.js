@@ -1,5 +1,5 @@
 describe("JavaScriptCSyntax", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const Compile = Namespace.__get__("Compile")
     const JavaScriptCSyntax = Namespace.__get__("JavaScriptCSyntax")
 

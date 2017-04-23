@@ -1,5 +1,5 @@
 describe("TypedBinary", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
 
     const BinaryTypeMappings = Namespace.__get__("BinaryTypeMappings")
 

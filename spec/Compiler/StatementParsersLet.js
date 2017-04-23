@@ -1,5 +1,5 @@
 describe("StatementParsers let", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const StatementParsers = Namespace.__get__("StatementParsers")
 
     function Test(description, foundStatement, output, parseExpression) {

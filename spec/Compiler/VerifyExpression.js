@@ -1,5 +1,5 @@
 describe("VerifyExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const VerifyExpression = Namespace.__get__("VerifyExpression")
 
     function Test(description, input, output, verifyExpression) {

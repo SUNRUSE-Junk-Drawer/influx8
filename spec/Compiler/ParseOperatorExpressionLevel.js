@@ -1,5 +1,5 @@
 describe("ParseOperatorExpressionLevel", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseOperatorExpressionLevel = Namespace.__get__("ParseOperatorExpressionLevel")
 
     describe("unary", () => {

@@ -1,5 +1,5 @@
 describe("ParseGetItemExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseGetItemExpression = Namespace.__get__("ParseGetItemExpression")
 
     function Test(description, tokens, output, tryParseExpression) {

@@ -1,5 +1,5 @@
 describe("ParseReferenceExpression", () => {
-    const ParseReferenceExpression = require("rewire")("../../index.js").__get__("ParseReferenceExpression")
+    const ParseReferenceExpression = require("rewire")("../../Exports.js").__get__("ParseReferenceExpression")
 
     function Test(description, input, output) {
         it(description, () => {

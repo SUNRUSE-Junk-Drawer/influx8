@@ -1,5 +1,5 @@
 describe("SymbolAndKeywordOperatorMappings", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const UntypedUnarySymbols = Namespace.__get__("UntypedUnarySymbols")
     const UntypedUnaryKeywords = Namespace.__get__("UntypedUnaryKeywords")
     const UntypedUnaryKeywordsAndSymbols = Namespace.__get__("UntypedUnaryKeywordsAndSymbols")

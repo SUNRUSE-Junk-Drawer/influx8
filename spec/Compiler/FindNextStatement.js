@@ -1,5 +1,5 @@
 describe("FindNextStatement", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const FindNextStatement = Namespace.__get__("FindNextStatement")
 
     function Test(description, input, output, statementParsers) {

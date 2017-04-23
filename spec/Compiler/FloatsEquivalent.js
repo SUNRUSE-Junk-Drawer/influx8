@@ -1,5 +1,5 @@
 describe("FloatsEquivalent", () => {
-    const FloatsEquivalent = require("rewire")("../../index.js").__get__("FloatsEquivalent")
+    const FloatsEquivalent = require("rewire")("../../Exports.js").__get__("FloatsEquivalent")
 
     function Test(description, a, b, output) {
         it(description, () => {

@@ -1,5 +1,5 @@
 describe("Symbols", () => {
-    const Symbols = require("rewire")("../../index.js").__get__("Symbols")
+    const Symbols = require("rewire")("../../Exports.js").__get__("Symbols")
 
     function Maps(symbol, to) {
         it("maps \"" + symbol + "\" to \"" + to + "\"", function () {

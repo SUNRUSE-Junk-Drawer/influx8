@@ -1,5 +1,5 @@
 describe("ParseIdentifierToken", () => {
-    const ParseIdentifierToken = require("rewire")("../../index.js").__get__("ParseIdentifierToken")
+    const ParseIdentifierToken = require("rewire")("../../Exports.js").__get__("ParseIdentifierToken")
 
     function Accepts(input, endIndex) {
         it("accepts \"" + input + "\"", () => {

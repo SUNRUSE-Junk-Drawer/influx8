@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.json",
+    "files": [
+        "src/Compiler/Exports.ts"
+    ],
+    "compilerOptions": {
+        "outFile": "Exports.js"
+    }
+}

@@ -1,5 +1,5 @@
 describe("Precedence", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const Precedence = Namespace.__get__("Precedence")
 
     describe("includes", () => {

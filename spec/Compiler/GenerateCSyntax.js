@@ -1,5 +1,5 @@
 describe("GenerateCSyntax", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const GenerateCSyntax = Namespace.__get__("GenerateCSyntax")
 
     function Test(description, input, output, generateCSyntax) {

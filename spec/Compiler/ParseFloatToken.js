@@ -1,5 +1,5 @@
 describe("ParseFloatToken", () => {
-    const ParseFloatToken = require("rewire")("../../index.js").__get__("ParseFloatToken")
+    const ParseFloatToken = require("rewire")("../../Exports.js").__get__("ParseFloatToken")
 
     function Test(description, input, output) {
         it(description, () => {

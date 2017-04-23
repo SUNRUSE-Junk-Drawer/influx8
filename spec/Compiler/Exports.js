@@ -1,5 +1,5 @@
 describe("exports", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     function Exports(name) {
         it(name, () => expect(Namespace[name]).toBe(Namespace.__get__(name)))
     }

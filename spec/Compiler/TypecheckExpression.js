@@ -1,5 +1,5 @@
 describe("TypecheckExpression", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const TypecheckExpression = Namespace.__get__("TypecheckExpression")
 
     Namespace.__set__("UnaryTypeMappings", {

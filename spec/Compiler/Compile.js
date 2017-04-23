@@ -1,5 +1,5 @@
 describe("compile", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const Compile = Namespace.__get__("Compile")
 
     function Test(description, untypedTokens, untypedToTypedTokensMap, typedTokens, parenthesizedTokens, startIndex, endIndex, unrolledToTypecheckedExpressionsMap, typecheckedToVerifiedExpressionsMap, verifiedExpressions, matchedCSyntax, result) {

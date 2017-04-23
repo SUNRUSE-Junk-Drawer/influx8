@@ -1,5 +1,5 @@
 describe("ParseKeywordToken", () => {
-    const Namespace = require("rewire")("../../index.js")
+    const Namespace = require("rewire")("../../Exports.js")
     const ParseKeywordToken = Namespace.__get__("ParseKeywordToken")
 
     Namespace.__set__("Keywords", {
