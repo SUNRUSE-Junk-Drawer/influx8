@@ -1,0 +1,1 @@
+global.window = {} // This is used in the editor tests.
