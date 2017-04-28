@@ -1,5 +1,6 @@
 /// <reference path="SyntaxHighlighting.ts" />
 /// <reference path="Build.ts" />
+/// <reference path="Throttle.ts" />
 
 function CreateTextAreaWrappingElement(textarea: HTMLElement) {
     const wrapper = document.createElement("div")
