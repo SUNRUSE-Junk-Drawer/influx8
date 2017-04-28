@@ -1,4 +1,4 @@
-describe("CancelBuild", () => {
+describe("EndBuild", () => {
     const Namespace = require("rewire")("../../Editor.js")
     const EndBuild = Namespace.__get__("EndBuild")
     let editorElement
