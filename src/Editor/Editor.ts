@@ -56,12 +56,13 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 }
 
 function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element) {
-    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement)
+    const throttle = Throttle(500)
+    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle)
     textArea.addEventListener("input", RespondToChange)
     textArea.addEventListener("change", RespondToChange)
     function RespondToChange() {
         EndBuild(build)
-        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement)
+        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle)
     }
 }
 

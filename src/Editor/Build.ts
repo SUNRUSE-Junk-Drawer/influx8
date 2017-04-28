@@ -16,7 +16,7 @@ function ParseToTokens(source: string): UnparenthesizedToken[] {
     return allTypedTokens
 }
 
-function StartBuild(editorElement: Element, source: string, textAreaWrappingElement: Element): Build {
+function StartBuild(editorElement: Element, source: string, textAreaWrappingElement: Element, throttle: Function): Build {
     const allTypedTokens: UnparenthesizedToken[] = ParseToTokens(source)
     const syntaxHighlightingElement = CreateSyntaxHighlightingElement(allTypedTokens, source)
     editorElement.insertBefore(syntaxHighlightingElement, textAreaWrappingElement)
