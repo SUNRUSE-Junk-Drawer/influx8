@@ -12,7 +12,11 @@
     "Editor.js",
     "Editor.js.map",
     "Editor.min.js",
-    "Editor.min.js.map"
+    "Editor.min.js.map",
+    "Editor.Worker.js",
+    "Editor.Worker.js.map",
+    "Editor.Worker.min.js",
+    "Editor.Worker.min.js.map"
   ],
   "author": {
     "name": "James Wild",
@@ -29,14 +33,16 @@
   },
   "homepage": "https://github.com/jameswilddev/influx8",
   "scripts": {
-    "build": "tsc -p Exports.tsconfig.json && tsc -p Editor.tsconfig.json && npm run-script minify",
-    "minify": "npm-run-all minify-exports minify-editor",
+    "build": "tsc -p Exports.tsconfig.json && tsc -p Editor.tsconfig.json && tsc -p Editor.Worker.tsconfig.json && npm run-script minify",
+    "minify": "npm-run-all minify-exports minify-editor minify-editor-worker",
     "minify-exports": "uglifyjs --compress --mangle --wrap Exports.js -o Exports.min.js --in-source-map Exports.js.map --source-map Exports.min.js.map",
     "minify-editor": "uglifyjs --compress --mangle --wrap Editor.js -o Editor.min.js --in-source-map Editor.js.map --source-map Editor.min.js.map",
+    "minify-editor-worker": "uglifyjs --compress --mangle --wrap Editor.Worker.js -o Editor.Worker.min.js --in-source-map Editor.Worker.js.map --source-map Editor.Worker.min.js.map",
     "minify-watch": "nodemon -e js --watch . --ignore \"*.min.js\" --ignore node_modules/ --ignore spec/ --exec \"npm run-script minify\"",
     "build-exports-watch": "tsc -w -p Exports.tsconfig.json",
     "build-editor-watch": "tsc -w -p Editor.tsconfig.json",
-    "build-watch": "npm-run-all --parallel build-exports-watch build-editor-watch minify-watch",
+    "build-editor-worker-watch": "tsc -w -p Editor.Worker.tsconfig.json",
+    "build-watch": "npm-run-all --parallel build-exports-watch build-editor-watch build-editor-worker-watch minify-watch",
     "build-test-watch": "npm-run-all --parallel build-watch test-watch",
     "install-build-test-watch": "npm install && npm run-script build-test-watch",
     "test-watch": "nodemon -e js --watch . --ignore node_modules/ --exec \"npm test\"",
