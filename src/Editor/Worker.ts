@@ -8,8 +8,10 @@ addEventListener("message", e => {
         HandleBuild(request)
 })
 
+const Workers: { [url: string]: Worker } = {}
+
 function HandleConfiguration(request: WorkerConfigurationRequest) {
-    // TODO
+    for (const workerUrl of request.WorkerUrls) Workers[workerUrl] = new Worker(workerUrl)
 }
 
 function HandleBuild(request: WorkerBuildRequest) {
