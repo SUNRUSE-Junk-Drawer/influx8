@@ -3,6 +3,7 @@
 type WorkerRequest = {
     readonly Tokens: UnparenthesizedToken[]
     readonly BuildId: number
+    readonly SourceLength: number
 }
 
 type WorkerResponse = {

@@ -43,6 +43,7 @@ describe("StartBuild", () => {
         it("does not throttle further callbacks", () => expect(throttle).not.toHaveBeenCalled())
         it("posts one message to the worker", () => expect(worker.postMessage.calls.count()).toEqual(1))
         it("posts the tokens to the worker", () => expect(worker.postMessage.calls.argsFor(0)[0].Tokens).toEqual("test tokens"))
+        it("posts the source length to the worker", () => expect(worker.postMessage.calls.argsFor(0)[0].SourceLength).toEqual(16))
         it("posts the build id to the worker", () => expect(worker.postMessage.calls.argsFor(0)[0].BuildId).toEqual("test build id"))
     })
 })

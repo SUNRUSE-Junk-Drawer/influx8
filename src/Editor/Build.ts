@@ -24,7 +24,8 @@ function StartBuild(editorElement: Element, source: string, textAreaWrappingElem
     editorElement.insertBefore(syntaxHighlightingElement, textAreaWrappingElement)
     const request: WorkerRequest = {
         Tokens: allTypedTokens,
-        BuildId: buildId
+        BuildId: buildId,
+        SourceLength: source.length
     }
     throttle(() => worker.postMessage(request))
     return {
