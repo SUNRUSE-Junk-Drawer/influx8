@@ -1,3 +1,4 @@
+/// <reference path="VerifiedExpression.ts" />
 /// <reference path="TypecheckedExpression.ts" />
 /// <reference path="Primitive.ts" />
 /// <reference path="TypedUnary.ts" />
