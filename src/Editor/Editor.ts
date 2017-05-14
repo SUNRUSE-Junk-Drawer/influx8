@@ -57,12 +57,17 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 
 function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element) {
     const throttle = Throttle(500)
-    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle)
+    const worker = new Worker("Editor.Worker.min.js")
+    let buildId = 0
+    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++)
+
+    // todo on error?
+    worker.addEventListener("message", e => UpdateBuild(build, e.data))
     textArea.addEventListener("input", RespondToChange)
     textArea.addEventListener("change", RespondToChange)
     function RespondToChange() {
         EndBuild(build)
-        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle)
+        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++)
     }
 }
 

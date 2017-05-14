@@ -1,7 +1,9 @@
 /// <reference path="../Compiler/ParseUntypedTokens.ts" />
 /// <reference path="../Compiler/ParseTokens.ts" />
+/// <reference path="WorkerMessages.ts" />
 
 type Build = {
+    readonly Id: number
     readonly EditorElement: Element
     readonly SyntaxHighlightingElement: Element
 }
@@ -16,12 +18,22 @@ function ParseToTokens(source: string): UnparenthesizedToken[] {
     return allTypedTokens
 }
 
-function StartBuild(editorElement: Element, source: string, textAreaWrappingElement: Element, throttle: Function): Build {
+function StartBuild(editorElement: Element, source: string, textAreaWrappingElement: Element, throttle: Function, worker: Worker, buildId: number): Build {
     const allTypedTokens: UnparenthesizedToken[] = ParseToTokens(source)
     const syntaxHighlightingElement = CreateSyntaxHighlightingElement(allTypedTokens, source)
     editorElement.insertBefore(syntaxHighlightingElement, textAreaWrappingElement)
+    const request: WorkerRequest = {
+        Tokens: allTypedTokens,
+        BuildId: buildId
+    }
+    throttle(() => worker.postMessage(request))
     return {
+        Id: buildId,
         EditorElement: editorElement,
         SyntaxHighlightingElement: syntaxHighlightingElement
     }
+}
+
+function UpdateBuild(build: Build, response: WorkerResponse): void {
+    // TODO
 }
