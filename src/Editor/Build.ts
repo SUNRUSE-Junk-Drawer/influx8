@@ -22,7 +22,8 @@ function StartBuild(editorElement: Element, source: string, textAreaWrappingElem
     const allTypedTokens: UnparenthesizedToken[] = ParseToTokens(source)
     const syntaxHighlightingElement = CreateSyntaxHighlightingElement(allTypedTokens, source)
     editorElement.insertBefore(syntaxHighlightingElement, textAreaWrappingElement)
-    const request: WorkerRequest = {
+    const request: WorkerBuildRequest = {
+        Type: "Build",
         Tokens: allTypedTokens,
         BuildId: buildId,
         SourceLength: source.length

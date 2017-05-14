@@ -13,10 +13,11 @@ describe("Worker", () => {
     it("adds one event listener", () => expect(global.addEventListener.calls.count()).toEqual(1))
     it("listens for messages", () => expect(global.addEventListener).toHaveBeenCalledWith("message", jasmine.any(Function)))
     it("does not post a message", () => expect(global.postMessage).not.toHaveBeenCalled())
-    describe("on receiving a message", () => {
+    describe("on receiving a build message", () => {
         beforeEach(() => {
             global.addEventListener.calls.argsFor(0)[1]({
                 data: {
+                    Type: "Build",
                     BuildId: "test build id"
                 }
             })
