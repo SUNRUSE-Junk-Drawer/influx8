@@ -56,7 +56,7 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 }
 
 type Configuration = {
-    readonly WorkerUrls: string[]
+    readonly TaskWorkerUrls: string[]
 }
 
 function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element, configuration: Configuration) {
@@ -70,7 +70,7 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
 
     const request: WorkerConfigurationRequest = {
         Type: "Configuration",
-        WorkerUrls: configuration.WorkerUrls
+        TaskWorkerUrls: configuration.TaskWorkerUrls
     }
     worker.postMessage(request)
 

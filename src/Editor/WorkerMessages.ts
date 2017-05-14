@@ -2,7 +2,7 @@
 
 type WorkerConfigurationRequest = {
     readonly Type: "Configuration"
-    readonly WorkerUrls: string[]
+    readonly TaskWorkerUrls: string[]
 }
 
 type WorkerBuildRequest = {
@@ -12,6 +12,14 @@ type WorkerBuildRequest = {
     readonly SourceLength: number
 }
 
-type WorkerResponse = {
+type TaskCompletedWorkerResponse = {
+    readonly Type: "TaskCompleted"
+    readonly WorkerUrl: string
     readonly BuildId: number
+    readonly Data: any
+}
+
+type TaskResponse = {
+    readonly BuildId: number
+    readonly Data: any
 }

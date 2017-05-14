@@ -46,7 +46,7 @@ describe("SetupChangeListener", () => {
         }
 
         result = SetupChangeListener("test editor element", textArea, "test text area wrapping element", {
-            WorkerUrls: "test worker urls"
+            TaskWorkerUrls: "test worker urls"
         })
     })
     it("creates one worker", () => expect(workerConstructor.calls.count()).toEqual(1))
@@ -55,7 +55,7 @@ describe("SetupChangeListener", () => {
     it("listens for messages from the worker", () => expect(workerInstance.addEventListener).toHaveBeenCalledWith("message", jasmine.any(Function)))
     it("posts one message to the worker", () => expect(workerInstance.postMessage.calls.count()).toEqual(1))
     it("tells the worker this is configuration", () => expect(workerInstance.postMessage.calls.argsFor(0)[0].Type).toEqual("Configuration"))
-    it("gives the worker the worker URLs", () => expect(workerInstance.postMessage.calls.argsFor(0)[0].WorkerUrls).toEqual("test worker urls"))
+    it("gives the worker the worker URLs", () => expect(workerInstance.postMessage.calls.argsFor(0)[0].TaskWorkerUrls).toEqual("test worker urls"))
     it("creates one throttle", () => expect(Throttle.calls.count()).toEqual(1))
     it("creates a throttle for 500 milliseconds", () => expect(Throttle).toHaveBeenCalledWith(500))
     it("adds two event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
