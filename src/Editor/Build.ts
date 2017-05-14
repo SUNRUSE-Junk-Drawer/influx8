@@ -38,4 +38,6 @@ function StartBuild(editorElement: Element, source: string, textAreaWrappingElem
 
 function UpdateBuild(build: Build, response: WorkerResponse): void {
     // TODO
+    const results = document.getElementById("results")
+    if (results) results.textContent += JSON.stringify(response, null, 4)
 }

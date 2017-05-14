@@ -25,7 +25,7 @@ describe("SUNRUSEInfluxEditor", () => {
                 expect(editorElement.textContent).toEqual("")
                 editorElement.textContent = "test text content after adding text area wrapping element"
             })
-            global.window.SUNRUSEInfluxEditor(editorElement)
+            global.window.SUNRUSEInfluxEditor(editorElement, "test configuration")
         })
         it("creates one text area", () => expect(CreateTextArea.calls.count()).toEqual(1))
         it("gives the text area the source code", () => expect(CreateTextArea).toHaveBeenCalledWith("test source code"))
@@ -34,7 +34,7 @@ describe("SUNRUSEInfluxEditor", () => {
         it("appends one element to the editor element", () => expect(editorElement.appendChild.calls.count()).toEqual(1))
         it("appends the text area wrapper to the editor element", () => expect(editorElement.appendChild).toHaveBeenCalledWith("test text area wrapping element"))
         it("sets up one change listener", () => expect(SetupChangeListener.calls.count()).toEqual(1))
-        it("sets up the change listener with the editor element, text area and text area wrapping element", () => expect(SetupChangeListener).toHaveBeenCalledWith(editorElement, "test text area", "test text area wrapping element"))
+        it("sets up the change listener with the editor element, text area, text area wrapping element and configuration", () => expect(SetupChangeListener).toHaveBeenCalledWith(editorElement, "test text area", "test text area wrapping element", "test configuration"))
         it("has not modified the textContent after adding the text area wrapping element", () => expect(editorElement.textContent).toEqual("test text content after adding text area wrapping element"))
     })
     describe("on calling with null source code", () => {
@@ -61,7 +61,7 @@ describe("SUNRUSEInfluxEditor", () => {
                 expect(editorElement.textContent).toEqual("")
                 editorElement.textContent = "test text content after adding text area wrapping element"
             })
-            global.window.SUNRUSEInfluxEditor(editorElement)
+            global.window.SUNRUSEInfluxEditor(editorElement, "test configuration")
         })
         it("creates one text area", () => expect(CreateTextArea.calls.count()).toEqual(1))
         it("gives the text area the source code, coerced to an empty string", () => expect(CreateTextArea).toHaveBeenCalledWith(""))
@@ -70,7 +70,7 @@ describe("SUNRUSEInfluxEditor", () => {
         it("appends one element to the editor element", () => expect(editorElement.appendChild.calls.count()).toEqual(1))
         it("appends the text area wrapper to the editor element", () => expect(editorElement.appendChild).toHaveBeenCalledWith("test text area wrapping element"))
         it("sets up one change listener", () => expect(SetupChangeListener.calls.count()).toEqual(1))
-        it("sets up the change listener with the editor element, text area and text area wrapping element", () => expect(SetupChangeListener).toHaveBeenCalledWith(editorElement, "test text area", "test text area wrapping element"))
+        it("sets up the change listener with the editor element, text area, text area wrapping element and configuration", () => expect(SetupChangeListener).toHaveBeenCalledWith(editorElement, "test text area", "test text area wrapping element", "test configuration"))
         it("has not modified the textContent after adding the text area wrapping element", () => expect(editorElement.textContent).toEqual("test text content after adding text area wrapping element"))
     })
 })

@@ -1,29 +1,57 @@
 describe("Worker", () => {
     const rewire = require("rewire")
     let namespace
+    let handleConfiguration
+    let handleBuild
     beforeEach(() => {
         global.addEventListener = jasmine.createSpy("addEventListener")
-        global.postMessage = jasmine.createSpy("postMessage")
         namespace = rewire("../../Editor.Worker.js")
+
+        handleConfiguration = jasmine.createSpy("HandleConfiguration")
+        namespace.__set__("HandleConfiguration", handleConfiguration)
+
+        handleBuild = jasmine.createSpy("HandleBuild")
+        namespace.__set__("HandleBuild", handleBuild)
     })
     afterEach(() => {
         delete global.addEventListener
-        delete global.postMessage
     })
     it("adds one event listener", () => expect(global.addEventListener.calls.count()).toEqual(1))
     it("listens for messages", () => expect(global.addEventListener).toHaveBeenCalledWith("message", jasmine.any(Function)))
-    it("does not post a message", () => expect(global.postMessage).not.toHaveBeenCalled())
-    describe("on receiving a build message", () => {
+    it("does not handle configuration", () => expect(handleConfiguration).not.toHaveBeenCalled())
+    it("does not handle a build", () => expect(handleBuild).not.toHaveBeenCalled())
+    describe("on receiving a configuration message", () => {
         beforeEach(() => {
             global.addEventListener.calls.argsFor(0)[1]({
                 data: {
-                    Type: "Build",
-                    BuildId: "test build id"
+                    Type: "Configuration",
+                    Misc: "Value"
                 }
             })
         })
         it("does not add further event listeners", () => expect(global.addEventListener.calls.count()).toEqual(1))
-        it("posts a single message", () => expect(global.postMessage.calls.count()).toEqual(1))
-        it("posts the build id", () => expect(global.postMessage.calls.argsFor(0)[0].BuildId).toEqual("test build id"))
+        it("handles configuration once", () => expect(handleConfiguration.calls.count()).toEqual(1))
+        it("passes the request", () => expect(handleConfiguration).toHaveBeenCalledWith({
+            Type: "Configuration",
+            Misc: "Value"
+        }))
+        it("does not handle a build", () => expect(handleBuild).not.toHaveBeenCalled())
+    })
+    describe("on receiving a configuration message", () => {
+        beforeEach(() => {
+            global.addEventListener.calls.argsFor(0)[1]({
+                data: {
+                    Type: "Build",
+                    Misc: "Value"
+                }
+            })
+        })
+        it("does not add further event listeners", () => expect(global.addEventListener.calls.count()).toEqual(1))
+        it("does not handle configuration", () => expect(handleConfiguration).not.toHaveBeenCalled())
+        it("handles a single build", () => expect(handleBuild.calls.count()).toEqual(1))
+        it("passes the request", () => expect(handleBuild).toHaveBeenCalledWith({
+            Type: "Build",
+            Misc: "Value"
+        }))
     })
 })

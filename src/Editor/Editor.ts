@@ -55,7 +55,11 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
     return textarea
 }
 
-function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element) {
+type Configuration = {
+    readonly WorkerUrls: string[]
+}
+
+function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element, configuration: Configuration) {
     const throttle = Throttle(500)
     const worker = new Worker("Editor.Worker.min.js")
     let buildId = 0
@@ -63,6 +67,13 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
 
     // todo on error?
     worker.addEventListener("message", e => UpdateBuild(build, e.data))
+
+    const request: WorkerConfigurationRequest = {
+        Type: "Configuration",
+        WorkerUrls: configuration.WorkerUrls
+    }
+    worker.postMessage(request)
+
     textArea.addEventListener("input", RespondToChange)
     textArea.addEventListener("change", RespondToChange)
     function RespondToChange() {
@@ -71,11 +82,11 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
     }
 }
 
-(window as any).SUNRUSEInfluxEditor = function SUNRUSEInfluxEditor(editorElement: Element) {
+(window as any).SUNRUSEInfluxEditor = function SUNRUSEInfluxEditor(editorElement: Element, configuration: Configuration) {
     const source = editorElement.textContent || ""
     editorElement.textContent = ""
     const textArea = CreateTextArea(source)
     const textAreaWrappingElement = CreateTextAreaWrappingElement(textArea)
     editorElement.appendChild(textAreaWrappingElement)
-    SetupChangeListener(editorElement, textArea, textAreaWrappingElement)
+    SetupChangeListener(editorElement, textArea, textAreaWrappingElement, configuration)
 }
