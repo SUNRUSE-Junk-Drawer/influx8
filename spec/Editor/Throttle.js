@@ -1,4 +1,4 @@
-describe("StartBuild", () => {
+describe("Throttle", () => {
     const Namespace = require("rewire")("../../Editor.js")
     const Throttle = Namespace.__get__("Throttle")
     let setTimeout
