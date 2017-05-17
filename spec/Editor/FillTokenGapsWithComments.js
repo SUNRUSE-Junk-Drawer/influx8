@@ -1,5 +1,7 @@
 describe("FillTokenGapsWithComments", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const FillTokenGapsWithComments = Namespace.__get__("FillTokenGapsWithComments")
     function Test(description, tokens, length, output) {
         it(description, () => {

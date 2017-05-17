@@ -1,5 +1,7 @@
 describe("CreateTextArea", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const CreateTextArea = Namespace.__get__("CreateTextArea")
     let document
     let textAreaElement

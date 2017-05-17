@@ -1,5 +1,7 @@
 describe("SetupChangeListener", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const SetupChangeListener = Namespace.__get__("SetupChangeListener")
     let Throttle
     let StartBuild

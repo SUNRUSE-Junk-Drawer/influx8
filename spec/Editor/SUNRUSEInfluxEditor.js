@@ -1,14 +1,15 @@
 describe("SUNRUSEInfluxEditor", () => {
-    let Namespace = require("rewire")("../../Editor.js")
-    it("defines the function globally", () => expect(global.window.SUNRUSEInfluxEditor).toEqual(jasmine.any(Function)))
+    const window = {}
+    global.window = window
+    const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
+    it("defines the function globally", () => expect(window.SUNRUSEInfluxEditor).toEqual(jasmine.any(Function)))
     describe("on calling with non-null source code", () => {
         let CreateTextArea
         let CreateTextAreaWrappingElement
         let SetupChangeListener
         let editorElement
         beforeEach(() => {
-            // Ensures that we're setting up mocks around the function from our namespace, not one left in the global object by another test.
-            Namespace = require("rewire")("../../Editor.js")
             CreateTextArea = jasmine.createSpy("CreateTextArea")
             CreateTextArea.and.returnValue("test text area")
             Namespace.__set__("CreateTextArea", CreateTextArea)
@@ -25,7 +26,7 @@ describe("SUNRUSEInfluxEditor", () => {
                 expect(editorElement.textContent).toEqual("")
                 editorElement.textContent = "test text content after adding text area wrapping element"
             })
-            global.window.SUNRUSEInfluxEditor(editorElement, "test configuration")
+            window.SUNRUSEInfluxEditor(editorElement, "test configuration")
         })
         it("creates one text area", () => expect(CreateTextArea.calls.count()).toEqual(1))
         it("gives the text area the source code", () => expect(CreateTextArea).toHaveBeenCalledWith("test source code"))
@@ -43,8 +44,6 @@ describe("SUNRUSEInfluxEditor", () => {
         let SetupChangeListener
         let editorElement
         beforeEach(() => {
-            // Ensures that we're setting up mocks around the function from our namespace, not one left in the global object by another test.
-            Namespace = require("rewire")("../../Editor.js")
             CreateTextArea = jasmine.createSpy("CreateTextArea")
             CreateTextArea.and.returnValue("test text area")
             Namespace.__set__("CreateTextArea", CreateTextArea)
@@ -61,7 +60,7 @@ describe("SUNRUSEInfluxEditor", () => {
                 expect(editorElement.textContent).toEqual("")
                 editorElement.textContent = "test text content after adding text area wrapping element"
             })
-            global.window.SUNRUSEInfluxEditor(editorElement, "test configuration")
+            window.SUNRUSEInfluxEditor(editorElement, "test configuration")
         })
         it("creates one text area", () => expect(CreateTextArea.calls.count()).toEqual(1))
         it("gives the text area the source code, coerced to an empty string", () => expect(CreateTextArea).toHaveBeenCalledWith(""))

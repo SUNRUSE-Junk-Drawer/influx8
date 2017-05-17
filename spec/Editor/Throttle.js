@@ -1,5 +1,7 @@
 describe("Throttle", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const Throttle = Namespace.__get__("Throttle")
     let setTimeout
     let clearTimeout

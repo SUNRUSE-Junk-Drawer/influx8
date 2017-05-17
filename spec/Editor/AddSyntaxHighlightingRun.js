@@ -1,5 +1,7 @@
 describe("AddSyntaxHighlightingRun", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const AddSyntaxHighlightingRun = Namespace.__get__("AddSyntaxHighlightingRun")
     let document
     let syntaxHighlightingElement

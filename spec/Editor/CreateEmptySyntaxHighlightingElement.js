@@ -1,5 +1,7 @@
 describe("CreateEmptySyntaxHighlightingElement", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const CreateEmptySyntaxHighlightingElement = Namespace.__get__("CreateEmptySyntaxHighlightingElement")
     let document
     let syntaxHighlightingElement

@@ -1,5 +1,7 @@
 it("ParseToTokens", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const ParseToTokens = Namespace.__get__("ParseToTokens")
     Namespace.__set__("ParseUntypedTokens", (source) => {
         expect(source).toEqual("test source code")

@@ -1,5 +1,7 @@
 describe("StartBuild", () => {
+    global.window = {}
     const Namespace = require("rewire")("../../Editor.js")
+    delete global.window
     const StartBuild = Namespace.__get__("StartBuild")
     let result
     let editorElement
