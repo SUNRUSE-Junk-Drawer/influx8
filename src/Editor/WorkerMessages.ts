@@ -1,4 +1,6 @@
 /// <reference path="../Compiler/Token.ts" />
+/// <reference path="../Compiler/TypecheckedExpression.ts" />
+/// <reference path="../Compiler/VerifiedExpression.ts" />
 
 type WorkerConfigurationRequest = {
     readonly Type: "Configuration"
@@ -17,6 +19,12 @@ type TaskCompletedWorkerResponse = {
     readonly WorkerUrl: string
     readonly BuildId: number
     readonly Data: any
+}
+
+type TaskRequest = {
+    readonly BuildId: number
+    readonly Typechecked: TypecheckedExpression[]
+    readonly Verified: VerifiedExpression[] | undefined
 }
 
 type TaskResponse = {
