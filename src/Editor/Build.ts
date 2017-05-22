@@ -37,5 +37,6 @@ function StartBuild(editorElement: Element, source: string, textAreaWrappingElem
 }
 
 function UpdateBuild(configuration: Configuration, build: Build, response: TaskCompletedWorkerResponse): void {
-    // TODO
+    if (build.Id != response.BuildId) return
+    configuration.Tasks[response.TaskIndex].WhenCompleted(response.Data)
 }

@@ -58,6 +58,7 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 type Configuration = {
     readonly Tasks: {
         WorkerUrl: string
+        WhenCompleted: (data: any) => void
     }[]
 }
 
