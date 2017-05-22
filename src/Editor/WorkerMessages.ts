@@ -2,9 +2,13 @@
 /// <reference path="../Compiler/TypecheckedExpression.ts" />
 /// <reference path="../Compiler/VerifiedExpression.ts" />
 
+type WorkerConfigurationRequestTask = {
+    readonly WorkerUrl: string
+}
+
 type WorkerConfigurationRequest = {
     readonly Type: "Configuration"
-    readonly TaskWorkerUrls: string[]
+    readonly Tasks: WorkerConfigurationRequestTask[]
 }
 
 type WorkerBuildRequest = {

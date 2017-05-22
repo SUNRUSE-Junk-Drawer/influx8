@@ -14,26 +14,26 @@ addEventListener("message", e => {
         HandleBuild(request)
 })
 
-const TaskWorkers: { [workerUrl: string]: Worker } = {}
+const TaskWorkers: Worker[] = []
 
-function CreateTaskWorker(workerUrl: string): void {
-    const worker = new Worker(workerUrl)
+function CreateTaskWorker(task: WorkerConfigurationRequestTask): void {
+    const worker = new Worker(task.WorkerUrl)
     worker.addEventListener("message", e => {
         const workerResponse = e.data as TaskResponse
         const response: TaskCompletedWorkerResponse = {
             Type: "TaskCompleted",
-            WorkerUrl: workerUrl,
+            WorkerUrl: task.WorkerUrl,
             BuildId: workerResponse.BuildId,
             Data: workerResponse.Data
         };
         // todo: Why does this not accept the typing information we specified in the tsconfig, and use the browser postMessage?
         (postMessage as any)(response)
     })
-    TaskWorkers[workerUrl] = worker
+    TaskWorkers.push(worker)
 }
 
 function HandleConfiguration(request: WorkerConfigurationRequest) {
-    for (const workerUrl of request.TaskWorkerUrls) CreateTaskWorker(workerUrl)
+    for (const task of request.Tasks) CreateTaskWorker(task)
 }
 
 function HandleBuild(request: WorkerBuildRequest) {
@@ -54,5 +54,5 @@ function HandleBuild(request: WorkerBuildRequest) {
         Typechecked: typechecked,
         Verified: verified.length == typechecked.length ? verified : undefined
     }
-    for (const workerUrl in TaskWorkers) TaskWorkers[workerUrl].postMessage(taskRequest)
+    for (const worker of TaskWorkers) worker.postMessage(taskRequest)
 }

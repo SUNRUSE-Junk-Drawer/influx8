@@ -12,13 +12,13 @@ describe("WorkerHandleConfiguration", () => {
         namespace.__set__("CreateTaskWorker", createTaskWorker)
 
         handleConfiguration({
-            TaskWorkerUrls: ["test worker url a", "test worker url b", "test worker url c"]
+            Tasks: ["test worker task a", "test worker task b", "test worker task c"]
         })
     })
 
-    it("creates a worker for every url given", () => expect(createTaskWorker.calls.count()).toEqual(3))
+    it("creates a worker for every task given", () => expect(createTaskWorker.calls.count()).toEqual(3))
 
-    it("creates a worker for the first url given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker url a"))
-    it("creates a worker for the second url given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker url b"))
-    it("creates a worker for the third url given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker url c"))
+    it("creates a worker for the first task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task a"))
+    it("creates a worker for the second task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task b"))
+    it("creates a worker for the third task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task c"))
 })

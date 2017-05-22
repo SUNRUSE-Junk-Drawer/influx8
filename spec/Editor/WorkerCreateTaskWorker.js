@@ -18,16 +18,15 @@ describe("WorkerCreateTaskWorker", () => {
         })
         namespace.__set__("Worker", workerConstructor)
 
-        taskWorkers = {
-            "test existing worker a": "test value a",
-            "test existing worker b": "test value b"
-        }
+        taskWorkers = ["test existing worker a", "test existing worker b"]
         namespace.__set__("TaskWorkers", taskWorkers)
 
         postMessage = jasmine.createSpy("postMessage")
         namespace.__set__("postMessage", postMessage)
 
-        createTaskWorker("test worker url")
+        createTaskWorker({
+            WorkerUrl: "test worker url"
+        })
     })
 
     it("creates one worker", () => expect(workerConstructor.calls.count()).toEqual(1))
@@ -35,19 +34,17 @@ describe("WorkerCreateTaskWorker", () => {
     it("adds one event listener", () => expect(workerInstance.addEventListener.calls.count()).toEqual(1))
     it("listens for messages", () => expect(workerInstance.addEventListener).toHaveBeenCalledWith("message", jasmine.any(Function)))
     it("does not post a message", () => expect(postMessage).not.toHaveBeenCalled())
-    it("stores the worker in the Workers object", () => expect(taskWorkers["test worker url"]).toBe(workerInstance))
-    it("does not modify existing values in the Workers object", () => expect(taskWorkers).toEqual({
-        "test existing worker a": "test value a",
-        "test existing worker b": "test value b",
-        "test worker url": jasmine.any(workerConstructor)
-    }))
+    it("stores the worker in the Workers object", () => expect(taskWorkers[2]).toBe(workerInstance))
+    it("does not modify existing values in the Workers object", () => expect(taskWorkers).toEqual([
+        "test existing worker a",
+        "test existing worker b",
+        jasmine.any(workerConstructor)
+    ]))
     describe("on a message being received", () => {
         beforeEach(() => {
-            delete taskWorkers["test existing worker a"]
-            delete taskWorkers["test existing worker b"]
-            delete taskWorkers["test worker url"]
-            taskWorkers["test new worker a"] = "test value c"
-            taskWorkers["test new worker b"] = "test value d"
+            taskWorkers.length = 0
+            taskWorkers.push("test new worker a")
+            taskWorkers.push("test new worker b")
             workerInstance.addEventListener.calls.argsFor(0)[1]({
                 data: {
                     BuildId: "test build id",
@@ -62,9 +59,6 @@ describe("WorkerCreateTaskWorker", () => {
         it("posts the worker url", () => expect(postMessage.calls.argsFor(0)[0].WorkerUrl).toEqual("test worker url"))
         it("posts the build id", () => expect(postMessage.calls.argsFor(0)[0].BuildId).toEqual("test build id"))
         it("posts the data", () => expect(postMessage.calls.argsFor(0)[0].Data).toEqual("test data"))
-        it("does not modify the Workers object", () => expect(taskWorkers).toEqual({
-            "test new worker a": "test value c",
-            "test new worker b": "test value d"
-        }))
+        it("does not modify the Workers object", () => expect(taskWorkers).toEqual(["test new worker a", "test new worker b"]))
     })
 })

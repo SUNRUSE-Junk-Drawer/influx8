@@ -56,7 +56,9 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 }
 
 type Configuration = {
-    readonly TaskWorkerUrls: string[]
+    readonly Tasks: {
+        WorkerUrl: string
+    }[]
 }
 
 function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaElement, textAreaWrappingElement: Element, configuration: Configuration) {
@@ -68,9 +70,14 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
     // todo on error?
     worker.addEventListener("message", e => UpdateBuild(build, e.data))
 
+    const tasks: WorkerConfigurationRequestTask[] = []
+    for (const task of configuration.Tasks) tasks.push({
+        WorkerUrl: task.WorkerUrl
+    })
+
     const request: WorkerConfigurationRequest = {
         Type: "Configuration",
-        TaskWorkerUrls: configuration.TaskWorkerUrls
+        Tasks: tasks
     }
     worker.postMessage(request)
 
