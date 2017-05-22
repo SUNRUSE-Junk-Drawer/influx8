@@ -68,7 +68,7 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
     let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++)
 
     // todo on error?
-    worker.addEventListener("message", e => UpdateBuild(build, e.data))
+    worker.addEventListener("message", e => UpdateBuild(configuration, build, e.data))
 
     const tasks: WorkerConfigurationRequestTask[] = []
     for (const task of configuration.Tasks) tasks.push({

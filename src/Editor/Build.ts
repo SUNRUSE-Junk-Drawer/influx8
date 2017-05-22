@@ -36,6 +36,6 @@ function StartBuild(editorElement: Element, source: string, textAreaWrappingElem
     }
 }
 
-function UpdateBuild(build: Build, response: TaskCompletedWorkerResponse): void {
+function UpdateBuild(configuration: Configuration, build: Build, response: TaskCompletedWorkerResponse): void {
     // TODO
 }

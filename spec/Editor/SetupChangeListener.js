@@ -10,6 +10,7 @@ describe("SetupChangeListener", () => {
     let workerConstructor
     let workerInstance
     let textArea
+    let configuration
     beforeEach(() => {
         workerConstructor = jasmine.createSpy("Worker")
         workerConstructor.and.callFake(function () {
@@ -47,7 +48,7 @@ describe("SetupChangeListener", () => {
             addEventListener: jasmine.createSpy("addEventListener")
         }
 
-        result = SetupChangeListener("test editor element", textArea, "test text area wrapping element", {
+        configuration = {
             Tasks: [{
                 WorkerUrl: "test worker url a",
                 Misc: "test value a"
@@ -58,7 +59,9 @@ describe("SetupChangeListener", () => {
                 WorkerUrl: "test worker url c",
                 Misc: "test value c"
             }]
-        })
+        }
+
+        result = SetupChangeListener("test editor element", textArea, "test text area wrapping element", configuration)
     })
     it("creates one worker", () => expect(workerConstructor.calls.count()).toEqual(1))
     it("creates a worker for the worker script", () => expect(workerConstructor).toHaveBeenCalledWith("Editor.Worker.min.js"))
@@ -94,7 +97,7 @@ describe("SetupChangeListener", () => {
         it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
         it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(1))
         it("updates the build once", () => expect(UpdateBuild.calls.count()).toEqual(1))
-        it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build a", "test response a"))
+        it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build a", "test response a"))
         it("does not end a build", () => expect(EndBuild.calls.count()).toEqual(0))
         describe("when the worker posts a message", () => {
             beforeEach(() => {
@@ -107,7 +110,7 @@ describe("SetupChangeListener", () => {
             it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
             it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(1))
             it("updates the build again", () => expect(UpdateBuild.calls.count()).toEqual(2))
-            it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build a", "test response b"))
+            it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build a", "test response b"))
             it("does not end a build", () => expect(EndBuild.calls.count()).toEqual(0))
         })
         describe("on executing a textarea callback", () => {
@@ -136,7 +139,7 @@ describe("SetupChangeListener", () => {
                 it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
                 it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(2))
                 it("updates the build again", () => expect(UpdateBuild.calls.count()).toEqual(2))
-                it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build b", "test response b"))
+                it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build b", "test response b"))
                 it("does not end another build", () => expect(EndBuild.calls.count()).toEqual(1))
             })
             describe("on executing another textarea callback", () => {
@@ -165,7 +168,7 @@ describe("SetupChangeListener", () => {
                     it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
                     it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(3))
                     it("updates the build again", () => expect(UpdateBuild.calls.count()).toEqual(2))
-                    it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build c", "test response b"))
+                    it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build c", "test response b"))
                     it("does not end another build", () => expect(EndBuild.calls.count()).toEqual(2))
                 })
                 describe("on executing another textarea callback", () => {
@@ -213,7 +216,7 @@ describe("SetupChangeListener", () => {
             it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
             it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(2))
             it("updates the build once", () => expect(UpdateBuild.calls.count()).toEqual(1))
-            it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build b", "test response a"))
+            it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build b", "test response a"))
             it("does not end another build", () => expect(EndBuild.calls.count()).toEqual(1))
             describe("when the worker posts a message", () => {
                 beforeEach(() => {
@@ -226,7 +229,7 @@ describe("SetupChangeListener", () => {
                 it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
                 it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(2))
                 it("updates the build again", () => expect(UpdateBuild.calls.count()).toEqual(2))
-                it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build b", "test response b"))
+                it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build b", "test response b"))
                 it("does not end nother build", () => expect(EndBuild.calls.count()).toEqual(1))
             })
             describe("on executing a textarea callback", () => {
@@ -255,7 +258,7 @@ describe("SetupChangeListener", () => {
                     it("does not add further event listeners to the text area", () => expect(textArea.addEventListener.calls.count()).toEqual(2))
                     it("does not start a new build", () => expect(StartBuild.calls.count()).toEqual(3))
                     it("updates the build again", () => expect(UpdateBuild.calls.count()).toEqual(2))
-                    it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith("test build c", "test response b"))
+                    it("updates the build with the response from the worker", () => expect(UpdateBuild).toHaveBeenCalledWith(configuration, "test build c", "test response b"))
                     it("does not end another build", () => expect(EndBuild.calls.count()).toEqual(2))
                 })
                 describe("on executing another textarea callback", () => {
