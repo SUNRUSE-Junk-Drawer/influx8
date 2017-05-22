@@ -26,7 +26,7 @@ describe("WorkerCreateTaskWorker", () => {
 
         createTaskWorker({
             WorkerUrl: "test worker url"
-        })
+        }, "test worker index")
     })
 
     it("creates one worker", () => expect(workerConstructor.calls.count()).toEqual(1))
@@ -56,7 +56,7 @@ describe("WorkerCreateTaskWorker", () => {
         it("does not add further event listeners", () => expect(workerInstance.addEventListener.calls.count()).toEqual(1))
         it("posts one message", () => expect(postMessage.calls.count()).toEqual(1))
         it("posts that a task completed", () => expect(postMessage.calls.argsFor(0)[0].Type).toEqual("TaskCompleted"))
-        it("posts the worker url", () => expect(postMessage.calls.argsFor(0)[0].WorkerUrl).toEqual("test worker url"))
+        it("posts the task index", () => expect(postMessage.calls.argsFor(0)[0].TaskIndex).toEqual("test worker index"))
         it("posts the build id", () => expect(postMessage.calls.argsFor(0)[0].BuildId).toEqual("test build id"))
         it("posts the data", () => expect(postMessage.calls.argsFor(0)[0].Data).toEqual("test data"))
         it("does not modify the Workers object", () => expect(taskWorkers).toEqual(["test new worker a", "test new worker b"]))

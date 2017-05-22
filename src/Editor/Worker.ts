@@ -16,13 +16,13 @@ addEventListener("message", e => {
 
 const TaskWorkers: Worker[] = []
 
-function CreateTaskWorker(task: WorkerConfigurationRequestTask): void {
+function CreateTaskWorker(task: WorkerConfigurationRequestTask, index: number): void {
     const worker = new Worker(task.WorkerUrl)
     worker.addEventListener("message", e => {
         const workerResponse = e.data as TaskResponse
         const response: TaskCompletedWorkerResponse = {
             Type: "TaskCompleted",
-            WorkerUrl: task.WorkerUrl,
+            TaskIndex: index,
             BuildId: workerResponse.BuildId,
             Data: workerResponse.Data
         };
@@ -33,7 +33,7 @@ function CreateTaskWorker(task: WorkerConfigurationRequestTask): void {
 }
 
 function HandleConfiguration(request: WorkerConfigurationRequest) {
-    for (const task of request.Tasks) CreateTaskWorker(task)
+    for (let i = 0; i < request.Tasks.length; i++) CreateTaskWorker(request.Tasks[i], i)
 }
 
 function HandleBuild(request: WorkerBuildRequest) {

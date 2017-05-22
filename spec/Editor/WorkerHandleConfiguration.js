@@ -18,7 +18,7 @@ describe("WorkerHandleConfiguration", () => {
 
     it("creates a worker for every task given", () => expect(createTaskWorker.calls.count()).toEqual(3))
 
-    it("creates a worker for the first task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task a"))
-    it("creates a worker for the second task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task b"))
-    it("creates a worker for the third task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task c"))
+    it("creates a worker for the first task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task a", 0))
+    it("creates a worker for the second task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task b", 1))
+    it("creates a worker for the third task given", () => expect(createTaskWorker).toHaveBeenCalledWith("test worker task c", 2))
 })

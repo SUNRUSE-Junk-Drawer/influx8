@@ -20,7 +20,7 @@ type WorkerBuildRequest = {
 
 type TaskCompletedWorkerResponse = {
     readonly Type: "TaskCompleted"
-    readonly WorkerUrl: string
+    readonly TaskIndex: number
     readonly BuildId: number
     readonly Data: any
 }
