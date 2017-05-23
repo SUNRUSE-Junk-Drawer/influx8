@@ -14,6 +14,8 @@ type UnaryUnrolledExpression = {
     Type: "Unary"
     Operator: UntypedUnary
     Operand: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryUnrolledExpression = {
@@ -21,6 +23,8 @@ type BinaryUnrolledExpression = {
     Operator: UntypedBinary
     Left: UnrolledExpression
     Right: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryInconsistentPluralityUnrolledExpression = {
@@ -28,6 +32,8 @@ type BinaryInconsistentPluralityUnrolledExpression = {
     Operator: UntypedBinary
     Left: UnrolledExpression[]
     Right: UnrolledExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type LetStatementWithoutIdentifierUnrolledExpression = {

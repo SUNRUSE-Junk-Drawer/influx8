@@ -126,11 +126,15 @@ describe("TypecheckExpression", () => {
     Test("unary operand valid but unmatched", {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Operand"
+        Operand: "Test Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "UnaryUnmatched",
             Operator: "Test Unary Operator",
-            Operand: "Test Recursed Operand"
+            Operand: "Test Recursed Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             expect(expression).toEqual("Test Operand")
             return "Test Recursed Operand"
@@ -142,7 +146,9 @@ describe("TypecheckExpression", () => {
     Test("unary operand valid with match", {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Operand"
+        Operand: "Test Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "Unary",
             Operator: "Test Matched Unary Operator",
@@ -158,11 +164,15 @@ describe("TypecheckExpression", () => {
     Test("unary operand invalid", {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Operand"
+        Operand: "Test Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "UnaryUnmatched",
             Operator: "Test Unary Operator",
-            Operand: "Test Recursed Operand"
+            Operand: "Test Recursed Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             expect(expression).toEqual("Test Operand")
             return "Test Recursed Operand"
@@ -175,7 +185,9 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "Binary",
             Operator: "Test Matched Binary Operator",
@@ -199,12 +211,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -223,12 +239,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -247,12 +267,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -271,12 +295,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -295,12 +323,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -319,12 +351,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -343,12 +379,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -367,12 +407,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -391,12 +435,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -415,12 +463,16 @@ describe("TypecheckExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryUnmatched",
             Operator: "Test Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -694,12 +746,16 @@ describe("TypecheckExpression", () => {
         Type: "BinaryInconsistentPlurality",
         Operator: "Any Operator",
         Left: ["Test Left A", "Test Left B", "Test Left C"],
-        Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"]
+        Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
+        StartIndex: 56,
+        EndIndex: 75
     }, {
             Type: "BinaryInconsistentPlurality",
             Operator: "Any Operator",
             Left: ["Test Recursed Left A", "Test Recursed Left B", "Test Recursed Left C"],
-            Right: ["Test Recursed Right A", "Test Recursed Right B", "Test Recursed Right C", "Test Recursed Right D"]
+            Right: ["Test Recursed Right A", "Test Recursed Right B", "Test Recursed Right C", "Test Recursed Right D"],
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left A": return "Test Recursed Left A"

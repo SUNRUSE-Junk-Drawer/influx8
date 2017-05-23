@@ -35,6 +35,8 @@ type UnaryRawExpression = {
     Type: "Unary",
     Operator: UntypedUnary,
     Operand: RawExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryRawExpression = {
@@ -42,6 +44,8 @@ type BinaryRawExpression = {
     Operator: UntypedBinary,
     Left: RawExpression
     Right: RawExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type LetStatementWithoutIdentifierRawExpression = {

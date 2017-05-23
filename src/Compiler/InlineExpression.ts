@@ -14,7 +14,9 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
         case "Unary": return {
             Type: "Unary",
             Operator: expression.Operator,
-            Operand: InlineExpression(expression.Operand, scope)
+            Operand: InlineExpression(expression.Operand, scope),
+            StartIndex: expression.StartIndex,
+            EndIndex: expression.EndIndex
         }
 
         case "Binary": {
@@ -31,7 +33,9 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
                 Type: "Binary",
                 Operator: expression.Operator,
                 Left: InlineExpression(expression.Left, scope),
-                Right: InlineExpression(expression.Right, scope)
+                Right: InlineExpression(expression.Right, scope),
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
         }
 

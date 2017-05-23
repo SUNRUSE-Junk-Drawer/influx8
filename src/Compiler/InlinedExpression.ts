@@ -7,6 +7,8 @@ type UnaryInlinedExpression = {
     Type: "Unary",
     Operator: UntypedUnary,
     Operand: InlinedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryInlinedExpression = {
@@ -14,6 +16,8 @@ type BinaryInlinedExpression = {
     Operator: UntypedBinary,
     Left: InlinedExpression
     Right: InlinedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type LetStatementWithoutIdentifierInlinedExpression = {

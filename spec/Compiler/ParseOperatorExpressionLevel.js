@@ -102,7 +102,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -203,7 +205,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -466,7 +470,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Operator",
@@ -510,7 +516,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -554,7 +562,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -599,7 +609,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Operator",
@@ -643,7 +655,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -687,7 +701,9 @@ describe("ParseOperatorExpressionLevel", () => {
         }], {
                 Type: "Unary",
                 Operator: "Matched Operator",
-                Operand: "Test Operand"
+                Operand: "Test Operand",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 expect(tokens).toEqual([{
                     Type: "Misc B",
@@ -1002,7 +1018,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1147,7 +1165,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Another Symbol From The Correct Precedence Level") {
                     expect(tokens).toEqual([{
@@ -1187,7 +1207,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1242,7 +1264,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1322,7 +1346,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1412,7 +1438,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1502,7 +1530,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1592,7 +1622,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -1682,7 +1714,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
-                Right: "Parsed Right B"
+                Right: "Parsed Right B",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     if (tokens.length == 2) {
@@ -1815,7 +1849,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
-                Right: "Parsed Right B"
+                Right: "Parsed Right B",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     if (tokens.length == 2) {
@@ -1948,7 +1984,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2288,7 +2326,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2433,7 +2473,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Another Symbol From The Correct Precedence Level") {
                     expect(tokens).toEqual([{
@@ -2473,7 +2515,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2528,7 +2572,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2608,7 +2654,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2698,7 +2746,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Another Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2788,7 +2838,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2878,7 +2930,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3487,
+                EndIndex: 3520
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{
@@ -2968,7 +3022,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
-                Right: "Parsed Right B"
+                Right: "Parsed Right B",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     if (tokens.length == 2) {
@@ -3101,7 +3157,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left B",
-                Right: "Parsed Right B"
+                Right: "Parsed Right B",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     if (tokens.length == 2) {
@@ -3234,7 +3292,9 @@ describe("ParseOperatorExpressionLevel", () => {
                 Type: "Binary",
                 Operator: "Matched Operator",
                 Left: "Parsed Left",
-                Right: "Parsed Right"
+                Right: "Parsed Right",
+                StartIndex: 3233,
+                EndIndex: 3244
             }, (tokens) => {
                 if (tokens[0].Symbol == "Value A") {
                     expect(tokens).toEqual([{

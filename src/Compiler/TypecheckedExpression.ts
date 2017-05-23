@@ -24,6 +24,8 @@ type UnaryUnmatchedTypecheckedExpression = {
     Type: "UnaryUnmatched",
     Operator: UntypedUnary,
     Operand: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryTypecheckedExpression = {
@@ -38,6 +40,8 @@ type BinaryUnmatchedTypecheckedExpression = {
     Operator: UntypedBinary,
     Left: TypecheckedExpression,
     Right: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryInconsistentPluralityTypecheckedExpression = {
@@ -45,6 +49,8 @@ type BinaryInconsistentPluralityTypecheckedExpression = {
     Operator: UntypedBinary
     Left: TypecheckedExpression[]
     Right: TypecheckedExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type LetStatementWithoutIdentifierTypecheckedExpression = {

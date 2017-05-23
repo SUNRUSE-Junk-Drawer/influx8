@@ -89,11 +89,15 @@ describe("InlineExpression", () => {
     Test("unary", {
         Type: "Unary",
         Operator: "Anything",
-        Operand: "Test Uninlined Operand"
+        Operand: "Test Uninlined Operand",
+        StartIndex: 56,
+        EndIndex: 64
     }, {
             Type: "Unary",
             Operator: "Anything",
-            Operand: "Test Inlined Operand"
+            Operand: "Test Inlined Operand",
+            StartIndex: 56,
+            EndIndex: 64
         }, (expression, scope) => {
             expect(expression).toEqual("Test Uninlined Operand")
             expect(scope).toEqual({
@@ -108,12 +112,16 @@ describe("InlineExpression", () => {
         Type: "Binary",
         Operator: "Anything",
         Left: "Test Uninlined Left",
-        Right: "Test Uninlined Right"
+        Right: "Test Uninlined Right",
+        StartIndex: 56,
+        EndIndex: 64
     }, {
             Type: "Binary",
             Operator: "Anything",
             Left: "Test Inlined Left",
-            Right: "Test Inlined Right"
+            Right: "Test Inlined Right",
+            StartIndex: 56,
+            EndIndex: 64
         }, (expression, scope) => {
             expect(scope).toEqual({
                 "test scope key a": "test scope value a",
@@ -131,7 +139,9 @@ describe("InlineExpression", () => {
         Type: "Binary",
         Operator: "Call",
         Left: "Test Uninlined Left",
-        Right: "Test Uninlined Right"
+        Right: "Test Uninlined Right",
+        StartIndex: 56,
+        EndIndex: 64
     }, {
             Type: "Call",
             Lambda: "Test Uninlined Left",

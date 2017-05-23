@@ -22,7 +22,9 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
             for (const dimension of operand) output.push({
                 Type: "Unary",
                 Operator: expression.Operator,
-                Operand: dimension
+                Operand: dimension,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             })
             return output
         }
@@ -45,27 +47,35 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                     Type: "Binary",
                     Operator: expression.Operator,
                     Left: left[0],
-                    Right: dimension
+                    Right: dimension,
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 })
             } else if (right.length == 1) {
                 for (const dimension of left) output.push({
                     Type: "Binary",
                     Operator: expression.Operator,
                     Left: dimension,
-                    Right: right[0]
+                    Right: right[0],
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 })
             } else if (left.length == right.length) {
                 for (let i = 0; i < left.length; i++) output.push({
                     Type: "Binary",
                     Operator: expression.Operator,
                     Left: left[i],
-                    Right: right[i]
+                    Right: right[i],
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 })
             } else return [{
                 Type: "BinaryInconsistentPlurality",
                 Operator: expression.Operator,
                 Left: left,
-                Right: right
+                Right: right,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }]
 
             return output

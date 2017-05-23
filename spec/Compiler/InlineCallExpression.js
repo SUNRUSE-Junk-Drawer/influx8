@@ -102,13 +102,17 @@ describe("InlineCallExpression", () => {
     Test("unary", {
         Type: "Unary",
         Operator: "Any Operator",
-        Operand: "Any Operand"
+        Operand: "Any Operand",
+        StartIndex: 56,
+        EndIndex: 64
     }, {
             Type: "CallLambdaExpected",
             Value: {
                 Type: "Unary",
                 Operator: "Any Operator",
-                Operand: "Any Operand"
+                Operand: "Any Operand",
+                StartIndex: 56,
+                EndIndex: 64
             }
         })
 
@@ -116,14 +120,18 @@ describe("InlineCallExpression", () => {
         Type: "Binary",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 56,
+        EndIndex: 64
     }, {
             Type: "CallLambdaExpected",
             Value: {
                 Type: "Binary",
                 Operator: "Any Operator",
                 Left: "Any Left Operand",
-                Right: "Any Right Operand"
+                Right: "Any Right Operand",
+                StartIndex: 56,
+                EndIndex: 64
             }
         })
 

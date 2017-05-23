@@ -96,19 +96,27 @@ describe("UnrollExpression", () => {
     Test("unary", {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Operand"
+        Operand: "Test Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Recursed Operand A"
+        Operand: "Test Recursed Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Recursed Operand B"
+        Operand: "Test Recursed Operand B",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Unary",
         Operator: "Test Unary Operator",
-        Operand: "Test Recursed Operand C"
+        Operand: "Test Recursed Operand C",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         expect(expression).toEqual("Test Operand")
         return ["Test Recursed Operand A", "Test Recursed Operand B", "Test Recursed Operand C"]
@@ -118,12 +126,16 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A"]
@@ -136,22 +148,30 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand B",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand C",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A", "Test Recursed Left Operand B", "Test Recursed Left Operand C"]
@@ -164,22 +184,30 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand B"
+        Right: "Test Recursed Right Operand B",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand C"
+        Right: "Test Recursed Right Operand C",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A"]
@@ -192,22 +220,30 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand A",
-        Right: "Test Recursed Right Operand A"
+        Right: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand B",
-        Right: "Test Recursed Right Operand B"
+        Right: "Test Recursed Right Operand B",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Recursed Left Operand C",
-        Right: "Test Recursed Right Operand C"
+        Right: "Test Recursed Right Operand C",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A", "Test Recursed Left Operand B", "Test Recursed Left Operand C"]
@@ -220,12 +256,16 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Test Binary Operator",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "BinaryInconsistentPlurality",
         Operator: "Test Binary Operator",
         Left: ["Test Recursed Left Operand A", "Test Recursed Left Operand B", "Test Recursed Left Operand C"],
-        Right: ["Test Recursed Right Operand A", "Test Recursed Right Operand B", "Test Recursed Right Operand C", "Test Recursed Right Operand D"]
+        Right: ["Test Recursed Right Operand A", "Test Recursed Right Operand B", "Test Recursed Right Operand C", "Test Recursed Right Operand D"],
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A", "Test Recursed Left Operand B", "Test Recursed Left Operand C"]
@@ -238,7 +278,9 @@ describe("UnrollExpression", () => {
         Type: "Binary",
         Operator: "Concatenate",
         Left: "Test Left Operand",
-        Right: "Test Right Operand"
+        Right: "Test Right Operand",
+        StartIndex: 56,
+        EndIndex: 67
     }, [{
         Type: "ConcatenateLeft",
         Value: "Test Recursed Left Operand A"

@@ -33,7 +33,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             return {
                 Type: "UnaryUnmatched",
                 Operator: expression.Operator,
-                Operand: operand
+                Operand: operand,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
         }
 
@@ -54,7 +56,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                 Type: "BinaryUnmatched",
                 Operator: expression.Operator,
                 Left: leftOperand,
-                Right: rightOperand
+                Right: rightOperand,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
         }
 
@@ -63,7 +67,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                 Type: "BinaryInconsistentPlurality",
                 Operator: expression.Operator,
                 Left: [],
-                Right: []
+                Right: [],
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
 
             for (const operand of expression.Left) output.Left.push(TypecheckExpression(operand))

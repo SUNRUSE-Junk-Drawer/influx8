@@ -16,7 +16,9 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
             Type: "Binary",
             Operator: operator,
             Left: left,
-            Right: right
+            Right: right,
+            StartIndex: token.StartIndex,
+            EndIndex: token.EndIndex
         }
     }
 
@@ -33,7 +35,9 @@ function ParseOperatorExpressionLevel(tokens: ParenthesizedToken[], level: Prece
             return {
                 Type: "Unary",
                 Operator: operator,
-                Operand: operand
+                Operand: operand,
+                StartIndex: firstToken.StartIndex,
+                EndIndex: firstToken.EndIndex
             }
         }
 
