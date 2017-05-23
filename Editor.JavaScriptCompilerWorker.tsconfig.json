@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "files": [
+        "src/Editor/JavaScriptCompilerWorker.ts"
+    ],
+    "compilerOptions": {
+        "outFile": "Editor.JavaScriptCompilerWorker.js",
+        "lib": [
+            "es5",
+            "webworker"
+        ]
+    }
+}

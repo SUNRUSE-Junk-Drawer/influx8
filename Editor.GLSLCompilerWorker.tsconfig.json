@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "files": [
+        "src/Editor/GLSLCompilerWorker.ts"
+    ],
+    "compilerOptions": {
+        "outFile": "Editor.GLSLCompilerWorker.js",
+        "lib": [
+            "es5",
+            "webworker"
+        ]
+    }
+}
