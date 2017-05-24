@@ -16,7 +16,9 @@ function InlineCallExpression(expression: InlinedExpression, argument: InlinedEx
         case "Parameter":
             return {
                 Type: "CallLambdaExpected",
-                Value: expression
+                Value: expression,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
 
         case "CallLambdaExpected": return expression

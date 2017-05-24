@@ -26,7 +26,9 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
                     Type: "Call",
                     Lambda: expression.Left,
                     Argument: argument,
-                    Result: InlineCallExpression(InlineExpression(expression.Left, scope), argument)
+                    Result: InlineCallExpression(InlineExpression(expression.Left, scope), argument),
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 }
             }
             return {
@@ -151,7 +153,9 @@ function InlineExpression(expression: RawExpression, scope: Scope): InlinedExpre
         case "GetItem": return {
             Type: "GetItem",
             Item: expression.Item,
-            Of: InlineExpression(expression.Of, scope)
+            Of: InlineExpression(expression.Of, scope),
+            StartIndex: expression.StartIndex,
+            EndIndex: expression.EndIndex
         }
     }
 }

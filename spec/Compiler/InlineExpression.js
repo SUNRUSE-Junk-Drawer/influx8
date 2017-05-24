@@ -150,7 +150,9 @@ describe("InlineExpression", () => {
             Type: "Call",
             Lambda: "Test Uninlined Left",
             Argument: "Test Inlined Right",
-            Result: "Test Inlined Body"
+            Result: "Test Inlined Body",
+            StartIndex: 56,
+            EndIndex: 64
         }, (expression, scope) => {
             expect(scope).toEqual({
                 "test scope key a": "test scope value a",
@@ -599,11 +601,15 @@ describe("InlineExpression", () => {
     Test("get item", {
         Type: "GetItem",
         Item: "Test Item",
-        Of: "Test Uninlined Value"
+        Of: "Test Uninlined Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "GetItem",
             Item: "Test Item",
-            Of: "Test Inlined Value"
+            Of: "Test Inlined Value",
+            StartIndex: 32,
+            EndIndex: 48
         }, (expression, scope) => {
             expect(expression).toEqual("Test Uninlined Value")
             expect(scope).toEqual({

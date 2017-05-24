@@ -21,7 +21,9 @@ describe("InlineCallExpression", () => {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Expression Argument",
-        Result: "Test Result"
+        Result: "Test Result",
+        StartIndex: 32,
+        EndIndex: 48
     }, "Test Recursed Result", undefined, (expression, argument) => {
         expect(expression).toEqual("Test Result")
         expect(argument).toEqual("Test Argument")
@@ -40,7 +42,9 @@ describe("InlineCallExpression", () => {
                 StartIndex: 32,
                 EndIndex: 48,
                 Value: "Irrelevant"
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("integer", {
@@ -55,7 +59,9 @@ describe("InlineCallExpression", () => {
                 StartIndex: 32,
                 EndIndex: 48,
                 Value: "Irrelevant"
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("float", {
@@ -70,7 +76,9 @@ describe("InlineCallExpression", () => {
                 StartIndex: 32,
                 EndIndex: 48,
                 Value: "Irrelevant"
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("unknown", {
@@ -85,7 +93,9 @@ describe("InlineCallExpression", () => {
                 StartIndex: 32,
                 EndIndex: 48,
                 Tokens: "Irrelevant"
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("next statement not found", {
@@ -100,7 +110,9 @@ describe("InlineCallExpression", () => {
                 Tokens: "Irrelevant",
                 StartIndex: 32,
                 EndIndex: 48
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("unary", {
@@ -117,7 +129,9 @@ describe("InlineCallExpression", () => {
                 Operand: "Any Operand",
                 StartIndex: 56,
                 EndIndex: 64
-            }
+            },
+            StartIndex: 56,
+            EndIndex: 64
         })
 
     Test("binary", {
@@ -136,7 +150,9 @@ describe("InlineCallExpression", () => {
                 Right: "Any Right Operand",
                 StartIndex: 56,
                 EndIndex: 64
-            }
+            },
+            StartIndex: 56,
+            EndIndex: 64
         })
 
     Test("let", {
@@ -292,42 +308,60 @@ describe("InlineCallExpression", () => {
                 StartIndex: 32,
                 EndIndex: 48,
                 Name: "Irrelevant"
-            }
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("lambda expected", {
         Type: "CallLambdaExpected",
-        Value: "Irrelevant"
+        Value: "Irrelevant",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "CallLambdaExpected",
-            Value: "Irrelevant"
+            Value: "Irrelevant",
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("get item", {
         Type: "GetItem",
         Item: "Test Item",
-        Of: "Test Uninlined Value"
+        Of: "Test Uninlined Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "CallLambdaExpected",
             Value: {
                 Type: "GetItem",
                 Item: "Test Item",
-                Of: "Test Uninlined Value"
-            }
+                Of: "Test Uninlined Value",
+                StartIndex: 32,
+                EndIndex: 48
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("parameter", {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Plurality: 7
+        Plurality: 7,
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "CallLambdaExpected",
             Value: {
                 Type: "Parameter",
                 Name: "Test Name",
                 Primitive: "Test Primitive",
-                Plurality: 7
-            }
+                Plurality: 7,
+                StartIndex: 32,
+                EndIndex: 48
+            },
+            StartIndex: 32,
+            EndIndex: 48
         })
 })

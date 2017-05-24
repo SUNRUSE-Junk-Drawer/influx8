@@ -13,7 +13,9 @@ describe("UnrollExpression", () => {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Argument",
-        Result: "Test Result"
+        Result: "Test Result",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "Call",
         Lambda: "Test Lambda",
@@ -639,7 +641,9 @@ describe("UnrollExpression", () => {
 
     Test("lambda expected", {
         Type: "CallLambdaExpected",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "CallLambdaExpected",
         Value: "Test Recursed Value"
@@ -651,7 +655,9 @@ describe("UnrollExpression", () => {
     Test("get item first", {
         Type: "GetItem",
         Item: 0,
-        Of: "Test Value"
+        Of: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "GetItem",
         Item: 0,
@@ -665,7 +671,9 @@ describe("UnrollExpression", () => {
     Test("get item middle", {
         Type: "GetItem",
         Item: 1,
-        Of: "Test Value"
+        Of: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "GetItem",
         Item: 1,
@@ -679,7 +687,9 @@ describe("UnrollExpression", () => {
     Test("get item last", {
         Type: "GetItem",
         Item: 2,
-        Of: "Test Value"
+        Of: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "GetItem",
         Item: 2,
@@ -693,7 +703,9 @@ describe("UnrollExpression", () => {
     Test("get item over bound", {
         Type: "GetItem",
         Item: 3,
-        Of: "Test Value"
+        Of: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "GetItemOutOfRange",
         Item: 3,
@@ -706,7 +718,9 @@ describe("UnrollExpression", () => {
     Test("get item beyond bound", {
         Type: "GetItem",
         Item: 4,
-        Of: "Test Value"
+        Of: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "GetItemOutOfRange",
         Item: 4,
@@ -720,7 +734,9 @@ describe("UnrollExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Plurality: 1
+        Plurality: 1,
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "Parameter",
         Name: "Test Name",
@@ -733,7 +749,9 @@ describe("UnrollExpression", () => {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
-        Plurality: 4
+        Plurality: 4,
+        StartIndex: 32,
+        EndIndex: 48
     }, [{
         Type: "Parameter",
         Name: "Test Name",

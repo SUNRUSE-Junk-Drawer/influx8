@@ -124,17 +124,23 @@ type CallExpression = {
     Lambda: RawExpression
     Argument: InlinedExpression
     Result: InlinedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type CallLambdaExpectedExpression = {
     Type: "CallLambdaExpected"
     Value: InlinedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type GetItemInlinedExpression = {
     Type: "GetItem"
     Item: number
     Of: InlinedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type ParameterInlinedExpression = {
@@ -142,6 +148,8 @@ type ParameterInlinedExpression = {
     Name: string
     Primitive: Primitive
     Plurality: number
+    StartIndex: number
+    EndIndex: number
 }
 
 type InlinedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryInlinedExpression | UnaryInlinedExpression | LetStatementInlinedExpression | LetStatementWithoutIdentifierInlinedExpression | LetStatementIncorrectIdentifierTypeInlinedExpression | LetStatementNameNotUniqueInlinedExpression | ReturnStatementInlinedExpression | NextStatementNotFoundExpression | LambdaInlinedExpression | LambdaStatementWithoutIdentifierInlinedExpression | LambdaStatementIncorrectIdentifierTypeInlinedExpression | LambdaNameNotUniqueInlinedExpression | ReferenceInlinedExpression | ReferenceUndefinedInlinedExpression | CallExpression | CallLambdaExpectedExpression | GetItemInlinedExpression | ParameterInlinedExpression | FloatExpression
