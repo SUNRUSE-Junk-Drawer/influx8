@@ -26,7 +26,9 @@ describe("FindNextStatement", () => {
                 StartIndex: 253,
                 EndIndex: 284,
                 Symbol: "Valid Statement"
-            }]
+            }],
+            StartIndex: 253,
+            EndIndex: 284
         })
 
     Test("one non-statement follows", [{
@@ -51,7 +53,9 @@ describe("FindNextStatement", () => {
                 StartIndex: 310,
                 EndIndex: 325,
                 Symbol: "Valid Statement"
-            }]
+            }],
+            StartIndex: 253,
+            EndIndex: 325
         })
 
     Test("the same statement follows", [{

@@ -28,6 +28,8 @@ type UnknownExpression = {
 
 type NextStatementNotFoundExpression = {
     Type: "NextStatementNotFound"
+    StartIndex: number
+    EndIndex: number
     Tokens: ParenthesizedToken[]
 }
 
@@ -118,6 +120,8 @@ type ReferenceRawExpression = {
 
 type GetItemRawExpression = {
     Type: "GetItem"
+    StartIndex: number
+    EndIndex: number
     Item: number
     Of: RawExpression
 }

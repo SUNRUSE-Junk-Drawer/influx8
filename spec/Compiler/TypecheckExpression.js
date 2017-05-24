@@ -117,10 +117,14 @@ describe("TypecheckExpression", () => {
 
     Test("next statement not found", {
         Type: "NextStatementNotFound",
-        Tokens: "Irrelevant"
+        Tokens: "Irrelevant",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "NextStatementNotFound",
-            Tokens: "Irrelevant"
+            Tokens: "Irrelevant",
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("unary operand valid but unmatched", {

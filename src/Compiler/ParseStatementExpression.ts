@@ -68,6 +68,8 @@ function FindNextStatement(tokens: ParenthesizedToken[]): NextStatementFound | N
     }
     return {
         Type: "NextStatementNotFound",
-        Tokens: tokens
+        Tokens: tokens,
+        StartIndex: tokens[0].StartIndex,
+        EndIndex: tokens[tokens.length - 1].EndIndex
     }
 }

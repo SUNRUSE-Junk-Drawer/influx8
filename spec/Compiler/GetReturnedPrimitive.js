@@ -136,7 +136,9 @@ describe("GetReturnedPrimitive", () => {
 
     Test("next statement not found", {
         Type: "NextStatementNotFound",
-        Tokens: "Test Tokens"
+        Tokens: "Test Tokens",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined)
 
     Test("lambda", {

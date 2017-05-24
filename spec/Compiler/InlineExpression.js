@@ -80,10 +80,14 @@ describe("InlineExpression", () => {
 
     Test("next statement not found", {
         Type: "NextStatementNotFound",
-        Tokens: "Anything"
+        Tokens: "Anything",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "NextStatementNotFound",
-            Tokens: "Anything"
+            Tokens: "Anything",
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("unary", {

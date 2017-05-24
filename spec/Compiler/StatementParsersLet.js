@@ -16,10 +16,14 @@ describe("StatementParsers let", () => {
 
     Test("no next statement", {
         Type: "NextStatementNotFound",
-        Tokens: "Test Tokens"
+        Tokens: "Test Tokens",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "NextStatementNotFound",
-            Tokens: "Test Tokens"
+            Tokens: "Test Tokens",
+            StartIndex: 32,
+            EndIndex: 48
         })
 
     Test("no tokens", {

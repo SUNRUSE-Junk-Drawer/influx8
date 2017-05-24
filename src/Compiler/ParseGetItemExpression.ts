@@ -13,6 +13,8 @@ function ParseGetItemExpression(tokens: ParenthesizedToken[]): GetItemRawExpress
     return {
         Type: "GetItem",
         Item: itemToken.Value,
-        Of: ofExpression
+        Of: ofExpression,
+        StartIndex: tokens[0].StartIndex,
+        EndIndex: tokens[2].EndIndex
     }
 }

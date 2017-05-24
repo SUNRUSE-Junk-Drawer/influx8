@@ -90,12 +90,16 @@ describe("InlineCallExpression", () => {
 
     Test("next statement not found", {
         Type: "NextStatementNotFound",
-        Tokens: "Irrelevant"
+        Tokens: "Irrelevant",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "CallLambdaExpected",
             Value: {
                 Type: "NextStatementNotFound",
-                Tokens: "Irrelevant"
+                Tokens: "Irrelevant",
+                StartIndex: 32,
+                EndIndex: 48
             }
         })
 

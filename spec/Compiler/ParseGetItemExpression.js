@@ -515,7 +515,9 @@ describe("ParseGetItemExpression", () => {
     }], {
             Type: "GetItem",
             Item: 2373,
-            Of: "Test Recursed Tokens"
+            Of: "Test Recursed Tokens",
+            StartIndex: 24,
+            EndIndex: 72
         }, (tokens) => {
             expect(tokens).toEqual([{
                 Type: "Misc A",
@@ -572,7 +574,9 @@ describe("ParseGetItemExpression", () => {
     }], {
             Type: "GetItem",
             Item: 2373,
-            Of: "Test Recursed Tokens"
+            Of: "Test Recursed Tokens",
+            StartIndex: 24,
+            EndIndex: 72
         }, (tokens) => {
             expect(tokens).toEqual([{
                 Type: "Integer",
