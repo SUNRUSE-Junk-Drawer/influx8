@@ -3,11 +3,15 @@
 type ConcatenateLeftUnrolledExpression = {
     Type: "ConcatenateLeft"
     Value: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type ConcatenateRightUnrolledExpression = {
     Type: "ConcatenateRight"
     Value: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type UnaryUnrolledExpression = {
@@ -140,11 +144,15 @@ type CallUnrolledExpression = {
     Lambda: RawExpression
     Argument: UnrolledExpression[]
     Result: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type CallLambdaExpectedUnrolledExpression = {
     Type: "CallLambdaExpected"
     Value: UnrolledExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type GetItemUnrolledExpression = {
@@ -152,12 +160,16 @@ type GetItemUnrolledExpression = {
     Item: number
     Of: UnrolledExpression[]
     Value: UnrolledExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type GetItemOutOfRangeUnrolledExpression = {
     Type: "GetItemOutOfRange"
     Item: number
     Of: UnrolledExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type ParameterUnrolledExpression = {
@@ -166,6 +178,8 @@ type ParameterUnrolledExpression = {
     Primitive: Primitive
     Item: number
     Plurality: number
+    StartIndex: number
+    EndIndex: number
 }
 
 type UnrolledExpression = ConcatenateLeftUnrolledExpression | ConcatenateRightUnrolledExpression | UnknownExpression | BooleanExpression | IntegerExpression | BinaryUnrolledExpression | BinaryInconsistentPluralityUnrolledExpression | UnaryUnrolledExpression | LetStatementUnrolledExpression | LetStatementWithoutIdentifierUnrolledExpression | LetStatementIncorrectIdentifierTypeUnrolledExpression | LetStatementNameNotUniqueUnrolledExpression | ReturnStatementUnrolledExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceUnrolledExpression | ReferenceUndefinedUnrolledExpression | CallUnrolledExpression | CallLambdaExpectedUnrolledExpression | GetItemUnrolledExpression | GetItemOutOfRangeUnrolledExpression | ParameterUnrolledExpression | FloatExpression

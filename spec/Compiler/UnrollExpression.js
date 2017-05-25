@@ -20,17 +20,23 @@ describe("UnrollExpression", () => {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Recursed Argument",
-        Result: "Test Recursed Result A"
+        Result: "Test Recursed Result A",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Recursed Argument",
-        Result: "Test Recursed Result B"
+        Result: "Test Recursed Result B",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Recursed Argument",
-        Result: "Test Recursed Result C"
+        Result: "Test Recursed Result C",
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         switch (expression) {
             case "Test Result": return ["Test Recursed Result A", "Test Recursed Result B", "Test Recursed Result C"]
@@ -289,25 +295,39 @@ describe("UnrollExpression", () => {
         EndIndex: 67
     }, [{
         Type: "ConcatenateLeft",
-        Value: "Test Recursed Left Operand A"
+        Value: "Test Recursed Left Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateLeft",
-        Value: "Test Recursed Left Operand B"
+        Value: "Test Recursed Left Operand B",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateLeft",
-        Value: "Test Recursed Left Operand C"
+        Value: "Test Recursed Left Operand C",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateRight",
-        Value: "Test Recursed Right Operand A"
+        Value: "Test Recursed Right Operand A",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateRight",
-        Value: "Test Recursed Right Operand B"
+        Value: "Test Recursed Right Operand B",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateRight",
-        Value: "Test Recursed Right Operand C"
+        Value: "Test Recursed Right Operand C",
+        StartIndex: 56,
+        EndIndex: 67
     }, {
         Type: "ConcatenateRight",
-        Value: "Test Recursed Right Operand D"
+        Value: "Test Recursed Right Operand D",
+        StartIndex: 56,
+        EndIndex: 67
     }], (expression) => {
         switch (expression) {
             case "Test Left Operand": return ["Test Recursed Left Operand A", "Test Recursed Left Operand B", "Test Recursed Left Operand C"]
@@ -646,7 +666,9 @@ describe("UnrollExpression", () => {
         EndIndex: 48
     }, [{
         Type: "CallLambdaExpected",
-        Value: "Test Recursed Value"
+        Value: "Test Recursed Value",
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return "Test Recursed Value"
@@ -662,7 +684,9 @@ describe("UnrollExpression", () => {
         Type: "GetItem",
         Item: 0,
         Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
-        Value: "Test Recursed Value A"
+        Value: "Test Recursed Value A",
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -678,7 +702,9 @@ describe("UnrollExpression", () => {
         Type: "GetItem",
         Item: 1,
         Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
-        Value: "Test Recursed Value B"
+        Value: "Test Recursed Value B",
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -694,7 +720,9 @@ describe("UnrollExpression", () => {
         Type: "GetItem",
         Item: 2,
         Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
-        Value: "Test Recursed Value C"
+        Value: "Test Recursed Value C",
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -709,7 +737,9 @@ describe("UnrollExpression", () => {
     }, [{
         Type: "GetItemOutOfRange",
         Item: 3,
-        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -724,7 +754,9 @@ describe("UnrollExpression", () => {
     }, [{
         Type: "GetItemOutOfRange",
         Item: 4,
-        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+        Of: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+        StartIndex: 32,
+        EndIndex: 48
     }], (expression) => {
         expect(expression).toEqual("Test Value")
         return ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -742,7 +774,9 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 0,
-        Plurality: 1
+        Plurality: 1,
+        StartIndex: 32,
+        EndIndex: 48
     }])
 
     Test("parameter plural", {
@@ -757,24 +791,32 @@ describe("UnrollExpression", () => {
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 0,
-        Plurality: 4
+        Plurality: 4,
+        StartIndex: 32,
+        EndIndex: 48
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 1,
-        Plurality: 4
+        Plurality: 4,
+        StartIndex: 32,
+        EndIndex: 48
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 2,
-        Plurality: 4
+        Plurality: 4,
+        StartIndex: 32,
+        EndIndex: 48
     }, {
         Type: "Parameter",
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 3,
-        Plurality: 4
+        Plurality: 4,
+        StartIndex: 32,
+        EndIndex: 48
     }])
 })

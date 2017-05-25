@@ -50,7 +50,9 @@ describe("TypecheckExpression", () => {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: ["Test Expression Argument A", "Test Expression Argument B", "Test Expression Argument C"],
-        Result: "Test Result"
+        Result: "Test Result",
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "Call",
             Lambda: "Test Lambda",
@@ -711,7 +713,9 @@ describe("TypecheckExpression", () => {
 
     Test("lambda expected", {
         Type: "CallLambdaExpected",
-        Value: ["Test Value A", "Test Value B", "Test Value C"]
+        Value: ["Test Value A", "Test Value B", "Test Value C"],
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "CallLambdaExpected",
             Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
@@ -726,7 +730,9 @@ describe("TypecheckExpression", () => {
 
     Test("concatenate left", {
         Type: "ConcatenateLeft",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "ConcatenateLeft",
             Value: "Test Recursed Value"
@@ -737,7 +743,9 @@ describe("TypecheckExpression", () => {
 
     Test("concatenate right", {
         Type: "ConcatenateRight",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "ConcatenateRight",
             Value: "Test Recursed Value"
@@ -777,7 +785,9 @@ describe("TypecheckExpression", () => {
         Type: "GetItem",
         Item: "Test Item",
         Of: ["Test Of A", "Test Of B", "Test Of C"],
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "GetItem",
             Item: "Test Item",
@@ -796,7 +806,9 @@ describe("TypecheckExpression", () => {
     Test("get item out of range", {
         Type: "GetItemOutOfRange",
         Item: "Test Item",
-        Of: ["Test Of A", "Test Of B", "Test Of C"]
+        Of: ["Test Of A", "Test Of B", "Test Of C"],
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "GetItemOutOfRange",
             Item: "Test Item",
@@ -815,12 +827,16 @@ describe("TypecheckExpression", () => {
         Name: "Test Name",
         Item: 7,
         Primitive: "Test Primitive",
-        Plurality: 10
+        Plurality: 10,
+        StartIndex: 32,
+        EndIndex: 47
     }, {
             Type: "Parameter",
             Name: "Test Name",
             Item: 7,
             Primitive: "Test Primitive",
-            Plurality: 10
+            Plurality: 10,
+            StartIndex: 32,
+            EndIndex: 47
         })
 })

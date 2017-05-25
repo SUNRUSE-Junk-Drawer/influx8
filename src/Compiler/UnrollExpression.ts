@@ -13,7 +13,9 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
 
         case "CallLambdaExpected": return [{
             Type: "CallLambdaExpected",
-            Value: UnrollExpression(expression.Value)
+            Value: UnrollExpression(expression.Value),
+            StartIndex: expression.StartIndex,
+            EndIndex: expression.EndIndex
         }]
 
         case "Unary": {
@@ -36,11 +38,15 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
             if (expression.Operator == "Concatenate") {
                 for (const dimension of left) output.push({
                     Type: "ConcatenateLeft",
-                    Value: dimension
+                    Value: dimension,
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 })
                 for (const dimension of right) output.push({
                     Type: "ConcatenateRight",
-                    Value: dimension
+                    Value: dimension,
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 })
             } else if (left.length == 1) {
                 for (const dimension of right) output.push({
@@ -206,7 +212,9 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Type: "Call",
                 Lambda: expression.Lambda,
                 Argument: argument,
-                Result: dimension
+                Result: dimension,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             })
             return output
         }
@@ -216,14 +224,18 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
             if (expression.Item >= items.length) return [{
                 Type: "GetItemOutOfRange",
                 Item: expression.Item,
-                Of: items
+                Of: items,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }]
 
             return [{
                 Type: "GetItem",
                 Item: expression.Item,
                 Of: items,
-                Value: items[expression.Item]
+                Value: items[expression.Item],
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }]
         }
 
@@ -234,7 +246,9 @@ function UnrollExpression(expression: InlinedExpression): UnrolledExpression[] {
                 Name: expression.Name,
                 Primitive: expression.Primitive,
                 Item: output.length,
-                Plurality: expression.Plurality
+                Plurality: expression.Plurality,
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             })
             return output
         }
