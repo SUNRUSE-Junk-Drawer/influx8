@@ -57,7 +57,9 @@ describe("TypecheckExpression", () => {
             Type: "Call",
             Lambda: "Test Lambda",
             Argument: ["Test Recursed Expression Argument A", "Test Recursed Expression Argument B", "Test Recursed Expression Argument C"],
-            Result: "Test Recursed Result"
+            Result: "Test Recursed Result",
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             switch (expression) {
                 case "Test Expression Argument": return "Test Recursed Expression Argument"
@@ -158,7 +160,9 @@ describe("TypecheckExpression", () => {
     }, {
             Type: "Unary",
             Operator: "Test Matched Unary Operator",
-            Operand: "Test Recursed Operand"
+            Operand: "Test Recursed Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             expect(expression).toEqual("Test Operand")
             return "Test Recursed Operand"
@@ -198,7 +202,9 @@ describe("TypecheckExpression", () => {
             Type: "Binary",
             Operator: "Test Matched Binary Operator",
             Left: "Test Recursed Left Operand",
-            Right: "Test Recursed Right Operand"
+            Right: "Test Recursed Right Operand",
+            StartIndex: 56,
+            EndIndex: 75
         }, (expression) => {
             switch (expression) {
                 case "Test Left Operand": return "Test Recursed Left Operand"
@@ -718,7 +724,9 @@ describe("TypecheckExpression", () => {
         EndIndex: 47
     }, {
             Type: "CallLambdaExpected",
-            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"]
+            Value: ["Test Recursed Value A", "Test Recursed Value B", "Test Recursed Value C"],
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             switch (expression) {
                 case "Test Value A": return "Test Recursed Value A"
@@ -735,7 +743,9 @@ describe("TypecheckExpression", () => {
         EndIndex: 47
     }, {
             Type: "ConcatenateLeft",
-            Value: "Test Recursed Value"
+            Value: "Test Recursed Value",
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             expect(expression).toEqual("Test Value")
             return "Test Recursed Value"
@@ -748,7 +758,9 @@ describe("TypecheckExpression", () => {
         EndIndex: 47
     }, {
             Type: "ConcatenateRight",
-            Value: "Test Recursed Value"
+            Value: "Test Recursed Value",
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             expect(expression).toEqual("Test Value")
             return "Test Recursed Value"
@@ -792,7 +804,9 @@ describe("TypecheckExpression", () => {
             Type: "GetItem",
             Item: "Test Item",
             Of: ["Test Recursed Of A", "Test Recursed Of B", "Test Recursed Of C"],
-            Value: "Test Recursed Value"
+            Value: "Test Recursed Value",
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             switch (expression) {
                 case "Test Of A": return "Test Recursed Of A"
@@ -812,7 +826,9 @@ describe("TypecheckExpression", () => {
     }, {
             Type: "GetItemOutOfRange",
             Item: "Test Item",
-            Of: ["Test Recursed Of A", "Test Recursed Of B", "Test Recursed Of C"]
+            Of: ["Test Recursed Of A", "Test Recursed Of B", "Test Recursed Of C"],
+            StartIndex: 32,
+            EndIndex: 47
         }, (expression) => {
             switch (expression) {
                 case "Test Of A": return "Test Recursed Of A"

@@ -7,17 +7,23 @@
 type ConcatenateLeftTypecheckedExpression = {
     Type: "ConcatenateLeft"
     Value: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type ConcatenateRightTypecheckedExpression = {
     Type: "ConcatenateRight"
     Value: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type UnaryTypecheckedExpression = {
     Type: "Unary",
     Operator: TypedUnary,
     Operand: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type UnaryUnmatchedTypecheckedExpression = {
@@ -33,6 +39,8 @@ type BinaryTypecheckedExpression = {
     Operator: TypedBinary,
     Left: TypecheckedExpression
     Right: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type BinaryUnmatchedTypecheckedExpression = {
@@ -121,11 +129,15 @@ type CallTypecheckedExpression = {
     Lambda: RawExpression
     Argument: TypecheckedExpression[]
     Result: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type CallLambdaExpectedTypecheckedExpression = {
     Type: "CallLambdaExpected"
     Value: TypecheckedExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type GetItemTypecheckedExpression = {
@@ -133,12 +145,16 @@ type GetItemTypecheckedExpression = {
     Item: number
     Of: TypecheckedExpression[]
     Value: TypecheckedExpression
+    StartIndex: number
+    EndIndex: number
 }
 
 type GetItemOutOfRangeTypecheckedExpression = {
     Type: "GetItemOutOfRange"
     Item: number
     Of: TypecheckedExpression[]
+    StartIndex: number
+    EndIndex: number
 }
 
 type ParameterTypecheckedExpression = {
@@ -147,6 +163,8 @@ type ParameterTypecheckedExpression = {
     Primitive: Primitive
     Item: number
     Plurality: number
+    StartIndex: number
+    EndIndex: number
 }
 
 type TypecheckedExpression = UnknownExpression | BooleanExpression | IntegerExpression | BinaryTypecheckedExpression | BinaryUnmatchedTypecheckedExpression | BinaryInconsistentPluralityTypecheckedExpression | UnaryTypecheckedExpression | UnaryUnmatchedTypecheckedExpression | LetStatementTypecheckedExpression | LetStatementWithoutIdentifierTypecheckedExpression | LetStatementIncorrectIdentifierTypeTypecheckedExpression | LetStatementNameNotUniqueTypecheckedExpression | ReturnStatementTypecheckedExpression | NextStatementNotFoundExpression | LambdaUnrolledExpression | LambdaStatementWithoutIdentifierUnrolledExpression | LambdaStatementIncorrectIdentifierTypeUnrolledExpression | LambdaNameNotUniqueUnrolledExpression | ReferenceTypecheckedExpression | ReferenceUndefinedUnrolledExpression | CallTypecheckedExpression | CallLambdaExpectedTypecheckedExpression | ConcatenateLeftTypecheckedExpression | ConcatenateRightTypecheckedExpression | GetItemTypecheckedExpression | GetItemOutOfRangeTypecheckedExpression | ParameterTypecheckedExpression | FloatExpression

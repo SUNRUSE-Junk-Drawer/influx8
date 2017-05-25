@@ -3,7 +3,13 @@
 
 function VerifyExpression(expression: TypecheckedExpression): VerifiedExpression | undefined {
     switch (expression.Type) {
-        case "Parameter": return expression
+        case "Parameter": return {
+            Type: "Parameter",
+            Name: expression.Name,
+            Item: expression.Item,
+            Plurality: expression.Plurality,
+            Primitive: expression.Primitive
+        }
 
         case "Boolean": return {
             Type: "Boolean",

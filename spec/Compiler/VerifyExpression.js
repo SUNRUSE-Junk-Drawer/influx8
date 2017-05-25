@@ -56,13 +56,17 @@ describe("VerifyExpression", () => {
     Test("unary unmatched", {
         Type: "UnaryUnmatched",
         Operator: "Any Operator",
-        Operand: "Any Operand"
+        Operand: "Any Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined)
 
     Test("unary operand valid", {
         Type: "Unary",
         Operator: "Any Operator",
-        Operand: "Any Operand"
+        Operand: "Any Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "Unary",
             Operator: "Any Operator",
@@ -75,7 +79,9 @@ describe("VerifyExpression", () => {
     Test("unary operand invalid", {
         Type: "Unary",
         Operator: "Any Operator",
-        Operand: "Any Operand"
+        Operand: "Any Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined, (expression) => {
         expect(expression).toEqual("Any Operand")
         return undefined
@@ -85,14 +91,18 @@ describe("VerifyExpression", () => {
         Type: "BinaryUnmatched",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 32,
+        EndIndex: 48
     })
 
     Test("binary both operands valid", {
         Type: "Binary",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "Binary",
             Operator: "Any Operator",
@@ -110,7 +120,9 @@ describe("VerifyExpression", () => {
         Type: "Binary",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined, (expression) => {
         switch (expression) {
             case "Any Left Operand": return "Recursed Left Operand"
@@ -123,7 +135,9 @@ describe("VerifyExpression", () => {
         Type: "Binary",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined, (expression) => {
         switch (expression) {
             case "Any Left Operand": return undefined
@@ -136,7 +150,9 @@ describe("VerifyExpression", () => {
         Type: "Binary",
         Operator: "Any Operator",
         Left: "Any Left Operand",
-        Right: "Any Right Operand"
+        Right: "Any Right Operand",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined, (expression) => {
         switch (expression) {
             case "Any Left Operand": return undefined
@@ -272,14 +288,18 @@ describe("VerifyExpression", () => {
 
     Test("lambda expected", {
         Type: "CallLambdaExpected",
-        Value: "Irrelevant"
+        Value: "Irrelevant",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined)
 
     Test("call", {
         Type: "Call",
         Lambda: "Test Lambda",
         Argument: "Test Argument",
-        Result: "Test Result"
+        Result: "Test Result",
+        StartIndex: 32,
+        EndIndex: 48
     }, "Test Recursed Result", (expression) => {
         expect(expression).toEqual("Test Result")
         return "Test Recursed Result"
@@ -287,7 +307,9 @@ describe("VerifyExpression", () => {
 
     Test("concatenate left", {
         Type: "ConcatenateLeft",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, "Test Recursed Value", (expression) => {
         expect(expression).toEqual("Test Value")
         return "Test Recursed Value"
@@ -295,7 +317,9 @@ describe("VerifyExpression", () => {
 
     Test("concatenate right", {
         Type: "ConcatenateRight",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, "Test Recursed Value", (expression) => {
         expect(expression).toEqual("Test Value")
         return "Test Recursed Value"
@@ -306,13 +330,17 @@ describe("VerifyExpression", () => {
         Operator: "Test Operator",
         Left: ["Test Left A", "Test Left B", "Test Left C"],
         Right: ["Test Right A", "Test Right B", "Test Right C", "Test Right D"],
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined)
 
     Test("get item", {
         Type: "GetItem",
         Item: "Test Item",
         Of: "Test Of",
-        Value: "Test Value"
+        Value: "Test Value",
+        StartIndex: 32,
+        EndIndex: 48
     }, "Test Recursed Value", (expression) => {
         expect(expression).toEqual("Test Value")
         return "Test Recursed Value"
@@ -321,7 +349,9 @@ describe("VerifyExpression", () => {
     Test("get item out of range", {
         Type: "GetItemOutOfRange",
         Item: "Test Item",
-        Of: "Test Of"
+        Of: "Test Of",
+        StartIndex: 32,
+        EndIndex: 48
     }, undefined)
 
     Test("parameter", {
@@ -329,7 +359,9 @@ describe("VerifyExpression", () => {
         Name: "Test Name",
         Primitive: "Test Primitive",
         Item: 7,
-        Plurality: 10
+        Plurality: 10,
+        StartIndex: 32,
+        EndIndex: 48
     }, {
             Type: "Parameter",
             Name: "Test Name",

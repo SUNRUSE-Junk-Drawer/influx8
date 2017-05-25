@@ -27,7 +27,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                 if (operator) return {
                     Type: "Unary",
                     Operator: operator,
-                    Operand: operand
+                    Operand: operand,
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 }
             }
             return {
@@ -49,7 +51,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                     Type: "Binary",
                     Operator: operator,
                     Left: leftOperand,
-                    Right: rightOperand
+                    Right: rightOperand,
+                    StartIndex: expression.StartIndex,
+                    EndIndex: expression.EndIndex
                 }
             }
             return {
@@ -98,7 +102,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                 Type: "Call",
                 Lambda: expression.Lambda,
                 Argument: [],
-                Result: TypecheckExpression(expression.Result)
+                Result: TypecheckExpression(expression.Result),
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
             for (const dimension of expression.Argument) output.Argument.push(TypecheckExpression(dimension))
             return output
@@ -107,7 +113,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
         case "CallLambdaExpected": {
             const output: CallLambdaExpectedTypecheckedExpression = {
                 Type: "CallLambdaExpected",
-                Value: []
+                Value: [],
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
             for (const dimension of expression.Value) output.Value.push(TypecheckExpression(dimension))
             return output
@@ -165,12 +173,16 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
 
         case "ConcatenateLeft": return {
             Type: "ConcatenateLeft",
-            Value: TypecheckExpression(expression.Value)
+            Value: TypecheckExpression(expression.Value),
+            StartIndex: expression.StartIndex,
+            EndIndex: expression.EndIndex
         }
 
         case "ConcatenateRight": return {
             Type: "ConcatenateRight",
-            Value: TypecheckExpression(expression.Value)
+            Value: TypecheckExpression(expression.Value),
+            StartIndex: expression.StartIndex,
+            EndIndex: expression.EndIndex
         }
 
         case "GetItem": {
@@ -178,7 +190,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
                 Type: "GetItem",
                 Item: expression.Item,
                 Of: [],
-                Value: TypecheckExpression(expression.Value)
+                Value: TypecheckExpression(expression.Value),
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
 
             for (const item of expression.Of) output.Of.push(TypecheckExpression(item))
@@ -189,7 +203,9 @@ function TypecheckExpression(expression: UnrolledExpression): TypecheckedExpress
             const output: GetItemOutOfRangeTypecheckedExpression = {
                 Type: "GetItemOutOfRange",
                 Item: expression.Item,
-                Of: []
+                Of: [],
+                StartIndex: expression.StartIndex,
+                EndIndex: expression.EndIndex
             }
 
             for (const item of expression.Of) output.Of.push(TypecheckExpression(item))
