@@ -2,6 +2,70 @@
 
 A simple programming language offering basic functional programming and vector mathematics which compile to JavaScript and GLSL.
 
+## Editor
+
+Editor.js contains a basic syntax highlighter and framework for running builds in background workers.
+
+An example of this can be found in Editor.html.
+
+### Configuring
+
+Call the global function SUNRUSEInfluxEditor with:
+
+- A DOM element to transform into an editor.
+  All text inside will be preserved.
+  This must be styled with position absolute, fixed or relative.
+- An object describing how to configure the editor, containing:
+    + Tasks
+      An array of objects describing background tasks to perform when the code changes.
+        * WorkerUrl
+          A string containing the url to a JavaScript file describing a web worker as described below.
+        * WhenCompleted
+          A function which will be called when the worker finishes its part of a build.
+          The argument is the data passed back by the worker.
+
+#### Tasks
+
+As a build progresses, the Tasks described above are messaged.  These are web workers.
+The message will contain:
+
+BuildId
+:   A value which is unique for each build.
+
+Typechecked
+:   An array of the dimensions of the typechecked expression tree (see TypecheckExpression below).
+
+Verified
+:   An array of the dimensions of the verified expression tree (see VerifyExpression below), or undefined if the expression tree could not be verified.
+
+Whether the Task succeeds or fails, it should post exactly one message back per message received containing:
+
+BuildId
+:   The BuildId received.
+
+Data
+:   The data to pass back to the WhenCompleted callback in the Task configuration.
+
+#### Styling
+
+Styling will be inherited as accurately as possible from the original element modified.
+This leaves syntax highlighting up to the page's own CSS rules; each "run" of the syntax highlighting has a SUNRUSEInfluxTokenType attribute set with one of the following values:
+
+- Unknown
+- Comment
+- GetItem
+- Lambda
+- Statement
+- Operator
+- ClosingParenthesis
+- OpeningParenthesis
+- Identifier
+- Float
+- Integer
+- Boolean
+
+Most CSS properties (color, etc.) should work here, but any which change text flow or size could cause the hidden textarea and highlighting overlays to fall out of sync.
+
 ## NPM Module
 
 ### Basic usage:
