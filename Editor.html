@@ -12,52 +12,34 @@
             position: relative;
         }
 
-        [SUNRUSEInfluxTokenType="Unknown"] {
-            color: red;
-        }
-
-        [SUNRUSEInfluxTokenType="Comment"] {
+        [SUNRUSEInfluxTokenType] {
             color: grey;
         }
 
-        [SUNRUSEInfluxTokenType="GetItem"] {
-            color: blue;
+        [SUNRUSEInfluxTokenType="Comment"] {
+            color: #118811;
         }
 
-        [SUNRUSEInfluxTokenType="Lambda"] {
-            color: blue;
-        }
-
-        [SUNRUSEInfluxTokenType="Statement"] {
-            color: blue;
-        }
-
-        [SUNRUSEInfluxTokenType="Operator"] {
-            color: blue;
-        }
-
-        [SUNRUSEInfluxTokenType="OpeningParenthesis"] {
-            color: black;
-        }
-
+        [SUNRUSEInfluxTokenType="Identifier"],
+        [SUNRUSEInfluxTokenType="OpeningParenthesis"],
         [SUNRUSEInfluxTokenType="ClosingParenthesis"] {
             color: black;
         }
 
-        [SUNRUSEInfluxTokenType="Identifier"] {
-            color: black;
+        [SUNRUSEInfluxTokenType="Operator"],
+        [SUNRUSEInfluxTokenType="GetItem"],
+        [SUNRUSEInfluxTokenType="Lambda"] {
+            color: #003194;
         }
 
-        [SUNRUSEInfluxTokenType="Float"] {
-            color: green;
-        }
-
-        [SUNRUSEInfluxTokenType="Integer"] {
-            color: green;
-        }
-
+        [SUNRUSEInfluxTokenType="Integer"],
+        [SUNRUSEInfluxTokenType="Float"],
         [SUNRUSEInfluxTokenType="Boolean"] {
-            color: green;
+            color: #006be6;
+        }
+
+        [SUNRUSEInfluxTokenType="Statement"] {
+            color: #630066;
         }
     </style>
 
