@@ -35,6 +35,7 @@ Call the global function SUNRUSEInfluxEditor with:
         * The total number of tasks.
     + Tasks
       An array of objects describing background tasks to perform when the code changes.
+      At least one is required.
         * WorkerUrl
           A string containing the url to a JavaScript file describing a web worker as described below.
         * WhenCompleted
