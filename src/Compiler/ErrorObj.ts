@@ -6,6 +6,9 @@ type ErrorType =
     | "LambdaWithoutIdentifier"
     | "LambdaIncorrectIdentifierType"
     | "UncalledLambdaInCriticalPath"
+    | "IdentifierNotUnique"
+    | "ReferenceUndefined"
+    | "LambdaExpected"
 
 type ErrorObj = {
     readonly Type: ErrorType
