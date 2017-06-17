@@ -33,4 +33,7 @@ describe("TypedUnary", () => {
     MapsReturnType("NegateInteger", "Integer")
     MapsReturnType("NegateFloat", "Float")
     MapsReturnType("NotBoolean", "Boolean")
+    MapsReturnType("SineFloat", "Float")
+    MapsReturnType("TangentFloat", "Float")
+    MapsReturnType("LogarithmFloat", "Float")
 })

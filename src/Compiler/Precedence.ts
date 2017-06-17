@@ -45,5 +45,5 @@ const Precedence: PrecedenceLevel[] = [{
     Operators: ["Divide"]
 }, {
     Type: "Unary",
-    Operators: ["Negate"]
+    Operators: ["Negate", "Sine", "Tangent", "Logarithm"]
 }]

@@ -20,6 +20,9 @@ describe("SymbolAndKeywordOperatorMappings", () => {
     Maps(UntypedUnarySymbols, UntypedUnaryKeywordsAndSymbols, "!", "Not")
 
     Maps(UntypedUnaryKeywords, UntypedUnaryKeywordsAndSymbols, "not", "Not")
+    Maps(UntypedUnaryKeywords, UntypedUnaryKeywordsAndSymbols, "sin", "Sine")
+    Maps(UntypedUnaryKeywords, UntypedUnaryKeywordsAndSymbols, "tan", "Tangent")
+    Maps(UntypedUnaryKeywords, UntypedUnaryKeywordsAndSymbols, "log", "Logarithm")
 
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "+", "Add")
     Maps(UntypedBinarySymbols, UntypedBinaryKeywordsAndSymbols, "-", "Subtract")

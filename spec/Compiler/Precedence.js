@@ -51,6 +51,9 @@ describe("Precedence", () => {
     Order("Add", "Multiply")
     Order("Multiply", "Divide")
     Order("Divide", "Negate")
+    SameLevel("Negate", "Sine")
+    SameLevel("Negate", "Tangent")
+    SameLevel("Negate", "Logarithm")
 
     function Type(operator, type) {
         it("defines \"" + operator + "\" as \"" + type + "\"", () => {

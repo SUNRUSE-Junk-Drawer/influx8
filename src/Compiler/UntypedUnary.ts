@@ -1,4 +1,4 @@
-type UntypedUnary = "Not" | "Negate"
+type UntypedUnary = "Not" | "Negate" | "Sine" | "Tangent" | "Logarithm"
 
 const UntypedUnarySymbols: { [symbol: string]: UntypedUnary } = {
     "!": "Not",
@@ -6,7 +6,10 @@ const UntypedUnarySymbols: { [symbol: string]: UntypedUnary } = {
 }
 
 const UntypedUnaryKeywords: { [keyword: string]: UntypedUnary } = {
-    "not": "Not"
+    "not": "Not",
+    "sin": "Sine",
+    "tan": "Tangent",
+    "log": "Logarithm"
 }
 
 const UntypedUnaryKeywordsAndSymbols: { [keywordOrSymbol: string]: UntypedUnary } = {}
