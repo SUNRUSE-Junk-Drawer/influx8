@@ -10,7 +10,10 @@
 /// <reference path="VerifyExpression.ts" />
 /// <reference path="MatchCSyntax.ts" />
 /// <reference path="GenerateCSyntax.ts" />
-/// <reference path="FindErrorsInRawExpression.ts" />
+/// <reference path="FindErrorsInRawExpressionCriticalPath.ts" />
+/// <reference path="FindErrorsInInlinedExpressionCriticalPath.ts" />
+/// <reference path="FindErrorsInUnrolledExpressionCriticalPath.ts" />
+/// <reference path="FindErrorsInTypecheckedExpressionCriticalPath.ts" />
 
 function Compile<TUnary extends string, TBinary extends string, TFunction extends string>(source: string, syntax: CSyntax<TUnary, TBinary, TFunction>, scope: Scope): string | undefined {
     const untypedTokens = ParseUntypedTokens(source)
