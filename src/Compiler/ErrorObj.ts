@@ -9,6 +9,8 @@ type ErrorType =
     | "IdentifierNotUnique"
     | "ReferenceUndefined"
     | "LambdaExpected"
+    | "InconsistentPlurality"
+    | "GetItemOutOfRange"
 
 type ErrorObj = {
     readonly Type: ErrorType
