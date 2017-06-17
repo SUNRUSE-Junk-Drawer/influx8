@@ -11,6 +11,7 @@ type ErrorType =
     | "LambdaExpected"
     | "InconsistentPlurality"
     | "GetItemOutOfRange"
+    | "TypeMismatch"
 
 type ErrorObj = {
     readonly Type: ErrorType
