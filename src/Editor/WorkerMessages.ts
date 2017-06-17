@@ -18,6 +18,15 @@ type WorkerBuildRequest = {
     readonly SourceLength: number
 }
 
+// Note: adding new stages will require modifications to anywhere which computes the total (UpdateBuild, StartBuild).
+type BuildStage = "Waiting" | "Starting" | "Parenthesizing" | "Parsing" | "Inlining" | "Unrolling" | "Typechecking" | "Verifying" | "RunningTasks" | "Done"
+
+type ProgressWorkerResponse = {
+    readonly Type: "Progress"
+    readonly Stage: BuildStage
+    readonly BuildId: number
+}
+
 type TaskCompletedWorkerResponse = {
     readonly Type: "TaskCompleted"
     readonly TaskIndex: number

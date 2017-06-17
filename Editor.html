@@ -66,10 +66,42 @@
         [SUNRUSEInfluxTokenType="Statement"] {
             color: #630066;
         }
+
+        #Progress {
+            position: relative;
+            height: 0.75cm;
+            margin: 1cm;
+            box-shadow: 0 0.0625cm 0.25cm rgba(0, 0, 0, 0.375) inset;
+        }
+
+        #ProgressText {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+            line-height: 0.75cm;
+            font-family: sans-serif;
+        }
+
+        #ProgressBar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 0%;
+            background: rgba(0, 0, 0, 0.1375);
+            z-index: -1;
+        }
     </style>
 
     <h1>SUNRUSE.influx Editor</h1>
     <pre id="Editor">(10, 2) * (4 + 8)</pre>
+    <div id="Progress">
+        <div id="ProgressBar"></div>
+        <div id="ProgressText">Loading...</div>
+    </div>
     <h2>JavaScript</h2>
     <pre id="JavaScriptOutput"></pre>
     <h2>GLSL</h2>
@@ -79,6 +111,10 @@
     <script>
         onload = function () {
             SUNRUSEInfluxEditor(document.getElementById("Editor"), {
+                WhenBuildProgresses: function (stage, completedTasks, totalTasks) {
+                    document.getElementById("ProgressBar").style.width = 100 - (completedTasks * 100 / totalTasks) + "%"
+                    document.getElementById("ProgressText").textContent = stage == "Done" || stage == "Waiting" ? stage : stage + " (" + completedTasks + "/" + totalTasks + ")"
+                },
                 Tasks: [{
                     WorkerUrl: "Editor.JavaScriptCompilerWorker.min.js",
                     WhenCompleted: function (data) {

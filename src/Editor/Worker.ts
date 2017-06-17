@@ -36,19 +36,36 @@ function HandleConfiguration(request: WorkerConfigurationRequest) {
     for (let i = 0; i < request.Tasks.length; i++) CreateTaskWorker(request.Tasks[i], i)
 }
 
+function PostProgress(request: WorkerBuildRequest, stage: BuildStage) {
+    const response: ProgressWorkerResponse = {
+        Type: "Progress",
+        Stage: stage,
+        BuildId: request.BuildId
+    };
+    // todo: Why does this not accept the typing information we specified in the tsconfig, and use the browser postMessage?
+    (postMessage as any)(response)
+}
+
 function HandleBuild(request: WorkerBuildRequest) {
+    PostProgress(request, "Parenthesizing")
     const parenthesized = ParenthesizeTokens(request.Tokens)
+    PostProgress(request, "Parsing")
     const expression = ParseExpression(parenthesized, 0, request.SourceLength)
+    PostProgress(request, "Inlining")
     const inlined = InlineExpression(expression, {})
+    PostProgress(request, "Unrolling")
     const unrolled = UnrollExpression(inlined)
+    PostProgress(request, "Typechecking")
     const typechecked: TypecheckedExpression[] = []
     for (const dimension of unrolled) typechecked.push(TypecheckExpression(dimension))
+    PostProgress(request, "Verifying")
     const verified: VerifiedExpression[] = []
     for (const dimension of typechecked) {
         const verifiedDimension = VerifyExpression(dimension)
         if (!verifiedDimension) break
         verified.push(verifiedDimension)
     }
+    PostProgress(request, "RunningTasks")
     const taskRequest: TaskRequest = {
         BuildId: request.BuildId,
         Typechecked: typechecked,

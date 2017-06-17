@@ -10,6 +10,14 @@ describe("WorkerHandleBuild", () => {
     function Test(description, verifyExpressionMap, message) {
         describe(description, () => {
             let taskWorkers
+            let postMessage
+            let ParenthesizeTokens
+            let ParseExpression
+            let InlineExpression
+            let UnrollExpression
+            let TypecheckExpression
+            let VerifyExpression
+
             beforeEach(() => {
                 taskWorkers = [{
                     postMessage: jasmine.createSpy("postMessage")
@@ -20,25 +28,35 @@ describe("WorkerHandleBuild", () => {
                 }]
                 namespace.__set__("TaskWorkers", taskWorkers)
 
-                namespace.__set__("ParenthesizeTokens", tokens => {
+                postMessage = jasmine.createSpy("postMessage")
+                namespace.__set__("postMessage", postMessage)
+
+                ParenthesizeTokens = jasmine.createSpy("ParenthesizeTokens")
+                ParenthesizeTokens.and.callFake(tokens => {
                     expect(tokens).toEqual("test unparenthesized tokens")
                     return "test parenthesized tokens"
                 })
+                namespace.__set__("ParenthesizeTokens", ParenthesizeTokens)
 
-                namespace.__set__("ParseExpression", (tokens, startIndex, endIndex) => {
+                ParseExpression = jasmine.createSpy("ParseExpression")
+                ParseExpression.and.callFake((tokens, startIndex, endIndex) => {
                     expect(tokens).toEqual("test parenthesized tokens")
                     expect(startIndex).toEqual(0)
                     expect(endIndex).toEqual(39)
                     return "test parsed expression"
                 })
+                namespace.__set__("ParseExpression", ParseExpression)
 
-                namespace.__set__("InlineExpression", (expression, scope) => {
+                InlineExpression = jasmine.createSpy("InlineExpression")
+                InlineExpression.and.callFake((expression, scope) => {
                     expect(expression).toEqual("test parsed expression")
                     expect(scope).toEqual({})
                     return "test inlined expression"
                 })
+                namespace.__set__("InlineExpression", InlineExpression)
 
-                namespace.__set__("UnrollExpression", (expression) => {
+                UnrollExpression = jasmine.createSpy("UnrollExpression")
+                UnrollExpression.and.callFake((expression) => {
                     expect(expression).toEqual("test inlined expression")
                     return [
                         "test unrolled expression a",
@@ -47,8 +65,10 @@ describe("WorkerHandleBuild", () => {
                         "test unrolled expression d"
                     ]
                 })
+                namespace.__set__("UnrollExpression", UnrollExpression)
 
-                namespace.__set__("TypecheckExpression", (expression) => {
+                TypecheckExpression = jasmine.createSpy("TypecheckExpression")
+                TypecheckExpression.and.callFake((expression) => {
                     switch (expression) {
                         case "test unrolled expression a": return "test typechecked expression a"
                         case "test unrolled expression b": return "test typechecked expression b"
@@ -57,26 +77,64 @@ describe("WorkerHandleBuild", () => {
                         default: fail("Unexpected unrolled expression")
                     }
                 })
+                namespace.__set__("TypecheckExpression", TypecheckExpression)
 
-                namespace.__set__("VerifyExpression", (expression) => {
+                VerifyExpression = jasmine.createSpy("VerifyExpression")
+                VerifyExpression.and.callFake((expression) => {
                     if (!Object.prototype.hasOwnProperty.call(verifyExpressionMap, expression)) fail("Unexpected typechecked expression")
                     return verifyExpressionMap[expression]
                 })
+                namespace.__set__("VerifyExpression", VerifyExpression)
+            })
 
+            function Run() {
                 handleBuild({
                     Tokens: "test unparenthesized tokens",
                     Type: "Build",
                     BuildId: "test build id",
                     SourceLength: 39
                 })
-            })
+            }
 
-            it("posts a message to the first task worker", () => expect(taskWorkers[0].postMessage.calls.count()).toEqual(1))
-            it("posts the expected message to the first task worker", () => expect(taskWorkers[0].postMessage).toHaveBeenCalledWith(message))
-            it("posts a message to the second task worker", () => expect(taskWorkers[1].postMessage.calls.count()).toEqual(1))
-            it("posts the expected message to the first task worker", () => expect(taskWorkers[1].postMessage).toHaveBeenCalledWith(message))
-            it("posts a message to the third task worker", () => expect(taskWorkers[2].postMessage.calls.count()).toEqual(1))
-            it("posts the expected message to the first task worker", () => expect(taskWorkers[2].postMessage).toHaveBeenCalledWith(message))
+            function SendsMessage(description, stage, after, before) {
+                describe(description, () => {
+                    it("posts the message", () => {
+                        Run()
+                        expect(postMessage).toHaveBeenCalledWith({
+                            Type: "Progress",
+                            Stage: stage,
+                            BuildId: "test build id"
+                        })
+                    })
+                    it("has executed all callbacks expected to have been executed by the time of posting the message", () => {
+                        postMessage.and.callFake(message => { if (message.Stage == stage) after().forEach(callback => expect(callback).toHaveBeenCalled()) })
+                        Run()
+                    })
+                    it("has not executed any callbacks expected not to have been executed by the time of posting the message", () => {
+                        postMessage.and.callFake(message => { if (message.Stage == stage) before().forEach(callback => expect(callback).not.toHaveBeenCalled()) })
+                        Run()
+                    })
+                })
+            }
+
+            SendsMessage("indicates that the tokens are being parenthesized", "Parenthesizing", () => [], () => [ParenthesizeTokens])
+            SendsMessage("indicates that the expression is being parsed", "Parsing", () => [ParenthesizeTokens], () => [ParseExpression])
+            SendsMessage("indicates that the expression is being inlined", "Inlining", () => [ParseExpression], () => [InlineExpression])
+            SendsMessage("indicates that the expression is being unrolled", "Unrolling", () => [InlineExpression], () => [UnrollExpression])
+            SendsMessage("indicates that the expression is being typechecked", "Typechecking", () => [UnrollExpression], () => [TypecheckExpression])
+            SendsMessage("indicates that the expression is being verified", "Verifying", () => [TypecheckExpression], () => [VerifyExpression])
+            SendsMessage("indicates that the tasks are being ran", "RunningTasks", () => [VerifyExpression], () => [taskWorkers[0].postMessage, taskWorkers[1].postMessage, taskWorkers[2].postMessage])
+
+            describe("orderless checks", () => {
+                beforeEach(Run)
+                it("does not send further messages", () => expect(postMessage.calls.count()).toEqual(7))
+                it("posts a message to the first task worker", () => expect(taskWorkers[0].postMessage.calls.count()).toEqual(1))
+                it("posts the expected message to the first task worker", () => expect(taskWorkers[0].postMessage).toHaveBeenCalledWith(message))
+                it("posts a message to the second task worker", () => expect(taskWorkers[1].postMessage.calls.count()).toEqual(1))
+                it("posts the expected message to the first task worker", () => expect(taskWorkers[1].postMessage).toHaveBeenCalledWith(message))
+                it("posts a message to the third task worker", () => expect(taskWorkers[2].postMessage.calls.count()).toEqual(1))
+                it("posts the expected message to the first task worker", () => expect(taskWorkers[2].postMessage).toHaveBeenCalledWith(message))
+            })
         })
     }
 

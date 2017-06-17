@@ -56,6 +56,7 @@ function CreateTextArea(source: string): HTMLTextAreaElement {
 }
 
 type Configuration = {
+    readonly WhenBuildProgresses: (stage: BuildStage, completedTasks: number, totalTasks: number) => void
     readonly Tasks: {
         WorkerUrl: string
         WhenCompleted: (data: any) => void
@@ -66,7 +67,7 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
     const throttle = Throttle(500)
     const worker = new Worker("Editor.Worker.min.js")
     let buildId = 0
-    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++)
+    let build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++, configuration)
 
     // todo on error?
     worker.addEventListener("message", e => UpdateBuild(configuration, build, e.data))
@@ -86,7 +87,7 @@ function SetupChangeListener(editorElement: Element, textArea: HTMLTextAreaEleme
     textArea.addEventListener("change", RespondToChange)
     function RespondToChange() {
         EndBuild(build)
-        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++)
+        build = StartBuild(editorElement, textArea.value, textAreaWrappingElement, throttle, worker, buildId++, configuration)
     }
 }
 

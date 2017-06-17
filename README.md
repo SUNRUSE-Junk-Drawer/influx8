@@ -16,6 +16,23 @@ Call the global function SUNRUSEInfluxEditor with:
   All text inside will be preserved.
   This must be styled with position absolute, fixed or relative.
 - An object describing how to configure the editor, containing:
+    + WhenBuildProgresses
+      A function which will be executed once for every stage of the build.
+      Intended to be used to update a progress bar or similar.
+      Arguments:
+        * A string describing the next action.  Of:
+          - Waiting: The editor is waiting for the user to stop typing before processing further.  Syntax highlighting has been applied, but nothing more.
+          - Starting: The background worker has been started.
+          - Parenthesizing: See ParenthesizeTokens.
+          - Parsing: See ParseExpression.
+          - Inlining: See InlineExpression.
+          - Unrolling: See UnrollExpression.
+          - Typechecking: See TypecheckExpression.
+          - Verifying: See VerifyExpression.
+          - RunningTasks: The tasks described below are being executed.
+          - Done: The build has completed, either successfully or unsuccessfully.
+        * The number of completed tasks.
+        * The total number of tasks.
     + Tasks
       An array of objects describing background tasks to perform when the code changes.
         * WorkerUrl
