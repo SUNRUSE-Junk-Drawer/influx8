@@ -5,6 +5,7 @@ type ErrorType =
     | "LetIncorrectIdentifierType"
     | "LambdaWithoutIdentifier"
     | "LambdaIncorrectIdentifierType"
+    | "UncalledLambdaInCriticalPath"
 
 type ErrorObj = {
     readonly Type: ErrorType
