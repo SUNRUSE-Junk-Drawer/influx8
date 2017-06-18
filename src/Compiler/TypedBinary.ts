@@ -4,7 +4,7 @@
 type TypedBinary =
     "AndBoolean" | "OrBoolean" | "EqualBoolean" | "NotEqualBoolean"
     | "AddInteger" | "SubtractInteger" | "MultiplyInteger" | "EqualInteger" | "NotEqualInteger" | "GreaterThanInteger" | "LessThanInteger" | "GreaterThanOrEqualToInteger" | "LessThanOrEqualToInteger"
-    | "AddFloat" | "SubtractFloat" | "MultiplyFloat" | "DivideFloat" | "GreaterThanFloat" | "LessThanFloat"
+    | "AddFloat" | "SubtractFloat" | "MultiplyFloat" | "DivideFloat" | "GreaterThanFloat" | "LessThanFloat" | "ExponentiateFloat"
 
 const BinaryTypeMappings: {
     [untyped in UntypedBinary]: {
@@ -80,6 +80,11 @@ const BinaryTypeMappings: {
             Boolean: undefined,
             Integer: undefined,
             Float: undefined
+        },
+        "Exponentiate": {
+            Boolean: undefined,
+            Integer: undefined,
+            Float: "ExponentiateFloat"
         }
     }
 
@@ -102,7 +107,8 @@ const BinaryReturnTypes: {[operator in TypedBinary]: Primitive} = {
     MultiplyFloat: "Float",
     DivideFloat: "Float",
     GreaterThanFloat: "Boolean",
-    LessThanFloat: "Boolean"
+    LessThanFloat: "Boolean",
+    ExponentiateFloat: "Float"
 }
 
 const BinaryReversible: {[operator in TypedBinary]: boolean} = {
@@ -124,5 +130,6 @@ const BinaryReversible: {[operator in TypedBinary]: boolean} = {
     MultiplyFloat: true,
     DivideFloat: false,
     GreaterThanFloat: false,
-    LessThanFloat: false
+    LessThanFloat: false,
+    ExponentiateFloat: false
 }

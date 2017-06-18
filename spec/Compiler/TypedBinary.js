@@ -29,6 +29,7 @@ describe("TypedBinary", () => {
     DoesNotMapArgumentType("LessThanOrEqualTo", "Boolean")
     DoesNotMapArgumentType("Call", "Boolean")
     DoesNotMapArgumentType("Concatenate", "Boolean")
+    DoesNotMapArgumentType("Exponentiate", "Boolean")
 
     MapsArgumentType("Add", "Integer", "AddInteger")
     MapsArgumentType("Subtract", "Integer", "SubtractInteger")
@@ -44,6 +45,7 @@ describe("TypedBinary", () => {
     MapsArgumentType("LessThanOrEqualTo", "Integer", "LessThanOrEqualToInteger")
     DoesNotMapArgumentType("Call", "Integer")
     DoesNotMapArgumentType("Concatenate", "Integer")
+    DoesNotMapArgumentType("Exponentiate", "Integer")
 
     MapsArgumentType("Add", "Float", "AddFloat")
     MapsArgumentType("Subtract", "Float", "SubtractFloat")
@@ -59,6 +61,7 @@ describe("TypedBinary", () => {
     DoesNotMapArgumentType("LessThanOrEqualTo", "Float")
     DoesNotMapArgumentType("Call", "Float")
     DoesNotMapArgumentType("Concatenate", "Float")
+    MapsArgumentType("Exponentiate", "Float", "ExponentiateFloat")
 
     const BinaryReturnTypes = Namespace.__get__("BinaryReturnTypes")
 
@@ -87,6 +90,7 @@ describe("TypedBinary", () => {
     MapsReturnType("DivideFloat", "Float")
     MapsReturnType("GreaterThanFloat", "Boolean")
     MapsReturnType("LessThanFloat", "Boolean")
+    MapsReturnType("ExponentiateFloat", "Float")
 
     const BinaryReversible = Namespace.__get__("BinaryReversible")
 
@@ -117,4 +121,5 @@ describe("TypedBinary", () => {
     IsNotReversible("DivideFloat", "Float")
     IsNotReversible("GreaterThanFloat", "Boolean")
     IsNotReversible("LessThanFloat", "Boolean")
+    IsNotReversible("ExponentiateFloat")
 })

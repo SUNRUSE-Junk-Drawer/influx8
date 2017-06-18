@@ -33,6 +33,9 @@ const Precedence: PrecedenceLevel[] = [{
     Operators: ["Equal", "NotEqual", "GreaterThan", "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo"]
 }, {
     Type: "BinaryLeftToRight",
+    Operators: ["Exponentiate"]
+}, {
+    Type: "BinaryLeftToRight",
     Operators: ["Subtract"]
 }, {
     Type: "BinaryLeftToRight",
